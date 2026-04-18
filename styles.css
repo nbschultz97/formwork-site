@@ -538,6 +538,342 @@ nav.scrolled {
 }
 
 /* ============================================
+   UNIQUE — BLUEPRINT GRID & ARCHITECTURAL ACCENTS
+   ============================================ */
+
+/* Subtle blueprint grid overlay on hero */
+.hero-grid-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+        linear-gradient(to right, rgba(38, 38, 42, 0.045) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(38, 38, 42, 0.045) 1px, transparent 1px),
+        linear-gradient(to right, rgba(204, 153, 51, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(204, 153, 51, 0.08) 1px, transparent 1px);
+    background-size: 48px 48px, 48px 48px, 240px 240px, 240px 240px;
+    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 35%, black 10%, transparent 85%);
+            mask-image: radial-gradient(ellipse 80% 70% at 50% 35%, black 10%, transparent 85%);
+}
+
+/* Architectural corner registration marks on hero */
+.hero-corners {
+    position: absolute;
+    top: 78px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.hero-corner {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border: 1.5px solid var(--amber);
+    opacity: 0.55;
+}
+
+.hero-corner.tl { top: 0; left: 0; border-right: none; border-bottom: none; }
+.hero-corner.tr { top: 0; right: 0; border-left: none; border-bottom: none; }
+.hero-corner.bl { bottom: 0; left: 0; border-right: none; border-top: none; }
+.hero-corner.br { bottom: 0; right: 0; border-left: none; border-top: none; }
+
+.hero-corner::after {
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: var(--amber);
+    border-radius: 50%;
+    opacity: 0.7;
+}
+
+.hero-corner.tl::after { top: -2.5px; left: -2.5px; }
+.hero-corner.tr::after { top: -2.5px; right: -2.5px; }
+.hero-corner.bl::after { bottom: -2.5px; left: -2.5px; }
+.hero-corner.br::after { bottom: -2.5px; right: -2.5px; }
+
+/* Drawing title block stamp (top-right of hero) */
+.drawing-stamp {
+    position: absolute;
+    top: 88px;
+    right: 32px;
+    z-index: 1;
+    pointer-events: none;
+    padding: 10px 12px;
+    border: 1px solid rgba(204, 153, 51, 0.35);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    min-width: 128px;
+}
+
+.stamp-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    border-bottom: 1px dashed rgba(204, 153, 51, 0.25);
+    padding: 2px 0;
+}
+
+.stamp-row:last-child { border-bottom: none; }
+
+.stamp-key { color: var(--text-tertiary); text-transform: uppercase; }
+.stamp-val { color: var(--amber); font-weight: 500; }
+
+/* Dimension line callouts flanking mockup (architectural dimensioning) */
+.hero-mockup { position: relative; }
+
+.dim-line {
+    position: absolute;
+    top: 30px;
+    bottom: 100px;
+    width: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0.55;
+}
+
+.dim-line.dim-left { left: -28px; }
+.dim-line.dim-right { right: -28px; }
+
+.dim-line::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    bottom: 6px;
+    left: 50%;
+    width: 1px;
+    background: var(--amber);
+    transform: translateX(-50%);
+    opacity: 0.5;
+}
+
+.dim-tick {
+    position: relative;
+    z-index: 1;
+    width: 14px;
+    height: 1.5px;
+    background: var(--amber);
+}
+
+.dim-label {
+    position: relative;
+    z-index: 1;
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.6rem;
+    color: var(--amber);
+    letter-spacing: 0.15em;
+    background: var(--white);
+    padding: 6px 0;
+}
+
+.dim-line.dim-right .dim-label { transform: rotate(0); writing-mode: vertical-rl; }
+
+/* Scanning amber line on mockup — evokes document analysis */
+.mockup-window { position: relative; }
+
+.mockup-scan-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 2px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(204, 153, 51, 0.15) 20%,
+        rgba(204, 153, 51, 0.9) 50%,
+        rgba(204, 153, 51, 0.15) 80%,
+        transparent 100%);
+    box-shadow: 0 0 20px rgba(204, 153, 51, 0.6),
+                0 0 40px rgba(204, 153, 51, 0.3);
+    animation: scan-sweep 4.5s cubic-bezier(0.55, 0, 0.45, 1) infinite;
+    z-index: 3;
+    pointer-events: none;
+    opacity: 0;
+}
+
+@keyframes scan-sweep {
+    0%   { top: 0;    opacity: 0; }
+    8%   {            opacity: 0.9; }
+    92%  {            opacity: 0.9; }
+    100% { top: 100%; opacity: 0; }
+}
+
+/* ============================================
+   UNIQUE — SHEET STAMP LABELS ON SECTIONS
+   ============================================ */
+
+.sheet-stamp {
+    position: absolute;
+    top: var(--space-lg);
+    right: var(--space-xl);
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    color: var(--text-tertiary);
+    padding: 4px 10px;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    background: var(--white);
+    z-index: 1;
+    text-transform: uppercase;
+}
+
+.sheet-stamp::before {
+    content: '';
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    background: var(--amber);
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+    transform: translateY(-1px);
+}
+
+.sheet-stamp-dark {
+    color: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.problem-section,
+.features-section,
+.pipeline-section { position: relative; }
+
+/* ============================================
+   UNIQUE — CONSTRUCTION MARQUEE TICKER
+   ============================================ */
+
+.marquee {
+    background: var(--charcoal);
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 14px 0;
+    overflow: hidden;
+    position: relative;
+    /* subtle caution-tape diagonal accent on top edge */
+    background-image:
+        repeating-linear-gradient(
+            135deg,
+            rgba(204, 153, 51, 0.14) 0 8px,
+            transparent 8px 16px
+        ),
+        linear-gradient(var(--charcoal), var(--charcoal));
+    background-size: 100% 3px, 100% 100%;
+    background-repeat: no-repeat;
+    background-position: top left, center;
+}
+
+.marquee::before,
+.marquee::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.marquee::before {
+    left: 0;
+    background: linear-gradient(to right, var(--charcoal), transparent);
+}
+
+.marquee::after {
+    right: 0;
+    background: linear-gradient(to left, var(--charcoal), transparent);
+}
+
+.marquee-track {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    white-space: nowrap;
+    width: max-content;
+    font-family: 'Geist Mono', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    animation: marquee 42s linear infinite;
+}
+
+.marquee-item {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.marquee-sep {
+    color: var(--amber);
+    font-size: 0.75rem;
+    opacity: 0.75;
+}
+
+@keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .marquee-track { animation: none; }
+    .mockup-scan-line { animation: none; opacity: 0.4; top: 50%; }
+}
+
+/* ============================================
+   UNIQUE — PIPELINE DASHED CONNECTORS
+   ============================================ */
+
+.pipeline-step { overflow: visible; }
+
+/* Horizontal dashed line linking consecutive steps in a row */
+.pipeline-step:not(.end-row)::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: calc(var(--space-lg) * -1);
+    width: var(--space-lg);
+    height: 2px;
+    background-image: linear-gradient(to right,
+        rgba(204, 153, 51, 0.5) 50%, transparent 50%);
+    background-size: 8px 2px;
+    background-repeat: repeat-x;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+/* Small amber terminator dot where the connector meets the next step */
+.pipeline-step:not(.end-row)::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -5px;
+    width: 6px;
+    height: 6px;
+    background: var(--amber);
+    border-radius: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 0 10px rgba(204, 153, 51, 0.55);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* ============================================
    STATS BAR
    ============================================ */
 
@@ -1220,6 +1556,19 @@ footer {
 /* ============================================
    RESPONSIVE
    ============================================ */
+
+@media (max-width: 1024px) {
+    .drawing-stamp { display: none; }
+    .dim-line { display: none; }
+}
+
+@media (max-width: 900px) {
+    .hero-corners { left: 12px; right: 12px; top: 70px; }
+    .sheet-stamp { top: var(--space-md); right: var(--space-md); font-size: 0.6rem; padding: 3px 8px; }
+    .pipeline-step:not(.end-row)::after,
+    .pipeline-step:not(.end-row)::before { display: none; }
+    .marquee-track { font-size: 0.7rem; gap: 2rem; }
+}
 
 @media (max-width: 768px) {
     .nav-links { display: none; }

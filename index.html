@@ -61,6 +61,19 @@
 
 <!-- HERO -->
 <section class="hero">
+    <!-- Blueprint grid + architectural accents -->
+    <div class="hero-grid-overlay" aria-hidden="true"></div>
+    <div class="hero-corners" aria-hidden="true">
+        <span class="hero-corner tl"></span>
+        <span class="hero-corner tr"></span>
+        <span class="hero-corner bl"></span>
+        <span class="hero-corner br"></span>
+    </div>
+    <div class="drawing-stamp" aria-hidden="true">
+        <div class="stamp-row"><span class="stamp-key">SHEET</span><span class="stamp-val">A-001</span></div>
+        <div class="stamp-row"><span class="stamp-key">SCALE</span><span class="stamp-val">1 : 1</span></div>
+        <div class="stamp-row"><span class="stamp-key">REV</span><span class="stamp-val">04 / 2026</span></div>
+    </div>
     <div class="hero-content">
         <div class="hero-text">
             <div class="hero-badge fade-up">
@@ -79,7 +92,19 @@
 
         <!-- Product Mockup -->
         <div class="hero-mockup fade-up stagger-4">
+            <!-- Dimension line callouts flanking the mockup -->
+            <div class="dim-line dim-left" aria-hidden="true">
+                <span class="dim-tick top"></span>
+                <span class="dim-label">HRS</span>
+                <span class="dim-tick bottom"></span>
+            </div>
+            <div class="dim-line dim-right" aria-hidden="true">
+                <span class="dim-tick top"></span>
+                <span class="dim-label">SCOPE</span>
+                <span class="dim-tick bottom"></span>
+            </div>
             <div class="mockup-window">
+                <div class="mockup-scan-line" aria-hidden="true"></div>
                 <div class="mockup-titlebar">
                     <div class="mockup-dot"></div>
                     <div class="mockup-dot"></div>
@@ -174,8 +199,36 @@
     </div>
 </div>
 
+<!-- CONSTRUCTION MARQUEE TICKER -->
+<div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+        <span class="marquee-item">DIV 03 — CONCRETE</span><span class="marquee-sep">✕</span>
+        <span class="marquee-item">SPEC PARSING</span><span class="marquee-sep">✕</span>
+        <span class="marquee-item">DIV 05 — METALS</span><span class="marquee-sep">✕</span>
+        <span class="marquee-item">SCOPE GAPS DETECTED</span><span class="marquee-sep">✕</span>
+        <span class="marquee-item">DIV 09 — FINISHES</span><span class="marquee-sep">✕</span>
+        <span class="marquee-item">QUANTITY TAKEOFFS</span><span class="marquee-sep">✕</span>
+        <span class="marquee-item">DIV 23 — HVAC</span><span class="marquee-sep">✕</span>
+        <span class="marquee-item">CROSS-REFERENCED</span><span class="marquee-sep">✕</span>
+        <span class="marquee-item">DIV 26 — ELECTRICAL</span><span class="marquee-sep">✕</span>
+        <span class="marquee-item">ESTIMATE READY</span><span class="marquee-sep">✕</span>
+        <!-- duplicate for seamless loop -->
+        <span class="marquee-item">DIV 03 — CONCRETE</span><span class="marquee-sep">✕</span>
+        <span class="marquee-item">SPEC PARSING</span><span class="marquee-sep">✕</span>
+        <span class="marquee-item">DIV 05 — METALS</span><span class="marquee-sep">✕</span>
+        <span class="marquee-item">SCOPE GAPS DETECTED</span><span class="marquee-sep">✕</span>
+        <span class="marquee-item">DIV 09 — FINISHES</span><span class="marquee-sep">✕</span>
+        <span class="marquee-item">QUANTITY TAKEOFFS</span><span class="marquee-sep">✕</span>
+        <span class="marquee-item">DIV 23 — HVAC</span><span class="marquee-sep">✕</span>
+        <span class="marquee-item">CROSS-REFERENCED</span><span class="marquee-sep">✕</span>
+        <span class="marquee-item">DIV 26 — ELECTRICAL</span><span class="marquee-sep">✕</span>
+        <span class="marquee-item">ESTIMATE READY</span><span class="marquee-sep">✕</span>
+    </div>
+</div>
+
 <!-- PROBLEM / SOLUTION -->
 <section class="problem-section" id="features">
+    <div class="sheet-stamp" aria-hidden="true">SHEET A-100 · PROBLEM</div>
     <div class="section-inner">
         <div class="section-label fade-up">The Problem &amp; The Fix</div>
         <div class="section-title fade-up stagger-1">Bid analysis is broken. We're fixing it.</div>
@@ -244,7 +297,8 @@
 </section>
 
 <!-- FEATURES — BENTO GRID -->
-<section>
+<section class="features-section">
+    <div class="sheet-stamp" aria-hidden="true">SHEET A-200 · CAPABILITIES</div>
     <div class="section-inner">
         <div class="section-label fade-up">Capabilities</div>
         <div class="section-title fade-up stagger-1">Built for how construction actually works.</div>
@@ -326,6 +380,7 @@
 
 <!-- PIPELINE — CONNECTED FLOW -->
 <section class="pipeline-section" id="how-it-works">
+    <div class="sheet-stamp sheet-stamp-dark" aria-hidden="true">SHEET A-300 · PIPELINE</div>
     <div class="section-inner">
         <div class="section-label fade-up">How It Works</div>
         <div class="section-title fade-up stagger-1" style="color: var(--white)">Upload your bid package. Get answers.</div>
@@ -341,7 +396,7 @@
                 <div class="step-title">Spec Parsing</div>
                 <div class="step-desc">Extracts requirements by CSI division — materials, submittals, testing, quality.</div>
             </div>
-            <div class="pipeline-step fade-up stagger-3">
+            <div class="pipeline-step end-row fade-up stagger-3">
                 <div class="step-num">03</div>
                 <div class="step-title">Drawing Analysis</div>
                 <div class="step-desc">Reads plan sheets and details to pull quantities, dimensions, and annotations.</div>
@@ -360,7 +415,7 @@
                 <div class="step-title">Estimate Framework</div>
                 <div class="step-desc">Builds line items with quantities, units, and cost data from public databases.</div>
             </div>
-            <div class="pipeline-step fade-up stagger-6">
+            <div class="pipeline-step end-row fade-up stagger-6">
                 <div class="step-num">06</div>
                 <div class="step-title">Checklist &amp; Summary</div>
                 <div class="step-desc">Generates an executive summary, bid checklist, and exportable deliverables.</div>
