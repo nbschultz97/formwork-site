@@ -116,11 +116,7 @@
             msg.style.display = 'none';
 
             try {
-                // TODO: Replace FORM_ID with your Formspree form ID
-                // 1. Sign up at https://formspree.io
-                // 2. Create a new form, set notification email to contact@tryformwork.com
-                // 3. Copy your form ID and replace FORM_ID below
-                var response = await fetch('https://formspree.io/f/FORM_ID', {
+                var response = await fetch('https://formspree.io/f/mgojyabz', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                     body: JSON.stringify({ email: email })
