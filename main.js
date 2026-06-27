@@ -128,7 +128,7 @@
 
                 if (response.ok) {
                     msg.style.color = '#CC9933';
-                    msg.textContent = "You\u2019re on the list. We\u2019ll be in touch soon.";
+                    msg.textContent = "You\u2019re on the list! We\u2019ll be in touch soon. Questions? Reach us at hello@tryformwork.com";
                     msg.style.display = 'block';
                     form.reset();
                     if (window.goatcounter && goatcounter.count) {
