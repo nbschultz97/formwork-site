@@ -26,67 +26,102 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;700;800&family=Instrument+Sans:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Fonts (self-hosted) -->
+    <link rel="preload" href="/assets/fonts/big-shoulders-display-800.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/geist-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="fonts.css">
 
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-    <div class="nav-inner">
-        <a href="#" class="nav-logo">FORMWORK<span>.</span></a>
-        <div class="nav-links">
-            <a href="#services">Services</a>
-            <a href="#how-it-works">How It Works</a>
-            <a href="#about">About</a>
-            <a href="mailto:hello@tryformwork.com?subject=Work-study%20inquiry" class="btn-primary">Book a Work-Study</a>
-        </div>
-        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
-            <span></span><span></span><span></span>
+<!-- Drawing-sheet frame: fixed border + corner registration ticks -->
+<div class="sheet-frame" aria-hidden="true">
+    <span class="reg reg-tl"></span><span class="reg reg-tr"></span>
+    <span class="reg reg-bl"></span><span class="reg reg-br"></span>
+</div>
+
+<!-- TOP BAR -->
+<header class="topbar">
+    <div class="topbar-inner">
+        <a href="#top" class="wordmark">FORMWORK<span class="sq" aria-hidden="true"></span></a>
+        <span class="topbar-meta">CONSTRUCTION INTELLIGENCE&ensp;/&ensp;DENVER, CO</span>
+        <nav class="topbar-nav" aria-label="Primary">
+            <a href="#conditions">Conditions</a>
+            <a href="#scope">Scope</a>
+            <a href="#sequence">Sequence</a>
+            <a href="#team">Team</a>
+            <a href="mailto:hello@tryformwork.com?subject=Work-study%20inquiry" class="btn btn-solid">Book a Work-Study</a>
+        </nav>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-mobile">
+            <span></span><span></span>
         </button>
     </div>
     <div class="nav-mobile" id="nav-mobile">
-        <a href="#services">Services</a>
-        <a href="#how-it-works">How It Works</a>
-        <a href="#about">About</a>
-        <a href="mailto:hello@tryformwork.com?subject=Work-study%20inquiry" class="btn-primary">Book a Work-Study</a>
+        <a href="#conditions">01 — Site Conditions</a>
+        <a href="#scope">03 — Scope of Work</a>
+        <a href="#sequence">04 — Sequence</a>
+        <a href="#team">06 — Project Team</a>
+        <a href="mailto:hello@tryformwork.com?subject=Work-study%20inquiry" class="btn btn-solid">Book a Work-Study</a>
     </div>
-</nav>
+</header>
 
-<!-- HERO -->
+<main id="top">
+
+<!-- ══ SHEET A-000 · COVER ══════════════════════════ -->
 <section class="hero">
-    <div class="hero-content">
-        <div class="hero-text">
-            <h1 class="fade-up">WE SPEED UP HOW YOU ALREADY WORK &mdash; WITHOUT RIPPING OUT YOUR SYSTEM</h1>
-            <p class="fade-up stagger-1">Most "process improvement" walks in and forces your crew onto new software. Formwork does the opposite: we study the way your team actually works, find where the hours leak, and build automation that fits the tools you already run.</p>
-            <div class="hero-buttons fade-up stagger-2">
-                <a href="mailto:hello@tryformwork.com?subject=Work-study%20inquiry" class="btn-primary">Book a Work-Study
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </a>
-                <a href="#how-it-works" class="btn-secondary">See How It Works</a>
+    <div class="wrap hero-grid">
+        <div class="hero-main">
+            <p class="kicker rv">Sheet A-000&ensp;·&ensp;Cover&ensp;·&ensp;Issued for construction</p>
+            <h1 class="rv d1">
+                We speed up how you
+                <span class="redline">already work<svg class="redline-stroke" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true"><path d="M3 9 C 70 4, 150 12, 297 6" fill="none"/></svg></span>
+            </h1>
+            <p class="hero-sub rv d2">Most &ldquo;process improvement&rdquo; walks in and forces your crew onto new software. Formwork does the opposite: we study the way your team actually works, find where the hours leak, and build automation into the tools you already run.</p>
+            <div class="hero-actions rv d3">
+                <a href="mailto:hello@tryformwork.com?subject=Work-study%20inquiry" class="btn btn-solid btn-lg">Book a Work-Study <span class="btn-arrow" aria-hidden="true">&#8594;</span></a>
+                <a href="#difference" class="btn btn-line btn-lg">See the Difference</a>
             </div>
         </div>
+        <aside class="hero-side">
+            <div class="stamp rv-stamp" aria-hidden="true">
+                <span class="stamp-big">No rip-<br>and-replace</span>
+                <span class="stamp-small">Typ. all projects</span>
+            </div>
+            <dl class="titleblock-mini rv d3">
+                <div><dt>Project</dt><dd>Your operation</dd></div>
+                <div><dt>Scale</dt><dd>None</dd></div>
+                <div><dt>Drawn by</dt><dd>Field + engineering</dd></div>
+                <div><dt>Rev</dt><dd>A &mdash; 07.2026</dd></div>
+                <div><dt>Status</dt><dd class="amber">For construction</dd></div>
+            </dl>
+        </aside>
     </div>
 </section>
 
-<!-- THE PROBLEM -->
-<section class="problem-narrative">
-    <div class="section-inner">
-        <p class="narrative-text fade-up">Your PM is re-entering the same data into Procore and QuickBooks. Your estimator is working until midnight because the bid package landed Thursday and it's due Monday. Your office manager is chasing submittals by email because nobody trusts the tracking spreadsheet anymore. These aren't technology problems. They're workflow problems &mdash; and new software won't fix them if it doesn't fit how your team actually operates.</p>
+<!-- ══ 01 · SITE CONDITIONS ══════════════════════════ -->
+<section id="conditions" class="sec">
+    <div class="wrap">
+        <div class="dim rv"><span class="tick"></span><span class="rule"></span><span class="dim-label">01&ensp;/&ensp;Site conditions</span><span class="rule"></span><span class="tick"></span></div>
+        <h2 class="sec-title rv">A field report you&rsquo;ll recognize.</h2>
+
+        <ol class="keynotes">
+            <li class="rv"><span class="keynote-ref">N1</span><p>Your PM is re-entering the same data into Procore and QuickBooks &mdash; every job, both directions.</p></li>
+            <li class="rv d1"><span class="keynote-ref">N2</span><p>Your estimator is working until midnight because the bid package landed Thursday and it&rsquo;s due Monday.</p></li>
+            <li class="rv d2"><span class="keynote-ref">N3</span><p>Your office manager is chasing submittals by email because nobody trusts the tracking spreadsheet anymore.</p></li>
+        </ol>
+
+        <p class="conditions-verdict rv">These aren&rsquo;t technology problems. They&rsquo;re <em>workflow</em> problems &mdash; and new software won&rsquo;t fix them if it doesn&rsquo;t fit how your team actually operates.</p>
     </div>
 </section>
 
-<!-- THE DIFFERENCE -->
-<section class="difference-section">
-    <div class="section-inner">
-        <div class="section-label fade-up">The Difference</div>
-        <div class="section-title fade-up stagger-1">We build around what works. We fix what doesn't.</div>
+<!-- ══ 02 · THE DIFFERENCE ══════════════════════════ -->
+<section id="difference" class="sec">
+    <div class="wrap">
+        <div class="dim rv"><span class="tick"></span><span class="rule"></span><span class="dim-label">02&ensp;/&ensp;The difference</span><span class="rule"></span><span class="tick"></span></div>
+        <h2 class="sec-title rv">We build around what works.<br>We fix what doesn&rsquo;t.</h2>
 
-        <div class="blueprint-illustration fade-up stagger-2">
+        <figure class="blueprint rv">
             <svg viewBox="0 0 1200 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Architectural blueprint: an existing building with Formwork scaffolding built around it, not over it" style="display:block; width:100%; height:auto; background:#26262A">
                 <defs>
                     <pattern id="bpgrid" width="40" height="40" patternUnits="userSpaceOnUse">
@@ -129,167 +164,190 @@
                     <text x="600" y="504" fill="#CC9933" text-anchor="middle" font-size="14">FORMWORK &mdash; BUILT AROUND IT, NOT OVER IT</text>
                 </g>
             </svg>
-        </div>
+            <figcaption>Fig. 02.A &mdash; Scaffolding goes around the building. Nobody tears down a working structure to improve it.</figcaption>
+        </figure>
 
-        <div class="comparison-grid">
-            <div class="comparison-card problem fade-up stagger-3">
-                <div class="comparison-header">The Consultant Way</div>
-                <ul class="comparison-list">
+        <div class="details-grid">
+            <article class="detail rv">
+                <header class="detail-head">
+                    <span class="detail-bubble">D1</span>
+                    <h3>Typ. consultant detail</h3>
+                </header>
+                <ul class="detail-list is-problem">
                     <li>Rips out the system your crew already knows</li>
                     <li>Forces new software nobody asked for</li>
                     <li>Weeks of downtime and retraining</li>
                     <li>The team quietly goes back to the old way</li>
                     <li>You paid for disruption, not results</li>
                 </ul>
-            </div>
-            <div class="comparison-card solution fade-up stagger-3">
-                <div class="comparison-header">The Formwork Way</div>
-                <ul class="comparison-list">
+            </article>
+            <article class="detail detail-dark rv d1">
+                <header class="detail-head">
+                    <span class="detail-bubble">D2</span>
+                    <h3>Formwork detail</h3>
+                </header>
+                <ul class="detail-list is-solution">
                     <li>We study how your team actually works first</li>
                     <li>Automation built inside the tools you already use</li>
                     <li>No new logins for the crew to learn</li>
                     <li>Rolled out quietly, with no downtime</li>
                     <li>You pay for hours back, not for change</li>
                 </ul>
-            </div>
+            </article>
         </div>
     </div>
 </section>
 
-<!-- SERVICES -->
-<section id="services">
-    <div class="section-inner">
-        <div class="section-label fade-up">What We Do</div>
-        <div class="section-title fade-up stagger-1">Find the slow parts. Build around them.</div>
-        <p class="section-desc fade-up stagger-2">Formwork is a small shop that fixes the back-office grind in construction businesses &mdash; the bidding, the follow-ups, the paperwork that eats your week.</p>
+<!-- ══ 03 · SCOPE OF WORK ══════════════════════════ -->
+<section id="scope" class="sec">
+    <div class="wrap">
+        <div class="dim rv"><span class="tick"></span><span class="rule"></span><span class="dim-label">03&ensp;/&ensp;Scope of work</span><span class="rule"></span><span class="tick"></span></div>
+        <h2 class="sec-title rv">Find the slow parts.<br>Build around them.</h2>
+        <p class="sec-lede rv">Formwork is a small shop that fixes the back-office grind in construction businesses &mdash; the bidding, the follow-ups, the paperwork that eats your week.</p>
 
-        <div class="services-grid">
-            <div class="service-item fade-up">
-                <div class="service-title">The Work-Study</div>
-                <p class="service-desc">We spend a couple of days mapping how your operation really runs &mdash; where the hours go, where things stall, and what's worth fixing first. You get a plain-English plan, whether you hire us to build it or not.</p>
-            </div>
-            <div class="service-item fade-up stagger-1">
-                <div class="service-title">Custom Automation</div>
-                <p class="service-desc">We build the fixes &mdash; automated follow-ups, bid prep, scheduling, paperwork, reporting &mdash; tailored to your exact workflow, not a one-size template.</p>
-            </div>
-            <div class="service-item fade-up stagger-2">
-                <div class="service-title">Built In Your Tools</div>
-                <p class="service-desc">Everything plugs into what you already pay for &mdash; Procore, Buildertrend, QuickBooks, spreadsheets, email. No new platform, no migration, no relearning.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section class="how-section" id="how-it-works">
-    <div class="section-inner">
-        <div class="section-label fade-up">How It Works</div>
-        <div class="section-title fade-up stagger-1">Three steps. No disruption.</div>
-
-        <div class="steps-grid">
-            <div class="step-item fade-up">
-                <div class="step-number">01</div>
-                <div class="step-title">Work-Study</div>
-                <p class="step-desc">We watch how your team actually works &mdash; the bids, the hand-offs, the paperwork. You get a clear map of where the hours go and the fixes worth doing first.</p>
-            </div>
-            <div class="step-item fade-up stagger-1">
-                <div class="step-number">02</div>
-                <div class="step-title">Build</div>
-                <p class="step-desc">We build the automation inside the tools you already run. Rolled out quietly alongside your current process so nothing stops while it proves out.</p>
-            </div>
-            <div class="step-item fade-up stagger-2">
-                <div class="step-number">03</div>
-                <div class="step-title">Measure &amp; Tune</div>
-                <p class="step-desc">We track the hours saved against where you started and keep it tuned as your jobs, crew, and season change. The value is something you can see &mdash; not a slide.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- WHAT WE SEE -->
-<section class="patterns-section">
-    <div class="section-inner">
-        <div class="section-label fade-up">Common Patterns</div>
-        <div class="section-title fade-up stagger-1">The same problems show up everywhere.</div>
-        <p class="section-desc fade-up stagger-2">Every construction business is different, but the time leaks are surprisingly similar.</p>
-
-        <div class="patterns-grid">
-            <div class="pattern-item fade-up">
-                <div class="pattern-hours">8&ndash;12 hrs/wk</div>
-                <p class="pattern-desc">Re-entering data between project management and accounting software that don't talk to each other.</p>
-            </div>
-            <div class="pattern-item fade-up stagger-1">
-                <div class="pattern-hours">5&ndash;8 hrs/wk</div>
-                <p class="pattern-desc">Chasing subcontractor bids, submittals, and RFIs through email threads that nobody can find.</p>
-            </div>
-            <div class="pattern-item fade-up stagger-2">
-                <div class="pattern-hours">10&ndash;15 hrs/bid</div>
-                <p class="pattern-desc">The night-before scramble on bid packages &mdash; manually cross-referencing specs, drawings, and scope.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- MID CTA -->
-<section class="mid-cta">
-    <div class="section-inner section-center">
-        <div class="section-title fade-up">Start with a work-study.</div>
-        <p class="section-desc fade-up stagger-1">A fixed-fee teardown of your operation, with a plain plan you keep either way. If you hire us to build, the fee is credited toward the work.</p>
-        <div class="cta-buttons fade-up stagger-2">
-            <a href="mailto:hello@tryformwork.com?subject=Work-study%20inquiry" class="btn-primary">Book a Work-Study
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="scope-index">
+            <a class="scope-row rv" href="mailto:hello@tryformwork.com?subject=Work-study%20inquiry">
+                <span class="scope-num">03.10</span>
+                <h3 class="scope-title">The Work-Study</h3>
+                <p class="scope-desc">We spend a couple of days mapping how your operation really runs &mdash; where the hours go, where things stall, and what&rsquo;s worth fixing first. You get a plain-English plan, whether you hire us to build it or not.</p>
+                <span class="scope-arrow" aria-hidden="true">&#8594;</span>
+            </a>
+            <a class="scope-row rv d1" href="mailto:hello@tryformwork.com?subject=Automation%20inquiry">
+                <span class="scope-num">03.20</span>
+                <h3 class="scope-title">Custom Automation</h3>
+                <p class="scope-desc">We build the fixes &mdash; automated follow-ups, bid prep, scheduling, paperwork, reporting &mdash; tailored to your exact workflow, not a one-size template.</p>
+                <span class="scope-arrow" aria-hidden="true">&#8594;</span>
+            </a>
+            <a class="scope-row rv d2" href="mailto:hello@tryformwork.com?subject=Integration%20inquiry">
+                <span class="scope-num">03.30</span>
+                <h3 class="scope-title">Built In Your Tools</h3>
+                <p class="scope-desc">Everything plugs into what you already pay for &mdash; Procore, Buildertrend, QuickBooks, spreadsheets, email. No new platform, no migration, no relearning.</p>
+                <span class="scope-arrow" aria-hidden="true">&#8594;</span>
             </a>
         </div>
     </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about">
-    <div class="section-inner">
-        <div class="section-label fade-up">About</div>
-        <div class="section-title fade-up stagger-1">Built by people who know the jobsite.</div>
-        <p class="origin-text fade-up stagger-2">Dominic spent years watching the same problems eat hours across every GC and sub he worked with &mdash; the double-entry, the bid scrambles, the submittals lost in email. Noah spent years building systems that automate messy operations without forcing people onto new tools. They met in Denver and realized they were solving the same problem from opposite ends. Formwork is what happened next.</p>
+<!-- ══ 04 · SEQUENCE ══════════════════════════ -->
+<section id="sequence" class="sec sec-dark">
+    <div class="wrap">
+        <div class="dim rv"><span class="tick"></span><span class="rule"></span><span class="dim-label">04&ensp;/&ensp;Sequence of operations</span><span class="rule"></span><span class="tick"></span></div>
+        <h2 class="sec-title rv">Three phases. No disruption.</h2>
 
-        <div class="team-grid">
-            <div class="team-card fade-up stagger-3">
-                <div class="team-avatar">NS</div>
-                <div class="team-name">Noah Schultz</div>
-                <div class="team-role">Product &amp; Engineering</div>
-                <div class="team-bio">Builds the automation behind Formwork &mdash; and has spent years turning messy operations into systems people actually use.</div>
+        <div class="phases">
+            <div class="phase rv">
+                <span class="phase-num">PH-01</span>
+                <h3>Work-Study</h3>
+                <p>We watch how your team actually works &mdash; the bids, the hand-offs, the paperwork. You get a clear map of where the hours go and the fixes worth doing first.</p>
             </div>
-            <div class="team-card fade-up stagger-3">
-                <div class="team-avatar">DC</div>
-                <div class="team-name">Dominic Capone</div>
-                <div class="team-role">Construction &amp; Operations</div>
-                <div class="team-bio">Years in the field watching this problem up close. Makes sure everything Formwork builds survives contact with a real jobsite.</div>
+            <span class="phase-link" aria-hidden="true"></span>
+            <div class="phase rv d1">
+                <span class="phase-num">PH-02</span>
+                <h3>Build</h3>
+                <p>We build the automation inside the tools you already run. Rolled out quietly alongside your current process, so nothing stops while it proves out.</p>
+            </div>
+            <span class="phase-link" aria-hidden="true"></span>
+            <div class="phase rv d2">
+                <span class="phase-num">PH-03</span>
+                <h3>Measure &amp; Tune</h3>
+                <p>We track the hours saved against where you started and keep it tuned as your jobs, crew, and season change. The value is something you can see &mdash; not a slide.</p>
+            </div>
+        </div>
+
+        <div class="mid-cta rv">
+            <p>A work-study is fixed-fee, and you keep the plan either way. Hire us to build, and the fee is credited toward the work.</p>
+            <a href="mailto:hello@tryformwork.com?subject=Work-study%20inquiry" class="btn btn-amber btn-lg">Book a Work-Study <span class="btn-arrow" aria-hidden="true">&#8594;</span></a>
+        </div>
+    </div>
+</section>
+
+<!-- ══ 05 · OBSERVED TIME LEAKS ══════════════════════════ -->
+<section id="leaks" class="sec">
+    <div class="wrap">
+        <div class="dim rv"><span class="tick"></span><span class="rule"></span><span class="dim-label">05&ensp;/&ensp;Observed time leaks</span><span class="rule"></span><span class="tick"></span></div>
+        <h2 class="sec-title rv">The same leaks show up on every takeoff.</h2>
+        <p class="sec-lede rv">Every construction business is different, but where the hours go is surprisingly similar.</p>
+
+        <div class="takeoff rv" role="table" aria-label="Observed time leaks">
+            <div class="takeoff-head" role="row">
+                <span role="columnheader">Ref</span>
+                <span role="columnheader">Observed condition</span>
+                <span role="columnheader" class="ta-right">Measured</span>
+            </div>
+            <div class="takeoff-row" role="row">
+                <span class="takeoff-ref" role="cell">TL-01</span>
+                <span role="cell">Re-entering data between project management and accounting software that don&rsquo;t talk to each other</span>
+                <span class="takeoff-qty" role="cell">8&ndash;12 <em>hrs/wk</em></span>
+            </div>
+            <div class="takeoff-row" role="row">
+                <span class="takeoff-ref" role="cell">TL-02</span>
+                <span role="cell">Chasing subcontractor bids, submittals, and RFIs through email threads nobody can find</span>
+                <span class="takeoff-qty" role="cell">5&ndash;8 <em>hrs/wk</em></span>
+            </div>
+            <div class="takeoff-row" role="row">
+                <span class="takeoff-ref" role="cell">TL-03</span>
+                <span role="cell">The night-before scramble on bid packages &mdash; manually cross-referencing specs, drawings, and scope</span>
+                <span class="takeoff-qty" role="cell">10&ndash;15 <em>hrs/bid</em></span>
+            </div>
+            <div class="takeoff-total" role="row">
+                <span role="cell">Running total</span>
+                <span class="takeoff-qty" role="cell">13&ndash;20 <em>hrs/wk</em> + 10&ndash;15 <em>hrs/bid</em></span>
             </div>
         </div>
     </div>
 </section>
 
-<!-- FINAL CTA -->
-<section class="cta-section">
-    <div class="section-inner section-center">
-        <div class="section-title fade-up">Get your hours back.</div>
-        <p class="section-desc fade-up stagger-1">Tell us what's eating your week. We'll start with a work-study and show you exactly where the time is going &mdash; before we change a thing.</p>
-        <div class="cta-buttons fade-up stagger-2">
-            <a href="mailto:hello@tryformwork.com?subject=Work-study%20inquiry" class="btn-primary">Book a Work-Study
-                <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
+<!-- ══ 06 · PROJECT TEAM ══════════════════════════ -->
+<section id="team" class="sec">
+    <div class="wrap">
+        <div class="dim rv"><span class="tick"></span><span class="rule"></span><span class="dim-label">06&ensp;/&ensp;Project team</span><span class="rule"></span><span class="tick"></span></div>
+        <h2 class="sec-title rv">Built by people who know the jobsite.</h2>
+        <p class="sec-lede rv">Dominic spent years watching the same problems eat hours across every GC and sub he worked with &mdash; the double-entry, the bid scrambles, the submittals lost in email. Noah spent years building systems that automate messy operations without forcing people onto new tools. They met in Denver and realized they were solving the same problem from opposite ends. Formwork is what happened next.</p>
+
+        <div class="signoff">
+            <article class="signoff-card rv">
+                <span class="signoff-label">Drawn by</span>
+                <h3>Noah Schultz</h3>
+                <span class="signoff-role">Product &amp; Engineering</span>
+                <p>Builds the automation behind Formwork &mdash; and has spent years turning messy operations into systems people actually use.</p>
+            </article>
+            <article class="signoff-card rv d1">
+                <span class="signoff-label">Checked by</span>
+                <h3>Dominic Capone</h3>
+                <span class="signoff-role">Construction &amp; Operations</span>
+                <p>Years in the field watching this problem up close. Makes sure everything Formwork builds survives contact with a real jobsite.</p>
+            </article>
         </div>
     </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-    <div class="footer-inner">
-        <div class="footer-left">
-            <div class="footer-logo">FORMWORK<span>.</span></div>
-            <div class="footer-text">&copy; 2026 Formwork. Denver, CO.</div>
+<!-- ══ 07 · ISSUE FOR CONSTRUCTION ══════════════════════════ -->
+<section id="contact" class="sec sec-dark sec-cta">
+    <div class="wrap">
+        <div class="dim rv"><span class="tick"></span><span class="rule"></span><span class="dim-label">07&ensp;/&ensp;Issue for construction</span><span class="rule"></span><span class="tick"></span></div>
+        <h2 class="cta-title rv">Get your<br>hours back.</h2>
+        <p class="sec-lede rv">Tell us what&rsquo;s eating your week. We&rsquo;ll start with a work-study and show you exactly where the time is going &mdash; before we change a thing.</p>
+        <div class="cta-actions rv d1">
+            <a href="mailto:hello@tryformwork.com?subject=Work-study%20inquiry" class="btn btn-amber btn-lg">Book a Work-Study <span class="btn-arrow" aria-hidden="true">&#8594;</span></a>
+            <a href="mailto:hello@tryformwork.com" class="cta-mail">hello@tryformwork.com</a>
         </div>
-        <div class="footer-right">
-            <a href="mailto:hello@tryformwork.com" class="footer-link">hello@tryformwork.com</a>
+    </div>
+</section>
+
+</main>
+
+<!-- TITLE BLOCK / FOOTER -->
+<footer class="titleblock" aria-label="Site footer">
+    <div class="titleblock-inner">
+        <div class="tb-cell tb-brand">
+            <span class="tb-value wordmark-sm">FORMWORK<span class="sq" aria-hidden="true"></span></span>
+            <span class="tb-label">Construction intelligence</span>
         </div>
+        <div class="tb-cell"><span class="tb-label">Project</span><span class="tb-value">Your operation</span></div>
+        <div class="tb-cell"><span class="tb-label">Location</span><span class="tb-value">Denver, CO</span></div>
+        <div class="tb-cell"><span class="tb-label">Sheet</span><span class="tb-value">A-000 &mdash; Cover</span></div>
+        <div class="tb-cell"><span class="tb-label">Contact</span><a class="tb-value tb-link" href="mailto:hello@tryformwork.com">hello@tryformwork.com</a></div>
+        <div class="tb-cell"><span class="tb-label">Rev</span><span class="tb-value">A &mdash; &copy; 2026 Formwork</span></div>
     </div>
 </footer>
 

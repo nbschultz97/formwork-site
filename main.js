@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    // Scroll-triggered fade-in
+    // Scroll-triggered reveals (.rv fade-up, .rv-stamp stamp-in)
     var observer = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
             if (entry.isIntersecting) {
@@ -9,34 +9,24 @@
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
-    document.querySelectorAll('.fade-up').forEach(function (el) {
+    document.querySelectorAll('.rv, .rv-stamp').forEach(function (el) {
         observer.observe(el);
     });
 
-    // Nav scroll shadow
-    var nav = document.querySelector('nav');
-    function updateNav() {
-        if (window.scrollY > 10) {
-            nav.classList.add('scrolled');
-        } else {
-            nav.classList.remove('scrolled');
-        }
-    }
-    window.addEventListener('scroll', updateNav, { passive: true });
-    updateNav();
-
     // Mobile nav toggle
+    var topbar = document.querySelector('.topbar');
     var toggle = document.getElementById('nav-toggle');
-    var mobileNav = document.getElementById('nav-mobile');
-    if (toggle && mobileNav) {
+    if (topbar && toggle) {
         toggle.addEventListener('click', function () {
-            mobileNav.classList.toggle('open');
+            var open = topbar.classList.toggle('nav-open');
+            toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
         });
         document.querySelectorAll('.nav-mobile a').forEach(function (link) {
             link.addEventListener('click', function () {
-                mobileNav.classList.remove('open');
+                topbar.classList.remove('nav-open');
+                toggle.setAttribute('aria-expanded', 'false');
             });
         });
     }
