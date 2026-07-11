@@ -920,3 +920,45 @@ a:focus-visible, button:focus-visible {
     .redline { white-space: normal; }
     .redline::after { content: ''; display: block; width: 120px; height: 4px; background: var(--amber); margin-top: 6px; }
 }
+
+
+/* ════════════════════════════════════════════
+   05B · HOURS-BACK TAKEOFF
+   ════════════════════════════════════════════ */
+.hours-back { padding-top: 1rem; }
+.hours-back__heading { display:grid; grid-template-columns:1fr auto; gap:3rem; align-items:start; }
+.estimate-stamp {
+    border:2px solid var(--steel); color:var(--steel); padding:.8rem 1.1rem;
+    font-family:var(--font-display); font-weight:800; font-size:1.25rem; line-height:.9;
+    text-align:center; text-transform:uppercase; transform:rotate(2deg);
+}
+.estimate-stamp small { display:block; margin-top:.55rem; padding-top:.4rem; border-top:1px solid currentColor; font-family:var(--font-mono); font-size:.48rem; letter-spacing:.12em; }
+.estimate-sheet { display:grid; grid-template-columns:1.25fr .75fr; border:1px solid var(--ink); background:var(--paper); }
+.estimate-sheet__inputs { padding:2rem; display:grid; gap:2rem; }
+.estimate-sheet__inputs label { display:block; }
+.estimate-sheet__inputs label>span { display:flex; justify-content:space-between; gap:1rem; margin-bottom:.75rem; font-family:var(--font-mono); font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; }
+.estimate-sheet__inputs b { color:var(--amber-dark); margin-right:.55rem; }
+.estimate-sheet__inputs output { color:var(--steel); font-weight:600; white-space:nowrap; }
+.estimate-sheet__inputs input[type="range"] { position:relative; z-index:2; display:block; width:100%; height:20px; opacity:0; cursor:ew-resize; }
+.estimate-sheet__inputs label { position:relative; }
+.estimate-sheet__inputs label>i { position:absolute; left:0; right:0; bottom:9px; height:2px; background:linear-gradient(90deg,var(--amber) var(--fill),var(--line) var(--fill)); pointer-events:none; }
+.estimate-sheet__inputs label>i::after { content:''; position:absolute; left:var(--fill); top:50%; width:12px; height:12px; background:var(--paper); border:2px solid var(--amber-dark); transform:translate(-50%,-50%) rotate(45deg); }
+.estimate-sheet__results { padding:2rem; background:var(--charcoal); color:var(--paper); display:grid; align-content:start; gap:1.25rem; }
+.estimate-sheet__eyebrow { font-family:var(--font-mono); font-size:.6rem; letter-spacing:.18em; text-transform:uppercase; color:var(--amber); padding-bottom:.75rem; border-bottom:1px solid rgba(245,244,241,.2); }
+.estimate-result { display:grid; grid-template-columns:1fr auto; align-items:end; border-bottom:1px solid rgba(245,244,241,.12); padding-bottom:1rem; }
+.estimate-result span { grid-column:1/-1; color:rgba(245,244,241,.5); font-family:var(--font-mono); font-size:.58rem; letter-spacing:.13em; text-transform:uppercase; }
+.estimate-result strong { font-family:var(--font-display); font-size:clamp(2.2rem,5vw,4rem); line-height:1; }
+.estimate-result small { color:rgba(245,244,241,.45); font-family:var(--font-mono); font-size:.56rem; text-transform:uppercase; }
+.estimate-result--amber strong { color:var(--amber); }
+.estimate-sheet__note { color:rgba(245,244,241,.38); font-size:.68rem; line-height:1.5; }
+.deliverable-strip { display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:1.5rem; border:1px solid var(--ink); border-top:0; padding:1rem 1.2rem; }
+.deliverable-strip>span { font-family:var(--font-mono); color:var(--amber-dark); font-size:.58rem; letter-spacing:.14em; text-transform:uppercase; }
+.deliverable-strip ol { list-style:none; display:flex; justify-content:center; gap:1.25rem; flex-wrap:wrap; }
+.deliverable-strip li { font-size:.72rem; white-space:nowrap; }
+.deliverable-strip li b { font-family:var(--font-mono); color:var(--ink-40); margin-right:.3rem; }
+.deliverable-strip a { font-family:var(--font-mono); font-size:.62rem; letter-spacing:.08em; text-transform:uppercase; color:var(--ink); text-decoration:none; white-space:nowrap; }
+.deliverable-strip a:hover { color:var(--amber-dark); }
+@media(max-width:760px){
+    .hours-back__heading{grid-template-columns:1fr}.estimate-stamp{display:none}.estimate-sheet{grid-template-columns:1fr}
+    .deliverable-strip{grid-template-columns:1fr}.deliverable-strip ol{justify-content:flex-start}
+}
