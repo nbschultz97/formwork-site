@@ -30,4 +30,42 @@
             });
         });
     }
+    // Interactive hours-back planning estimate
+    var calculator = document.querySelector('[data-hours-calculator]');
+    if (calculator) {
+        var hoursInput = calculator.querySelector('[data-hours]');
+        var rateInput = calculator.querySelector('[data-rate]');
+        var recoveryInput = calculator.querySelector('[data-recovery]');
+        var currency = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+        var integer = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 });
+
+        function setTrack(input) {
+            var minimum = Number(input.min);
+            var maximum = Number(input.max);
+            var fill = ((Number(input.value) - minimum) / (maximum - minimum)) * 100;
+            var track = input.parentElement.querySelector('i');
+            if (track) track.style.setProperty('--fill', fill.toFixed(1) + '%');
+        }
+
+        function updateEstimate() {
+            var hours = Number(hoursInput.value);
+            var rate = Number(rateInput.value);
+            var recovery = Number(recoveryInput.value);
+            var annualHours = hours * 52 * (recovery / 100);
+            var annualValue = annualHours * rate;
+
+            calculator.querySelector('[data-hours-output]').textContent = hours + ' hrs/wk';
+            calculator.querySelector('[data-rate-output]').textContent = currency.format(rate) + '/hr';
+            calculator.querySelector('[data-recovery-output]').textContent = recovery + '%';
+            calculator.querySelector('[data-annual-hours]').textContent = integer.format(annualHours);
+            calculator.querySelector('[data-annual-value]').textContent = currency.format(annualValue);
+            [hoursInput, rateInput, recoveryInput].forEach(setTrack);
+        }
+
+        [hoursInput, rateInput, recoveryInput].forEach(function (input) {
+            input.addEventListener('input', updateEstimate);
+        });
+        updateEstimate();
+    }
+
 })();
