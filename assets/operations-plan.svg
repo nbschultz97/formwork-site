@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 720" role="img" aria-labelledby="title desc">
+<title id="title">Construction operations workflow blueprint</title>
+<desc id="desc">An animated architectural drawing showing information moving from field notes through Formwork automation into existing construction software.</desc>
+<style>
+  :root{--paper:#f5f4f1;--ink:#26262a;--amber:#cc9933;--steel:#466482;--line:#bcb8b1}
+  .draw{fill:none;stroke:var(--ink);stroke-width:2;stroke-dasharray:1600;stroke-dashoffset:1600;animation:draw 2.2s cubic-bezier(.16,1,.3,1) forwards}
+  .d2{animation-delay:.25s}.d3{animation-delay:.5s}.d4{animation-delay:.75s}
+  .flow{fill:none;stroke:var(--amber);stroke-width:3;stroke-dasharray:8 12;animation:flow 1.4s linear infinite}
+  .pulse{animation:pulse 2s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+  .scan{animation:scan 5s ease-in-out infinite}
+  text{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;fill:var(--ink);letter-spacing:2px}
+  .small{font-size:13px}.label{font-size:16px;font-weight:700}.note{fill:var(--steel);font-size:12px}
+  @keyframes draw{to{stroke-dashoffset:0}} @keyframes flow{to{stroke-dashoffset:-40}}
+  @keyframes pulse{50%{opacity:.35;transform:scale(.86)}} @keyframes scan{0%,100%{transform:translateX(0)}50%{transform:translateX(760px)}}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important}.draw{stroke-dashoffset:0}}
+</style>
+<rect width="1400" height="720" fill="#f5f4f1"/>
+<defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#26262a" stroke-opacity=".07"/></pattern></defs>
+<rect width="1400" height="720" fill="url(#grid)"/>
+<path class="draw" d="M70 70H1330V650H70Z"/>
+<path class="draw d2" d="M105 115H440V535H105ZM532 190H868V462H532ZM960 115H1295V535H960Z"/>
+<path class="draw d3" d="M145 180h255v90H145zm0 130h255v90H145zm0 130h255v55H145M1000 175h255v62h-255zm0 100h255v62h-255zm0 100h255v62h-255zm0 100h255v24h-255"/>
+<path class="flow" d="M440 325H530M870 325H960"/>
+<path class="draw d4" d="M616 260l84-48 84 48v96l-84 48-84-48zM616 260l84 48 84-48M700 308v96"/>
+<circle class="pulse" cx="530" cy="325" r="7" fill="#cc9933"/><circle class="pulse" cx="960" cy="325" r="7" fill="#cc9933" style="animation-delay:.8s"/>
+<rect class="scan" x="530" y="120" width="2" height="430" fill="#cc9933" opacity=".5"/>
+<text x="105" y="100" class="small">01 / EXISTING OPERATION</text><text x="532" y="175" class="small">02 / FORMWORK LAYER</text><text x="960" y="100" class="small">03 / EXISTING TOOLS</text>
+<text x="165" y="215" class="label">FIELD NOTES</text><text x="165" y="345" class="label">BID + SCOPE</text><text x="165" y="472" class="label">EMAIL / RFIs</text>
+<text x="642" y="338" class="label">AUTOMATION</text><text x="626" y="438" class="note">BUILT AROUND YOUR PROCESS</text>
+<text x="1020" y="213" class="label">PROCORE</text><text x="1020" y="313" class="label">QUICKBOOKS</text><text x="1020" y="413" class="label">EMAIL</text><text x="1020" y="493" class="label">SHEETS</text>
+<path d="M90 590h1220" stroke="#26262a" stroke-opacity=".25"/><text x="105" y="620" class="note">FIG. A-001 — INFORMATION MOVES. YOUR CREW DOES NOT HAVE TO.</text>
+</svg>
