@@ -84,4 +84,27 @@
         });
     }
 
+    // Persistent CTA appears after intent is established, then yields near the final CTA
+    var rail = document.querySelector('[data-conversion-rail]');
+    var contact = document.getElementById('contact');
+    if (rail) {
+        var dismissed = false;
+        var updateRail = function () {
+            if (dismissed) return;
+            var show = window.scrollY > Math.min(700, window.innerHeight * 0.75);
+            if (contact) {
+                var contactTop = contact.getBoundingClientRect().top;
+                if (contactTop < window.innerHeight * 0.85) show = false;
+            }
+            rail.classList.toggle('is-visible', show);
+        };
+        window.addEventListener('scroll', updateRail, { passive: true });
+        var dismiss = rail.querySelector('[data-dismiss-rail]');
+        if (dismiss) dismiss.addEventListener('click', function () {
+            dismissed = true;
+            rail.classList.remove('is-visible');
+        });
+        updateRail();
+    }
+
 })();
