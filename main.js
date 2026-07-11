@@ -68,4 +68,20 @@
         updateEstimate();
     }
 
+    // Measured blueprint parallax on pointer devices
+    var plan = document.querySelector('[data-plan-parallax]');
+    if (plan && window.matchMedia('(hover: hover)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        plan.addEventListener('pointermove', function (event) {
+            var rect = plan.getBoundingClientRect();
+            var x = (event.clientX - rect.left) / rect.width - 0.5;
+            var y = (event.clientY - rect.top) / rect.height - 0.5;
+            plan.style.setProperty('--plan-rx', (-y * 2).toFixed(2) + 'deg');
+            plan.style.setProperty('--plan-ry', (x * 2.5).toFixed(2) + 'deg');
+        });
+        plan.addEventListener('pointerleave', function () {
+            plan.style.removeProperty('--plan-rx');
+            plan.style.removeProperty('--plan-ry');
+        });
+    }
+
 })();
