@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-labelledby="title desc">
+<title id="title">Formwork work-study field report</title><desc id="desc">A layered animated report showing workflow map, time leaks, automation scope, and measured baseline.</desc>
+<style>
+:root{--paper:#f5f4f1;--ink:#26262a;--amber:#cc9933;--steel:#466482}
+.sheet{transform-origin:center;animation:arrive 1s cubic-bezier(.16,1,.3,1) both}.s2{animation-delay:.18s}.s3{animation-delay:.36s}
+.mark{stroke-dasharray:500;stroke-dashoffset:500;animation:mark 1.4s ease forwards .8s}
+.bar{transform-origin:left;animation:grow 1s cubic-bezier(.16,1,.3,1) both 1s}
+text{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;fill:var(--ink)}
+@keyframes arrive{from{opacity:0;transform:translateY(38px) rotate(2deg)}to{opacity:1;transform:none}}
+@keyframes mark{to{stroke-dashoffset:0}}@keyframes grow{from{transform:scaleX(0)}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}.mark{stroke-dashoffset:0}}
+</style>
+<rect width="900" height="620" fill="#26262a"/>
+<g class="sheet s3" opacity=".32" transform="translate(120 62) rotate(5 330 235)"><rect width="660" height="470" fill="#bcb8b1"/></g>
+<g class="sheet s2" opacity=".55" transform="translate(120 62) rotate(-3 330 235)"><rect width="660" height="470" fill="#f5f4f1"/></g>
+<g class="sheet" transform="translate(120 62)">
+<rect width="660" height="470" fill="#f5f4f1"/><rect x="18" y="18" width="624" height="434" fill="none" stroke="#26262a"/>
+<text x="38" y="48" font-size="11" letter-spacing="2">FORMWORK / WORK-STUDY FIELD REPORT</text><text x="530" y="48" font-size="10" fill="#466482">REV A</text>
+<path d="M38 65H622" stroke="#26262a"/>
+<text x="38" y="92" font-size="10" fill="#cc9933">01 / WORKFLOW MAP</text>
+<g fill="none" stroke="#26262a"><rect x="38" y="110" width="105" height="48"/><rect x="188" y="110" width="105" height="48"/><rect x="338" y="110" width="105" height="48"/><path d="M143 134h45m105 0h45"/></g>
+<text x="53" y="138" font-size="9">FIELD</text><text x="203" y="138" font-size="9">OFFICE</text><text x="353" y="138" font-size="9">ACCOUNTING</text>
+<path class="mark" d="M470 111c42 8 71 23 116 49M477 158c39-18 69-29 112-38" fill="none" stroke="#cc9933" stroke-width="3"/>
+<text x="38" y="202" font-size="10" fill="#cc9933">02 / RANKED TIME LEAKS</text>
+<text x="38" y="231" font-size="9">DOUBLE ENTRY</text><rect x="170" y="219" width="330" height="14" fill="#26262a" opacity=".12"/><rect class="bar" x="170" y="219" width="286" height="14" fill="#466482"/>
+<text x="38" y="264" font-size="9">BID SCRAMBLE</text><rect x="170" y="252" width="330" height="14" fill="#26262a" opacity=".12"/><rect class="bar" x="170" y="252" width="238" height="14" fill="#466482" style="animation-delay:1.15s"/>
+<text x="38" y="297" font-size="9">RFI FOLLOW-UP</text><rect x="170" y="285" width="330" height="14" fill="#26262a" opacity=".12"/><rect class="bar" x="170" y="285" width="182" height="14" fill="#466482" style="animation-delay:1.3s"/>
+<text x="38" y="342" font-size="10" fill="#cc9933">03 / RECOMMENDED SCOPE</text>
+<path d="M38 360h560M38 390h560M38 420h560" stroke="#26262a" stroke-opacity=".22"/>
+<text x="48" y="380" font-size="9">A-01</text><text x="105" y="380" font-size="9">CONNECT PM + ACCOUNTING</text><text x="510" y="380" font-size="9" fill="#466482">PRIORITY 1</text>
+<text x="48" y="410" font-size="9">A-02</text><text x="105" y="410" font-size="9">AUTOMATE BID FOLLOW-UP</text><text x="510" y="410" font-size="9" fill="#466482">PRIORITY 2</text>
+<path d="M520 318l18 17 42-54" class="mark" fill="none" stroke="#cc9933" stroke-width="5"/>
+</g>
+</svg>
