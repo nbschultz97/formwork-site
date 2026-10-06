@@ -102,12 +102,12 @@ function makePlan(A, M) {
     if (o.imgA && o.a > 0) { ctx.globalAlpha = o.a * fade; ctx.drawImage(o.imgA, 0, 0, 1600, 1423); }
     if (o.imgM && o.m > 0) { ctx.globalAlpha = o.m * fade; ctx.drawImage(o.imgM, OFF[0], OFF[1], 1600, 1423); }
     ctx.globalAlpha = fade;
-    if (o.walls > 0) { ctx.strokeStyle = '#ff4f12'; ctx.lineCap = 'square'; ctx.lineWidth = (o.wl || 3) * k; ctx.beginPath(); each(walls, o.walls, 120, seg); ctx.stroke(); }
+    if (o.walls > 0) { ctx.strokeStyle = 'rgba(255,79,18,.72)'; ctx.lineCap = 'square'; ctx.lineWidth = (o.wl || 3) * k; ctx.beginPath(); each(walls, o.walls, 120, seg); ctx.stroke(); }
     if (o.doors > 0) {
       ctx.strokeStyle = 'rgba(242,240,234,.75)'; ctx.lineWidth = 1.5 * k; ctx.beginPath();
       each(doors, o.doors, 60, (d, q) => { ctx.moveTo(d.p[0] + 9 * q, d.p[1]); ctx.arc(d.p[0], d.p[1], 9 * q, 0, Math.PI * 2); }); ctx.stroke();
     }
-    if (o.ducts > 0) { ctx.strokeStyle = '#4fd1ff'; ctx.lineCap = 'butt'; each(ducts, o.ducts, 160, (s, q) => { ctx.lineWidth = Math.max(2 * k, Math.min(9, s.w * .4)); ctx.beginPath(); seg(s, q); ctx.stroke(); }); }
+    if (o.ducts > 0) { ctx.strokeStyle = 'rgba(79,209,255,.66)'; ctx.lineCap = 'butt'; each(ducts, o.ducts, 160, (s, q) => { ctx.lineWidth = Math.max(1.6 * k, Math.min(9, s.w * .4) * (o.dw || 1)); ctx.beginPath(); seg(s, q); ctx.stroke(); }); }
     if (o.devs > 0) { ctx.fillStyle = '#4fd1ff'; each(devs, o.devs, 60, (d, q) => { const r = 5 * q; ctx.fillRect(d.p[0] - r, d.p[1] - r, r * 2, r * 2); }); }
     ctx.globalAlpha = 1; ctx.setTransform(o.dpr, 0, 0, o.dpr, 0, 0);
   };
@@ -140,7 +140,7 @@ $$('canvas[data-plan]').forEach(cv => getPlan().then(({ draw, imgA, imgM }) => {
   loopWhileVisible(host, ms => {
     const { W, H, d } = fitCanvas(cv), t = (ms % LOOP) / LOOP;
     const z = Math.max(W / 1480, H / 1240) * (1 + .14 * t), mx = pr(t, P.ducts);
-    draw(ctx, W, H, { dpr: d, z, wl: 2, cx: focusX + Math.sin(t * Math.PI * 2) * 40 + t * 60, cy: 700 - t * 50, fade: 1 - pr(t, P.out), imgA, imgM, a: .32 * (1 - .6 * mx), m: .26 * mx, walls: pr(t, P.walls), doors: pr(t, P.doors), ducts: mx, devs: pr(t, P.devs) });
+    draw(ctx, W, H, { dpr: d, z, wl: 1.8, dw: .5, cx: focusX + Math.sin(t * Math.PI * 2) * 40 + t * 60, cy: 700 - t * 50, fade: 1 - pr(t, P.out), imgA, imgM, a: .32 * (1 - .6 * mx), m: .26 * mx, walls: pr(t, P.walls), doors: pr(t, P.doors), ducts: mx, devs: pr(t, P.devs) });
     const sp = t < .38 ? t / .38 : t < .74 ? (t - .38) / .36 : -1; // scan line rides the active layer
     if (sp >= 0 && !RM) {
       const x = -40 + (W + 80) * eo(sp), c = t < .38 ? '255,79,18' : '79,209,255', g = ctx.createLinearGradient(x - 120, 0, x + 4, 0);
@@ -203,7 +203,7 @@ if ($('#seq')) {
     if (!plan) return;
     const { W, H, d } = fitCanvas(cv), mx = sub(lp, .45, .6);
     const z = Math.max(W / 1350, H / 1200) * (1.04 + .22 * eio(lp));
-    plan.draw(ctx, W, H, { dpr: d, z, cx: 600 + 160 * eio(lp), cy: 690 - 40 * lp, imgA: plan.imgA, imgM: plan.imgM, a: .45 * (1 - .7 * mx), m: .4 * mx, walls: eo(sub(lp, 0, .42)), doors: eo(sub(lp, .25, .48)), ducts: eo(sub(lp, .5, .9)), devs: eo(sub(lp, .6, .95)), wl: 3.5 });
+    plan.draw(ctx, W, H, { dpr: d, z, cx: 600 + 160 * eio(lp), cy: 690 - 40 * lp, imgA: plan.imgA, imgM: plan.imgM, a: .45 * (1 - .7 * mx), m: .4 * mx, walls: eo(sub(lp, 0, .42)), doors: eo(sub(lp, .25, .48)), ducts: eo(sub(lp, .5, .9)), devs: eo(sub(lp, .6, .95)), wl: 2, dw: .55 });
   };
   getPlan().then(p => { plan = p; if (cur === 2) b3(lastLp); });
   const rows = $('#rows'); rows.innerHTML = DIVS.map(([d, n]) => `<div class="r"><i>${d}</i><span>${n}</span><b>$0</b></div>`).join('');
