@@ -56,7 +56,7 @@ $$('.reveal').forEach(el => io.observe(el));
 // ticker
 const track = $('#track');
 if (track) {
-  const items = ['<b>133</b> sheets read', '<b>2,678</b> LF partitions', '<b>19,600</b> lbs duct', '<b>370</b> light fixtures', '<b>381</b> data jacks', '<b>4</b> scope gaps', '12" RCP · <b>1922</b> · "planned removal"', '15" clay sewer · <b>1914</b>', '<b>81</b> segments over 100 yrs', '<b>~242,300</b> CY cut', 'LDs <b>$1,000</b> / day', 'sewer impact fee <b>$19,356</b> / DU', 'diesel <b>+73%</b> Feb → Aug 2026 · BLS PPI (p)', 'watching <b>CO · UT · CA</b>'];
+  const items = ['<b>133</b> sheets read', '<b>2,678</b> LF partitions', '<b>19,600</b> lbs duct', '<b>370</b> light fixtures', '<b>381</b> data jacks', '<b>4</b> scope gaps', '12" RCP · <b>1922</b> · "planned removal"', '15" clay sewer · <b>1914</b>', '<b>81</b> segments over 100 yrs', '<b>~242,300</b> CY cut', 'LDs <b>$1,000</b> / day', 'sewer impact fee <b>$19,356</b> / DU', 'diesel <b>+84%</b> since Jan 2026 · EIA weekly', 'watching <b>CO · UT · CA</b>'];
   track.innerHTML = [...items, ...items].map((i, n) => `<span><em>${String(n % items.length + 1).padStart(3, '0')}</em> ${i}</span>`).join('');
 }
 
