@@ -9,7 +9,7 @@
 // Local preview (localhost / 127.0.0.1 / file://) keeps the mailto fallback; deployed builds use the
 // Cloudflare Pages Functions in /functions (R2 bucket "formwork-bids").
 const IS_LOCAL = ['localhost', '127.0.0.1', '', '[::1]'].includes(location.hostname);
-const SUBMIT_ENDPOINT = null; /* static hosting: email fallback until upload backend is live */     // functions/api/bid.ts
+const SUBMIT_ENDPOINT = null; /* static hosting: email fallback until upload backend is live */
 const UPLOAD_ENDPOINT = '/api/upload';                     // functions/api/upload.ts (chunked multipart → R2)
 const CHUNK = 10 * 1024 * 1024;                            // 10 MB parts: R2 multipart min is 5 MB, Pages body limit 100 MB
 // ===== OWNER SETTINGS: change these here; nothing else in the site needs editing ==============
@@ -18,7 +18,7 @@ const CHUNK = 10 * 1024 * 1024;                            // 10 MB parts: R2 mu
 const CONTACT_EMAIL = 'noah@ceradonsystems.com';
 // TODO(owner): Cal.com (or similar) booking URL, e.g. 'https://cal.com/formwork/15min'. null = static placeholder + mailto.
 const CAL_URL = null;
-// TODO(owner): social links live in each page's footer (<div class="socials">, href="#" placeholders).
+// Social links live in each page's footer (<div class="socials">).
 // ==============================================================================================
 
 // ---- helpers ---------------------------------------------------------------------------------
@@ -56,8 +56,19 @@ $$('.reveal').forEach(el => io.observe(el));
 // ticker
 const track = $('#track');
 if (track) {
-  const items = ['<b>133</b> sheets read', '<b>2,678</b> LF partitions', '<b>60</b> openings', '<b>206</b> air devices', '<b>370</b> light fixtures', '<b>19,600</b> lbs duct', '<b>381</b> data jacks', '<b>11</b> panels', '<b>4</b> scope gaps flagged', 'priced in <b>CSI</b> format', 'watching <b>CO · UT · CA</b>', 'delivered <b>before the pre-bid</b>'];
-  track.innerHTML = [...items, ...items].map(i => `<span>■ ${i}</span>`).join('');
+  const items = ['<b>133</b> sheets read', '<b>2,678</b> LF partitions', '<b>19,600</b> lbs duct', '<b>370</b> light fixtures', '<b>381</b> data jacks', '<b>4</b> scope gaps', '12" RCP · <b>1922</b> · "planned removal"', '15" clay sewer · <b>1914</b>', '<b>81</b> segments over 100 yrs', '<b>~242,300</b> CY cut', 'LDs <b>$1,000</b> / day', 'sewer impact fee <b>$19,356</b> / DU', 'diesel <b>+73%</b> Feb → Aug 2026 · BLS PPI (p)', 'watching <b>CO · UT · CA</b>'];
+  track.innerHTML = [...items, ...items].map((i, n) => `<span><em>${String(n % items.length + 1).padStart(3, '0')}</em> ${i}</span>`).join('');
+}
+
+// ---- hero: one precise fact at a time ---------------------------------------------------------
+const factsEl = $('#facts');
+if (factsEl && !RM) {
+  const fs = $$('.fact', factsEl); let i = 0, vis = true;
+  new IntersectionObserver(([e]) => { vis = e.isIntersecting; }).observe(factsEl);
+  setInterval(() => {
+    if (!vis || document.hidden) return;
+    fs[i].classList.remove('on'); i = (i + 1) % fs.length; fs[i].classList.add('on');
+  }, 3200);
 }
 
 // ---- data ------------------------------------------------------------------------------------
@@ -70,7 +81,7 @@ const SCORE = [['Scope fit', 86], ['Competition', 72], ['Margin history', 64], [
 const DISC = [['GEN', 4], ['STRUCT', 1], ['ARCH', 44], ['FIRE', 2], ['PLUMB', 8], ['MECH', 22], ['ELEC', 27], ['TECH', 20], ['SEC', 5]];
 const SHORT = { GEN: 'Gen', STRUCT: 'Str', ARCH: 'Arch', FIRE: 'Fire', PLUMB: 'Plmb', MECH: 'Mech', ELEC: 'Elec', TECH: 'Tech', SEC: 'Sec' };
 const TRADES = ['General contractor', 'Sitework / civil', 'Concrete', 'Steel', 'Framing / drywall', 'Doors / hardware', 'Finishes', 'Fire protection', 'Plumbing', 'Mechanical', 'Electrical', 'Low voltage'];
-const WANTS = [['gap', 'Gap Check', 'Free · scope gaps + RFIs'], ['package', 'Bid Package', 'Quantities · estimate · RFIs'], ['desk', 'Bid Desk', 'Every bid, monthly'], ['owner', 'Owner-side', 'Budget · GMP · draws']];
+const WANTS = [['gap', 'Gap Check', '$0 · scope gaps + RFIs'], ['package', 'Bid Package', 'Quantities · estimate · RFIs'], ['desk', 'Bid Desk', 'Every bid, monthly'], ['owner', 'Owner-side', 'Budget · GMP · draws']];
 
 // ---- plan renderer (shared by hero loops, the sequence, and mini panels) ---------------------
 // A = A2.1.2 walls/doors (1600w); M = M2.1A ducts/devices, pre-registered to the same grid.
@@ -129,7 +140,7 @@ $$('canvas[data-plan]').forEach(cv => getPlan().then(({ draw, imgA, imgM }) => {
   loopWhileVisible(host, ms => {
     const { W, H, d } = fitCanvas(cv), t = (ms % LOOP) / LOOP;
     const z = Math.max(W / 1480, H / 1240) * (1 + .14 * t), mx = pr(t, P.ducts);
-    draw(ctx, W, H, { dpr: d, z, cx: focusX + Math.sin(t * Math.PI * 2) * 40 + t * 60, cy: 700 - t * 50, fade: 1 - pr(t, P.out), imgA, imgM, a: .32 * (1 - .6 * mx), m: .26 * mx, walls: pr(t, P.walls), doors: pr(t, P.doors), ducts: mx, devs: pr(t, P.devs) });
+    draw(ctx, W, H, { dpr: d, z, wl: 2, cx: focusX + Math.sin(t * Math.PI * 2) * 40 + t * 60, cy: 700 - t * 50, fade: 1 - pr(t, P.out), imgA, imgM, a: .32 * (1 - .6 * mx), m: .26 * mx, walls: pr(t, P.walls), doors: pr(t, P.doors), ducts: mx, devs: pr(t, P.devs) });
     const sp = t < .38 ? t / .38 : t < .74 ? (t - .38) / .36 : -1; // scan line rides the active layer
     if (sp >= 0 && !RM) {
       const x = -40 + (W + 80) * eo(sp), c = t < .38 ? '255,79,18' : '79,209,255', g = ctx.createLinearGradient(x - 120, 0, x + 4, 0);
@@ -163,8 +174,8 @@ addEventListener('resize', () => { scrollies.forEach(s => s.layout && s.layout()
 // ---- the sequence (film beats, scrubbed by scroll) -------------------------------------------
 if ($('#seq')) {
   const sec = $('#seq'), beats = $$('#seq .beat'), label = $('#seqLabel'), tEl = $('#seqT'), bar = $('#seqBar');
-  const B = [[0, .13, 'New solicitation'], [.13, .26, 'The market'], [.26, .50, 'Quantities / arch'], [.50, .63, 'Cost / CSI'], [.63, .79, 'Scope gaps / 4 flagged'], [.79, .86, 'How we operate'], [.86, .92, 'How we operate'], [.92, 1.001, 'Ready']];
-  const LINES = [['Project     ', 'University lab TI'], ['Location    ', 'Colorado Springs, CO'], ['Scope       ', '26,877 GSF / interior / all trades'], ['Package     ', '133 sheets'], ['Status      ', 'Ingesting']];
+  const B = [[0, .13, 'Bid set received'], [.13, .26, 'How it usually goes'], [.26, .50, 'Quantities / arch'], [.50, .63, 'Formwork estimate / CSI'], [.63, .79, 'Scope gaps / 4 flagged'], [.79, .86, 'Assessment'], [.86, .92, 'Assessment'], [.92, 1.001, 'Assessment']];
+  const LINES = [['Project     ', 'University lab TI'], ['Location    ', 'Colorado Springs, CO'], ['Scope       ', '26,877 GSF / interior / all trades'], ['Package     ', '133 sheets'], ['Status      ', 'Reading']];
   const total = LINES.reduce((n, l) => n + l[0].length + l[1].length, 0);
   const typed = $('#typed'), tile = $('#flipTile'), flipNo = $('#flipNo');
   let lastN = -1, cur = -1, lastLp = 0, plan = null;
@@ -315,7 +326,7 @@ if ($('#timeline')) {
 // ---- mini live panels (.mini[data-mini]) -----------------------------------------------------
 // types: feed · duct · walls · zoom:<crop> · scan:<crop> · lvl · bars · score · gmp
 const MINI = {
-  feed: () => `<div class="feed">${[...FEED, ...FEED].map((r, i) => `<div class="${i % 8 === 0 ? 'new' : ''}"><span>${r[0]} · ${r[1]}</span><em>${i % 8 === 0 ? 'New' : r[2] + ' sh'}</em></div>`).join('')}</div>`,
+  feed: () => `<small class="foot">Illustrative</small><div class="feed">${[...FEED, ...FEED].map((r, i) => `<div class="${i % 8 === 0 ? 'new' : ''}"><span>${r[0]} · ${r[1]}</span><em>${i % 8 === 0 ? 'New' : r[2] + ' sh'}</em></div>`).join('')}</div>`,
   lvl: () => `<div class="lvl"><span class="n h">Scope / sub</span>${'ABCDEFG'.split('').map(x => `<span class="h">${x}</span>`).join('')}` +
     LEVEL.map(([n, m]) => `<span class="n">${n}</span>` + m.split('').map(c => c === 'x' ? '<span class="x">EXCL</span>' : '<span>✓</span>').join('')).join('') +
     `<span class="n">Base bid ($M)</span>${[0, 1, 2, 3, 4, 5, 6].map(j => `<span class="lo${j === 1 ? ' hot' : ''}">${(6.8 + j * .13 + (j === 1 ? -.3 : 0)).toFixed(2)}</span>`).join('')}<span class="note">Low bid B excludes firestopping</span></div>`,
@@ -397,7 +408,7 @@ if (CAL_URL) $$('a[data-book]').forEach(a => { if (!a.closest('[data-cal]')) { a
 const mb = n => n >= 1e9 ? (n / 1e9).toFixed(2) + ' GB' : n >= 1e6 ? (n / 1e6).toFixed(1) + ' MB' : Math.max(1, Math.round(n / 1e3)) + ' KB';
 const intakeHTML = u => `
   <div class="ihead">
-    <div class="mono orange ititle"><span class="dot"></span>Send a bid in 60 seconds</div>
+    <div class="mono orange ititle"><span class="dot"></span>Bid set intake</div>
     <div class="isteps" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
     <div class="mono dim istepl" aria-live="polite">Step 1 of 3 · The set</div>
   </div>
@@ -436,9 +447,9 @@ const intakeHTML = u => `
   </form>
   <div class="iok" hidden>
     <div class="mono orange ititle"><span class="dot"></span>Received</div>
-    <h3 class="slam">We're on it.</h3>
+    <h3 class="slam">Received.</h3>
     <ol class="next">
-      <li><i></i><b>Received</b><span class="mono dim">Now</span><p>Your set is in. Nobody else sees it.</p></li>
+      <li><i></i><b>Received</b><span class="mono dim">Now</span><p>Your set is in. Nobody outside the team on your bid sees it.</p></li>
       <li><i></i><b>Gap check</b><span class="mono dim">Within 24 hours</span><p>Missing sheets, conflicts and scope holes, written up as RFIs.</p></li>
       <li><i></i><b>Call</b><span class="mono dim">Day 1</span><p>15 minutes. We walk you through what we found and what you want priced.</p></li>
       <li><i></i><b>The number</b><span class="mono dim">Before your pre-bid</span><p>Quantities and a priced estimate in your format.</p></li>

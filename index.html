@@ -3,27 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Formwork — Preconstruction Intelligence</title>
-<meta name="description" content="Preconstruction intelligence for Colorado, Utah and California. We read the whole job: drawings, specs, site and the public bid record. Estimate, scope gaps, bid leveling, bid intel and owner-side review. Send us your next bid. Free gap check on your next bid.">
-<meta property="og:title" content="Formwork — Bid it like you've already built it.">
-<meta property="og:description" content="Preconstruction intelligence for contractors and owners. Bid it like you've already built it. Before the concrete, there's Formwork.">
+<title>Formwork — Before the concrete, there's Formwork.</title>
+<meta name="description" content="Before the concrete, there's Formwork. Preconstruction intelligence for Colorado, Utah and California: drawings, spec book, fee schedules, the pipe under the lot and the public bid record, read before you price. Send us your next bid.">
+<meta property="og:title" content="Before the concrete, there's Formwork.">
+<meta property="og:description" content="We've read the bid set. 133 sheets. 4 scope gaps. A 1922 storm pipe running into the lot. Preconstruction intelligence for CO · UT · CA.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Formwork">
 <meta property="og:url" content="https://tryformwork.com/">
 <meta property="og:image" content="https://tryformwork.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Formwork — Bid it like you've already built it.">
-<meta name="twitter:description" content="Bid it like you've already built it. Before the concrete, there's Formwork.">
+<meta name="twitter:title" content="Before the concrete, there's Formwork.">
+<meta name="twitter:description" content="We've read the bid set. Preconstruction intelligence for CO · UT · CA.">
 <meta name="twitter:image" content="https://tryformwork.com/og-image.png">
 <meta name="theme-color" content="#030303">
+<link rel="canonical" href="https://tryformwork.com/">
 <link rel="icon" href="/fw-icon-v2.svg" type="image/svg+xml">
 <link rel="alternate icon" href="/fw-icon-v2.ico" sizes="16x16 32x32">
 <link rel="apple-touch-icon" href="/fw-touch-v2.png">
 <link rel="manifest" href="/site.webmanifest">
-<meta name="theme-color" content="#030303">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;800;900&family=JetBrains+Mono:wght@400;500&display=swap">
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="preload" as="fetch" href="assets/a212.json" crossorigin>
 <link rel="preload" as="fetch" href="assets/m21a.json" crossorigin>
@@ -39,49 +38,67 @@
   <div class="links">
     <a class="mono dim" href="platform.html">Platform</a>
     <a class="mono dim" href="onboarding.html">Onboarding</a>
+    <a class="mono dim" href="#record">The record</a>
     <a class="mono dim" href="#films">Films</a>
     <a class="mono dim" href="#pricing">Pricing</a>
-    <a class="mono dim" href="#call">Book a call</a>
-    <a class="btn solid" href="#send">Send a bid →</a>
+    <a class="btn solid" href="#send">Send a bid</a>
   </div>
 </nav>
 
 <header class="hero">
-  <!-- live takeoff loop: real A2.1.2 walls (orange) then M2.1A ducts (cyan), drawn on canvas; static frame under prefers-reduced-motion -->
+  <!-- black plan backdrop: real A2.1.2 walls (orange) then M2.1A ducts (cyan), drawn on canvas; static frame under prefers-reduced-motion -->
   <canvas class="bg" id="heroCanvas" data-plan aria-hidden="true"></canvas>
   <i class="hud tl"></i><i class="hud tr"></i><i class="hud bl"></i><i class="hud br"></i>
-  <div class="hudtxt r mono dim" aria-hidden="true"><span data-hud-layer>A2.1.2 · Level 1 · Arch</span><span data-hud-t>T+00.00</span><span class="dot"></span></div>
-  <div class="tag mono dim"><span class="blink"></span>Before the concrete, there's formwork.</div>
-  <h1 class="slam now">Bid it like you've <em>already built it.</em></h1>
-  <p class="sub">Preconstruction intelligence for Colorado, Utah and California. We read the whole job (drawings, specs, site and the public bid record), then price it and pressure-test it before your competition opens the PDF.</p>
-  <div class="ctas">
-    <a class="btn solid" href="#send">Send a bid →</a>
-    <button class="btn" type="button" data-film="assets/films/vision.mp4" data-poster="assets/films/vision.jpg">▶ Watch the film</button>
+  <div class="hudtxt l mono dim" aria-hidden="true"><span class="dot"></span><span>Watching · CO · UT · CA</span></div>
+  <div class="hudtxt r mono dim" aria-hidden="true"><span data-hud-layer>A2.1.2 · Level 1 · Arch</span><span data-hud-t>T+00.00</span></div>
+
+  <div class="tag mono dim">Preconstruction intelligence · CO · UT · CA</div>
+  <!-- one precise fact at a time; JS cycles through #facts (first item is the no-JS / reduced-motion state) -->
+  <div class="facts" id="facts" aria-live="off">
+    <div class="fact on"><div class="rid mono"><span class="orange">REC 0001</span><span class="dim">Public bid set · CO</span></div><p>We've read your bid set.</p><div class="src mono dim">133 sheets · 9 disciplines</div></div>
+    <div class="fact"><div class="rid mono"><span class="orange">REC 0002</span><span class="dim">A2.1.x · Arch</span></div><p>2,678 LF of partitions.</p><div class="src mono dim">Measured from the sheets</div></div>
+    <div class="fact"><div class="rid mono"><span class="orange">REC 0003</span><span class="dim">FP2.1 · Room S103</span></div><p>The server room has no suppression shown.</p><div class="src mono dim">RFI-02 · drafted before the pre-bid</div></div>
+    <div class="fact"><div class="rid mono"><span class="orange">REC 0004</span><span class="dim">P7.1 vs E7.0</span></div><p>DWH-1 is on the plumbing schedule. Not the electrical.</p><div class="src mono dim">6 kW · 208V/3Ø · no circuit</div></div>
+    <div class="fact"><div class="rid mono"><span class="cyan">REC 0005</span><span class="dim">Vacant lot · Denver, CO</span></div><p>A 12" concrete storm pipe from 1922 runs into the lot.</p><div class="src mono dim">City status: "planned removal" · public record</div></div>
+    <div class="fact"><div class="rid mono"><span class="orange">REC 0006</span><span class="dim">Agreement §6 · CA</span></div><p>$1,000 a day, starting day 361.</p><div class="src mono dim">Liquidated damages · public bid set</div></div>
+    <div class="fact"><div class="rid mono"><span class="cyan">REC 0007</span><span class="dim">BLS PPI · WPU057303</span></div><p>Diesel is up 73% since February.</p><div class="src mono dim">Feb → Aug 2026 · preliminary</div></div>
   </div>
-  <a class="mono gapline" href="send.html?want=gap">Free gap check on your next bid →</a>
+
+  <h1 class="slam now">Before the concrete, there's Formwork<span class="orange">.</span></h1>
+  <p class="sub">Preconstruction intelligence for Colorado, Utah and California. The drawings, the spec book, the fee schedule, the pipe under the lot. Read before you price.</p>
+  <div class="ctas">
+    <a class="btn solid" href="#send">Send us your next bid</a>
+    <button class="btn ghost" type="button" data-film="assets/films/vision.mp4" data-poster="assets/films/vision.jpg">▶ Watch · 0:38</button>
+  </div>
 </header>
 
 <div class="ticker mono dim" aria-hidden="true"><div class="track" id="track"></div></div>
 
-<!-- ===== THE SEQUENCE: scroll-scrubbed version of the brand film's beats ===== -->
-<section id="seq" class="scrolly" aria-label="How a bid gets built">
+<!-- ===== THE SEQUENCE: scroll-scrubbed beats ===== -->
+<section id="seq" class="scrolly" aria-label="How a bid set gets read">
   <div class="stage">
     <i class="hud tl"></i><i class="hud tr"></i><i class="hud bl"></i><i class="hud br"></i>
-    <div class="hudtxt tl mono dim" id="seqLabel">Formwork // New solicitation</div>
+    <div class="hudtxt tl mono dim" id="seqLabel">Formwork // Bid set received</div>
     <div class="hudtxt tr mono dim" id="seqT">T+00.00</div>
     <div class="hudtxt br"><span class="dot"></span></div>
 
     <div class="beat b1">
-      <div class="term" aria-label="New bid posted: university lab TI, Colorado Springs, 133 sheets">
-        <div class="hd"><span class="dot"></span>New bid posted</div>
+      <div class="term" aria-label="Bid set received: university lab TI, Colorado Springs, 133 sheets">
+        <div class="hd"><span class="dot"></span>Bid set received</div>
         <div id="typed"></div>
       </div>
       <div class="flip"><div class="tile" id="flipTile"></div><div class="mono dim" id="flipNo">Sheet 001 / 133</div></div>
     </div>
 
     <div class="beat b2">
-      <h2 class="slam big">Your competitors are still downloading the plans.</h2>
-      <div class="dl"><div class="mono dim"><span>Bid_set_drawings.pdf — 43.0 MB</span><span id="dlPct">3%</span></div><div class="track"><i id="dlBar"></i></div></div>
+      <div class="mono orange usual-k">How it usually goes</div>
+      <ul class="usual-l mono">
+        <li>Addendum 4 drops the day before bid.</li>
+        <li>Half the details say "verify in field."</li>
+        <li>Firestopping: "by others."</li>
+      </ul>
+      <h2 class="slam big">Nobody reads all 133 sheets.</h2>
+      <div class="dl"><div class="mono dim"><span>Addendum_04.pdf · posted 4:52 PM</span><span id="dlPct">3%</span></div><div class="track"><i id="dlBar"></i></div></div>
     </div>
 
     <div class="beat b3">
@@ -94,29 +111,27 @@
         <div><b data-c="370">0</b><span>Light fixtures</span></div>
         <div><b data-c="381">0</b><span>Data jacks</span></div>
       </div>
-      <div class="mono orange" style="font-size:13px;margin-bottom:14px">Meanwhile</div>
-      <h2 class="slam big">It's already measured.</h2>
+      <div class="mono orange" style="font-size:12px;margin-bottom:14px">We did</div>
+      <h2 class="slam big">Every wall. Every duct.</h2>
     </div>
 
     <div class="beat b4">
-      <div class="rows" id="rows"></div>
+      <div class="rowsw"><div class="rows" id="rows"></div><div class="mono dim est">Formwork estimate · production model · by CSI division</div></div>
       <h2 class="slam priced">Priced.</h2>
     </div>
 
     <div class="beat b5">
       <div class="rfis" id="seqRfis"></div>
-      <h2 class="slam mid">Every gap in the drawings. <span class="orange">On your desk.</span></h2>
+      <h2 class="slam mid">Four things the drawings <span class="orange">don't say.</span></h2>
     </div>
 
-    <div class="beat b6"><h2 class="slam c big" style="color:var(--mute)">We don't sell software.</h2></div>
-    <div class="beat b6"><h2 class="slam c big" style="color:var(--mute)">We don't bill hours.</h2></div>
-    <div class="beat b6"><h2 class="slam c big">Bid it like you've <span class="orange">already built it.</span></h2></div>
+    <div class="beat b6"><h2 class="slam c big" style="color:var(--mute)">We've read the set.</h2></div>
+    <div class="beat b6"><h2 class="slam c big" style="color:var(--mute)">We know what's missing.</h2></div>
+    <div class="beat b6"><h2 class="slam c big">Before the concrete, there's Formwork<span class="orange">.</span></h2></div>
 
     <div class="bar"><i id="seqBar"></i></div>
   </div>
 </section>
-
-<div class="ctawrap"><div class="ctastrip reveal"><div class="t">Bid it like you've already built it. <span class="orange">Send us your next bid.</span></div><div class="row"><a class="btn solid" href="#send">Send a bid →</a><a class="btn" href="#call" data-book>Book a call</a></div></div></div>
 
 <!-- ===== 133 SHEETS: thumbnail wall sorts itself into disciplines ===== -->
 <section id="sheets" class="scrolly" aria-label="133 sheets sorted by discipline">
@@ -124,7 +139,7 @@
     <i class="hud tl"></i><i class="hud tr"></i><i class="hud bl"></i><i class="hud br"></i>
     <div class="hudtxt tr"><span class="mono dim" id="wallState">Ingest</span><span class="dot"></span></div>
     <div class="head">
-      <div><div class="label mono dim">One bid set · real sheets</div><h2 class="slam">133 sheets. <span class="orange">Every one read.</span></h2></div>
+      <div><div class="label mono dim">One public bid set · real sheets</div><h2 class="slam">133 sheets. <span class="orange">Every one read.</span></h2></div>
       <div class="count"><b id="wallCount">0</b><span class="mono dim">Sheets read · by discipline</span></div>
     </div>
     <div class="wall" id="wall" role="img" aria-label="Thumbnails of all 133 sheets: General 4, Structural 1, Architectural 44, Fire 2, Plumbing 8, Mechanical 22, Electrical 27, Technology 20, Security 5"></div>
@@ -143,8 +158,8 @@
         <div class="flag mono" id="vFlag"></div>
       </div>
       <div class="gapside">
-        <div class="label mono dim">Scope gap review · 4 flagged</div>
-        <h2 class="slam">Most contractors find these <span class="orange">after award.</span></h2>
+        <div class="label mono dim">Scope gap review · 4 flagged · 133 sheets</div>
+        <h2 class="slam">Most bidders find these <span class="orange">after award.</span></h2>
         <div id="gapCards"></div>
       </div>
     </div>
@@ -152,27 +167,60 @@
   </div>
 </section>
 
-<div class="ctawrap"><div class="ctastrip reveal"><div class="t">Find the gaps before the pre-bid. <span class="orange">Free gap check on your next bid.</span></div><div class="row"><a class="btn solid" href="#send">Send a bid →</a><a class="btn" href="#call" data-book>Book a call</a></div></div></div>
+<!-- ===== THE RECORD: sourced facts, beyond the drawings ===== -->
+<section id="record" class="record">
+  <div class="tex" style="background-image:url(assets/tex/sewer.webp)" aria-hidden="true"></div>
+  <div class="label mono dim reveal">The record · beyond the drawings</div>
+  <h2 class="slam">None of this is on the bid drawings.</h2>
+  <div class="dossier">
+    <article class="rec reveal"><div class="rh mono"><span class="cyan">REC U-1922</span><span class="dim">Vacant lot · Denver, CO</span></div><b>12" RCP · 1922</b><p>City-owned storm main. Runs into the lot. City status: <em>"planned removal."</em></p><div class="rs mono dim">Src · Denver storm main records · public</div></article>
+    <article class="rec reveal"><div class="rh mono"><span class="cyan">REC U-1914</span><span class="dim">Same lot · lot line</span></div><b>15" clay sewer · 1914</b><p>Private. 112 years old. No liner on record.</p><div class="rs mono dim">Src · Denver sanitary records · public</div></article>
+    <article class="rec reveal"><div class="rh mono"><span class="cyan">REC U-0081</span><span class="dim">800 m around the lot</span></div><b>81 segments</b><p>Sewer and storm pipe over 100 years old.</p><div class="rs mono dim">Age = 2026 − install year</div></article>
+    <article class="rec reveal"><div class="rh mono"><span class="orange">REC E-2423</span><span class="dim">Earthwork volume table · CA</span></div><b>~242,300 CY</b><p>Of cut. Before a single scraper is priced.</p><div class="rs mono dim">Src · public bid set</div></article>
+    <article class="rec reveal"><div class="rh mono"><span class="orange">REC C-0006</span><span class="dim">Agreement §6 · CA</span></div><b>$1,000 / day</b><p>Liquidated damages after day 360. Thirty days late is $30,000.</p><div class="rs mono dim">Src · project manual · public bid set</div></article>
+    <article class="rec reveal"><div class="rh mono"><span class="orange">REC F-1935</span><span class="dim">City fee schedule · eff. 01/15/2026 · CA</span></div><b>$19,356 / DU</b><p>Sewer impact fee. Not on any sheet. Due before you pour.</p><div class="rs mono dim">Src · development impact fee schedule</div></article>
+    <article class="rec reveal wide"><div class="rh mono"><span class="cyan">REC M-0073</span><span class="dim">BLS PPI · No. 2 diesel · WPU057303</span></div><b>Diesel +73%</b><p>February to August 2026. Your pricing guide updated once.</p><div class="rs mono dim">Src · Bureau of Labor Statistics · Aug 2026 preliminary</div></article>
+  </div>
+</section>
 
-<section id="services" style="border-top:1px solid var(--line)">
+<!-- ===== HOW IT USUALLY GOES: the familiar pattern ===== -->
+<section id="usual" class="usual">
+  <div class="label mono dim reveal">How it usually goes · the familiar pattern</div>
+  <ol class="pattern">
+    <li class="reveal"><span class="mono dim">01</span>The engineer of record is 1,700 miles away, running nine other jobs.</li>
+    <li class="reveal"><span class="mono dim">02</span>Nobody walked the lot.</li>
+    <li class="reveal"><span class="mono dim">03</span>The survey is from 2009. The geotech stopped at 15 feet.</li>
+    <li class="reveal"><span class="mono dim">04</span>Utilities: <q>Locate prior to excavation.</q></li>
+    <li class="reveal"><span class="mono dim">05</span>Addendum 4 drops the day before bid.</li>
+    <li class="reveal"><span class="mono dim">06</span>The low sub excluded firestopping. <span class="redact" aria-label="redacted">██████████</span></li>
+  </ol>
+  <div class="usual-end reveal">
+    <h2 class="slam">You find it with the excavator bucket.</h2>
+    <h2 class="slam dimh">Or you find it now.</h2>
+  </div>
+</section>
+
+<div class="ctawrap"><div class="ctastrip reveal"><div class="t">Before the concrete, there's Formwork. <span class="dim">Send us your next bid.</span></div><div class="row"><a class="btn solid" href="#send">Send a bid</a><a class="btn ghost" href="#call" data-book>Book a call</a></div></div></div>
+
+<section id="services">
   <div class="label mono dim reveal">Services · CO · UT · CA</div>
-  <h2 class="slam">Preconstruction intelligence. Every gap in precon, filled.</h2>
+  <h2 class="slam">What we read. What you get back.</h2>
   <div class="svc">
     <div class="reveal">
-      <div class="mini" data-mini="feed" data-label="Public bids / live"></div>
-      <div class="k mono"><span class="orange">01 / Bid Watch</span><span class="dim">Always on</span></div><h3>Read as it posts.</h3><p>Every public bid in Colorado, Utah and California. Pulled, read and quantified before the sub calls you about it.</p><div class="meta mono dim">Agency portals · plan rooms · daily</div>
+      <div class="mini" data-mini="feed" data-label="Public bids / tracked"></div>
+      <div class="k mono"><span class="orange">01 / Bid Watch</span><span class="dim">Ongoing</span></div><h3>Every board. Watched.</h3><p>Public bids across Colorado, Utah and California, tracked and matched to your trades.</p><div class="meta mono dim">Agency portals · plan rooms</div>
     </div>
     <div class="reveal">
       <div class="mini" data-mini="duct" data-label="M2.1A / ductwork"></div>
-      <div class="k mono"><span class="orange">02 / Takeoff &amp; Estimate</span><span class="dim">Per bid</span></div><h3>In your format.</h3><p>Every wall, opening, duct, fixture and device. Measured, priced by CSI division, traceable to the sheet.</p><div class="meta mono dim">Markups · CSI estimate · your template</div>
+      <div class="k mono"><span class="orange">02 / Quantities &amp; Estimate</span><span class="dim">Per bid</span></div><h3>Traced to the sheet.</h3><p>Every wall, opening, duct, fixture and device. Measured, priced by CSI division, in your format.</p><div class="meta mono dim">Markups · CSI estimate · your template</div>
     </div>
     <div class="reveal">
       <div class="mini" data-mini="zoom:g3" data-label="P7.1 / schedules" data-chip="DWH-1 — no circuit on E7.0"></div>
-      <div class="k mono"><span class="orange">03 / Scope Gap Review</span><span class="dim">Day one</span></div><h3>RFIs before the pre-bid.</h3><p>Missing sheets. Unscheduled equipment. Disciplines that disagree. Found on day one, not after award.</p><div class="meta mono dim">4 gaps found in one 133-sheet set</div>
+      <div class="k mono"><span class="orange">03 / Scope Gap Review</span><span class="dim">Before pre-bid</span></div><h3>RFIs before the pre-bid.</h3><p>Missing sheets. Unscheduled equipment. Disciplines that disagree. Written up while there's still time to ask.</p><div class="meta mono dim">4 gaps found in one 133-sheet set</div>
     </div>
     <div class="reveal">
       <div class="mini" data-mini="lvl" data-label="Bid day / 7 subs"></div>
-      <div class="k mono"><span class="orange">04 / Bid Leveling</span><span class="dim">Bid day</span></div><h3>The low bid isn't always the low bid.</h3><p>Sub numbers leveled against our quantities. Exclusions exposed, plugs where coverage is thin.</p><div class="meta mono dim">Scope sheets · plugs · alternates</div>
+      <div class="k mono"><span class="orange">04 / Bid Leveling</span><span class="dim">Bid day</span></div><h3>The low bid isn't the low bid.</h3><p>Sub numbers leveled against our quantities. Exclusions exposed. Plugs where coverage is thin.</p><div class="meta mono dim">Scope sheets · plugs · alternates</div>
     </div>
     <div class="reveal">
       <div class="mini" data-mini="bars" data-label="Bid results / public record"></div>
@@ -180,93 +228,100 @@
     </div>
     <div class="reveal">
       <div class="mini" data-mini="gmp" data-label="E5.1 / one-line"></div>
-      <div class="k mono"><span class="orange">06 / Owner-Side</span><span class="dim">Owners · developers</span></div><h3>The number, from your side.</h3><p>Independent estimates, GMP review and draw reviews. Check the contractor's math before you sign it.</p><div class="meta mono dim">Budget · GMP · lender draws</div>
+      <div class="k mono"><span class="orange">06 / Owner-Side</span><span class="dim">Owners · developers</span></div><h3>Check the math before you sign it.</h3><p>Independent estimates, GMP review and draw reviews, from your side of the table.</p><div class="meta mono dim">Budget · GMP · lender draws</div>
     </div>
   </div>
-  <div class="reveal" style="margin-top:34px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center"><span class="mono dim" style="font-size:12px">Plus bid/no-bid scoring, spec &amp; Div 00/01 review, municipal fees, long-lead procurement, buyout.</span><a class="btn" href="platform.html">All 11 services →</a></div>
+  <div class="reveal svcfoot"><span class="mono dim">Also: bid/no-bid scoring · spec &amp; Div 00/01 · municipal fees · long-lead · buyout</span><a class="btn ghost" href="platform.html">All 11 services</a></div>
 </section>
-<div class="ctawrap"><div class="ctastrip reveal"><div class="t">Every layer. Every quantity. Every dollar. <span class="orange">Send us your next bid.</span></div><div class="row"><a class="btn solid" href="#send">Send a bid →</a><a class="btn" href="#call" data-book>Book a call</a></div></div></div>
 
-<section id="films" style="border-top:1px solid var(--line)">
-  <div class="label mono dim reveal" id="reports">Films · field reports</div>
-  <h2 class="slam">Four bids. Four problems. One number.</h2>
+<section id="films">
+  <div class="label mono dim reveal" id="reports">Films · evidence on film</div>
+  <h2 class="slam">Watch what we see.</h2>
+  <div class="fgrid reveal">
+    <button class="fcard hero" type="button" data-film="assets/films/vision.mp4" data-poster="assets/films/vision.jpg"><span class="ph"><img src="assets/films/vision-t.webp" alt="" loading="lazy" decoding="async" width="640" height="360"><i class="pl mono">▶</i></span><span class="fm mono"><span class="dim">F-00 · 0:38</span><b>Before the concrete</b></span></button>
+    <button class="fcard" type="button" data-film="assets/films/underground.mp4" data-poster="assets/films/underground.jpg"><span class="ph"><img src="assets/films/underground-t.webp" alt="" loading="lazy" decoding="async" width="640" height="360"><i class="pl mono">▶</i></span><span class="fm mono"><span class="dim">F-01 · 0:32 · New</span><b>Under the lot</b></span></button>
+    <button class="fcard" type="button" data-film="assets/films/volatile.mp4" data-poster="assets/films/volatile.jpg"><span class="ph"><img src="assets/films/volatile-t.webp" alt="" loading="lazy" decoding="async" width="640" height="360"><i class="pl mono">▶</i></span><span class="fm mono"><span class="dim">F-02 · 0:35 · New</span><b>Volatile</b></span></button>
+    <button class="fcard" type="button" data-film="assets/films/fullscope.mp4" data-poster="assets/films/fullscope.jpg"><span class="ph"><img src="assets/films/fullscope-t.webp" alt="" loading="lazy" decoding="async" width="640" height="360"><i class="pl mono">▶</i></span><span class="fm mono"><span class="dim">F-03 · 0:30</span><b>Full scope</b></span></button>
+    <button class="fcard" type="button" data-film="assets/films/fullscope-es.mp4" data-poster="assets/films/fullscope-es.jpg" lang="es"><span class="ph"><img src="assets/films/fullscope-es-t.webp" alt="" loading="lazy" decoding="async" width="640" height="360"><i class="pl mono">▶</i></span><span class="fm mono"><span class="dim">F-03 · 0:30 · En español</span><b>Alcance completo</b></span></button>
+    <button class="fcard" type="button" data-film="assets/films/assembly.mp4" data-poster="assets/films/assembly.jpg"><span class="ph"><img src="assets/films/assembly-t.webp" alt="" loading="lazy" decoding="async" width="640" height="360"><i class="pl mono">▶</i></span><span class="fm mono"><span class="dim">F-04 · 0:42 · New</span><b>Assembly</b></span></button>
+  </div>
+  <div class="label mono dim reveal" style="margin-top:70px">Field reports · vertical</div>
   <div class="reel reveal" id="reel">
-    <!-- Spots transcoded from ~/formwork/promo/out/spot-*.mp4 (720x1280, H.264 CRF 26, faststart, AAC 128k). Posters = frame @1.0s.
-         TODO: if a render is ever missing, swap its <button> for a placeholder:
-         <div class="spot todo"><img src="assets/poster.jpg" alt="" loading="lazy"><div class="cap"><span><small class="mono dim">0X · In production</small><b>TITLE</b></span></div></div> -->
-    <button class="spot" data-src="assets/spots/spot-watch.mp4" data-poster="assets/spots/spot-watch.jpg" aria-label="Play field report: Watch"><video muted loop playsinline preload="none" poster="assets/spots/spot-watch.jpg"></video><span class="cap"><span><small class="mono orange">01 · Bid watch</small><b>WATCH</b></span><span class="play mono" aria-hidden="true">▶</span></span></button>
-    <button class="spot" data-src="assets/spots/spot-gaps.mp4" data-poster="assets/spots/spot-gaps.jpg" aria-label="Play field report: Gaps"><video muted loop playsinline preload="none" poster="assets/spots/spot-gaps.jpg"></video><span class="cap"><span><small class="mono orange">02 · Scope gaps</small><b>GAPS</b></span><span class="play mono" aria-hidden="true">▶</span></span></button>
-    <button class="spot" data-src="assets/spots/spot-level.mp4" data-poster="assets/spots/spot-level.jpg" aria-label="Play field report: Level"><video muted loop playsinline preload="none" poster="assets/spots/spot-level.jpg"></video><span class="cap"><span><small class="mono orange">03 · Leveling</small><b>LEVEL</b></span><span class="play mono" aria-hidden="true">▶</span></span></button>
-    <button class="spot" data-src="assets/spots/spot-owner.mp4" data-poster="assets/spots/spot-owner.jpg" aria-label="Play field report: Owner"><video muted loop playsinline preload="none" poster="assets/spots/spot-owner.jpg"></video><span class="cap"><span><small class="mono orange">05 · Owner</small><b>OWNER</b></span><span class="play mono" aria-hidden="true">▶</span></span></button>
+    <!-- Spots transcoded from ~/formwork/promo/out/spot-*.mp4 (720x1280, H.264 CRF 26, faststart, AAC 128k). -->
+    <button class="spot" data-src="assets/spots/spot-watch.mp4" data-poster="assets/spots/spot-watch.jpg" aria-label="Play field report: Watch"><video muted loop playsinline preload="none" poster="assets/spots/spot-watch.jpg"></video><span class="cap"><span><small class="mono dim">01 · Bid watch</small><b>WATCH</b></span><span class="play mono" aria-hidden="true">▶</span></span></button>
+    <button class="spot" data-src="assets/spots/spot-gaps.mp4" data-poster="assets/spots/spot-gaps.jpg" aria-label="Play field report: Gaps"><video muted loop playsinline preload="none" poster="assets/spots/spot-gaps.jpg"></video><span class="cap"><span><small class="mono dim">02 · Scope gaps</small><b>GAPS</b></span><span class="play mono" aria-hidden="true">▶</span></span></button>
+    <button class="spot" data-src="assets/spots/spot-level.mp4" data-poster="assets/spots/spot-level.jpg" aria-label="Play field report: Level"><video muted loop playsinline preload="none" poster="assets/spots/spot-level.jpg"></video><span class="cap"><span><small class="mono dim">03 · Leveling</small><b>LEVEL</b></span><span class="play mono" aria-hidden="true">▶</span></span></button>
+    <button class="spot" data-src="assets/spots/spot-owner.mp4" data-poster="assets/spots/spot-owner.jpg" aria-label="Play field report: Owner"><video muted loop playsinline preload="none" poster="assets/spots/spot-owner.jpg"></video><span class="cap"><span><small class="mono dim">04 · Owner</small><b>OWNER</b></span><span class="play mono" aria-hidden="true">▶</span></span></button>
   </div>
-  <div class="films reveal">
-    <button class="mono dim" type="button" data-film="assets/films/vision.mp4" data-poster="assets/films/vision.jpg"><span>Film 00 · Hero · 0:38<b style="color:var(--ink)">Before the concrete</b></span><span class="orange">▶ Play</span></button>
-    <button class="mono dim" type="button" data-film="assets/films/v4.mp4" data-poster="assets/films/v4.jpg"><span>Film 01 · Brand film · 0:24<b style="color:var(--ink)">Formwork</b></span><span class="orange">▶ Play</span></button>
-    <button class="mono dim" type="button" data-film="assets/films/intel.mp4" data-poster="assets/films/intel.jpg"><span>Film 02 · Data · bid intel · 0:38<b style="color:var(--ink)">The public record</b></span><span class="orange">▶ Play</span></button>
-    <button class="mono dim" type="button" data-film="assets/films/orbit.mp4" data-poster="assets/films/orbit.jpg"><span>Film 03 · Site · satellite to 3D · 0:23<b style="color:var(--ink)">Give us an address</b></span><span class="orange">▶ Play</span></button>
-    <button class="mono dim" type="button" data-film="assets/films/xray.mp4" data-poster="assets/films/xray.jpg"><span>Film 04 · Plans to 3D · 0:24<b style="color:var(--ink)">X-ray</b></span><span class="orange">▶ Play</span></button>
-    <button class="mono dim" type="button" data-film="assets/films/earthwork.mp4" data-poster="assets/films/earthwork.jpg"><span>Film 05 · Terrain · cut/fill · 0:14<b style="color:var(--ink)">Earthwork</b></span><span class="orange">▶ Play</span></button>
-    <button class="mono dim" type="button" data-film="assets/films/demo.mp4" data-poster="assets/films/demo.jpg"><span>Film 06 · Ops console · 0:39<b style="color:var(--ink)">The work, live</b></span><span class="orange">▶ Play</span></button>
-    <button class="mono dim" type="button" data-film="assets/films/fullscope.mp4" data-poster="assets/films/fullscope.jpg"><span>Film 07 · Every trade · 0:31<b style="color:var(--ink)">Full scope</b></span><span class="orange">▶ Play</span></button>
-    <button class="mono dim" type="button" data-film="assets/films/fullscope-es.mp4" data-poster="assets/films/fullscope-es.jpg"><span>Película 07 · En español · 0:31<b style="color:var(--ink)">Alcance completo</b></span><span class="orange">▶ Ver</span></button>
-  </div>
+  <details class="archive reveal">
+    <summary class="mono dim">Archive · 6 earlier films</summary>
+    <div class="films">
+      <button class="mono dim" type="button" data-film="assets/films/v4.mp4" data-poster="assets/films/v4.jpg"><span>A-01 · Brand film · 0:24<b>Formwork</b></span><span class="dim">▶</span></button>
+      <button class="mono dim" type="button" data-film="assets/films/intel.mp4" data-poster="assets/films/intel.jpg"><span>A-02 · Bid intel · 0:38<b>The public record</b></span><span class="dim">▶</span></button>
+      <button class="mono dim" type="button" data-film="assets/films/orbit.mp4" data-poster="assets/films/orbit.jpg"><span>A-03 · Site · 0:23<b>Give us an address</b></span><span class="dim">▶</span></button>
+      <button class="mono dim" type="button" data-film="assets/films/xray.mp4" data-poster="assets/films/xray.jpg"><span>A-04 · Plans to 3D · 0:24<b>X-ray</b></span><span class="dim">▶</span></button>
+      <button class="mono dim" type="button" data-film="assets/films/earthwork.mp4" data-poster="assets/films/earthwork.jpg"><span>A-05 · Terrain · 0:14<b>Earthwork</b></span><span class="dim">▶</span></button>
+      <button class="mono dim" type="button" data-film="assets/films/demo.mp4" data-poster="assets/films/demo.jpg"><span>A-06 · Ops console · 0:39<b>The work</b></span><span class="dim">▶</span></button>
+    </div>
+  </details>
 </section>
 
-<section id="operate" style="border-top:1px solid var(--line)">
+<section id="operate">
   <div class="label mono dim reveal">How we operate</div>
   <h2 class="slam">Machines count. Estimators sign.</h2>
   <div class="principles">
-    <div class="reveal"><h4 class="orange">Watching the market</h4><p>We watch public bids across Colorado, Utah and California and start reading a set when it posts, so the work is already moving when you call.</p></div>
-    <div class="reveal"><h4 class="orange">Human-signed</h4><p>Machines do the counting. A construction professional reviews and signs every number that leaves the building. No black boxes.</p></div>
-    <div class="reveal"><h4 class="orange">Built from the field</h4><p>Healthcare, education, civil and development work. We've run jobs and bought them. Our output reads like an estimator made it, because one did.</p></div>
+    <div class="reveal"><h4>Sourced</h4><p>Every number points to a sheet, a clause, a fee schedule or a public record. If we can't source it, we don't say it.</p></div>
+    <div class="reveal"><h4>Human-signed</h4><p>Machines do the counting. A construction professional reviews and signs every number that leaves the building.</p></div>
+    <div class="reveal"><h4>From the field</h4><p>Healthcare, education, civil and development work. We've run jobs and bought them. It reads like an estimator wrote it, because one did.</p></div>
   </div>
 </section>
 
 <section class="tagline">
+  <div class="tex" style="background-image:url(assets/tex/grading.webp)" aria-hidden="true"></div>
   <div class="row">
-    <h2 class="slam">Before the concrete,<br><span class="orange">there's formwork.</span></h2>
-    <p class="reveal">We don't sell software. We don't bill hours. We see the whole job before you break ground.</p>
+    <h2 class="slam">Before the concrete,<br>there's Formwork<span class="orange">.</span></h2>
+    <p class="reveal">The drawings. The spec book. The fee schedule. The ground under the lot. Read before you price.</p>
   </div>
 </section>
 
-<section id="pricing" style="border-top:1px solid var(--line)">
+<section id="pricing">
   <div class="label mono dim reveal">Pricing</div>
-  <h2 class="slam">Pay for the number. Not the seat.</h2>
+  <h2 class="slam">Priced per bid.</h2>
   <div class="tiers reveal">
-    <div class="tier"><div class="mono dim" style="font-size:12px">Start here</div><h3>Gap Check</h3><div class="price">$0</div><p>Free gap check on your next bid. We send back the scope gaps and RFIs we find. No strings.</p><a class="btn solid" href="send.html?want=gap" style="margin-top:auto;justify-content:center">Start free →</a></div>
-    <div class="tier hot"><div class="mono orange" style="font-size:12px">Most bids</div><h3>Bid Package</h3><div class="price">$750<small> + / bid</small></div><ul><li>Quantities + markups</li><li>Priced CSI estimate</li><li>Scope-gap RFI memo</li><li>Turnaround before pre-bid</li></ul><a class="btn" href="send.html?want=package" style="margin-top:auto;justify-content:center">Send a bid →</a></div>
-    <div class="tier"><div class="mono dim" style="font-size:12px">Volume</div><h3>Bid Desk</h3><div class="price">$3K<small> + / mo</small></div><ul><li>Monthly bid allotment</li><li>Bid-day sub leveling</li><li>Hit-rate & cost analytics</li><li>Priority turnaround</li></ul><a class="btn" href="#call" data-book style="margin-top:auto;justify-content:center">Book a call →</a></div>
-    <div class="tier"><div class="mono dim" style="font-size:12px">Owners & developers</div><h3>Owner-Side</h3><div class="price">Custom</div><ul><li>Budget & design-phase estimates</li><li>GMP and bid leveling review</li><li>Lender cost & draw reviews</li></ul><a class="btn" href="send.html?want=owner" style="margin-top:auto;justify-content:center">Send the GMP →</a></div>
+    <div class="tier"><div class="mono dim tk">Start here</div><h3>Gap Check</h3><div class="price">$0</div><p>Send one set. We send back the scope gaps and RFIs we find. That's all.</p><a class="btn ghost" href="send.html?want=gap">Send the set</a></div>
+    <div class="tier hot"><div class="mono orange tk">Most bids</div><h3>Bid Package</h3><div class="price">$750<small> + / bid</small></div><ul><li>Quantities + markups</li><li>Priced CSI estimate</li><li>Scope-gap RFI memo</li><li>Dated before your pre-bid</li></ul><a class="btn solid" href="send.html?want=package">Send a bid</a></div>
+    <div class="tier"><div class="mono dim tk">Volume</div><h3>Bid Desk</h3><div class="price">$3K<small> + / mo</small></div><ul><li>Monthly bid allotment</li><li>Bid-day sub leveling</li><li>Hit-rate &amp; cost analytics</li><li>Priority turnaround</li></ul><a class="btn ghost" href="#call" data-book>Book a call</a></div>
+    <div class="tier"><div class="mono dim tk">Owners &amp; developers</div><h3>Owner-Side</h3><div class="price">Custom</div><ul><li>Budget &amp; design-phase estimates</li><li>GMP and bid leveling review</li><li>Lender cost &amp; draw reviews</li></ul><a class="btn ghost" href="send.html?want=owner">Send the GMP</a></div>
   </div>
 </section>
 
-<section id="send" style="border-top:1px solid var(--line)">
-  <div class="label mono dim reveal">Send a bid set</div>
-  <h2 class="slam">Send us your next bid. <span class="orange">Free gap check on it.</span></h2>
+<section id="send">
+  <div class="label mono dim reveal">Bid set intake · no account</div>
+  <h2 class="slam">Send us your next bid.</h2>
+  <p class="lede reveal">We'll tell you what's missing.</p>
   <div class="intake-wrap">
     <div class="intake" data-intake><noscript><p>Email the plan-room link and bid date to <a class="orange" href="mailto:noah@ceradonsystems.com">noah@ceradonsystems.com</a>.</p></noscript></div>
     <aside class="cal" id="call">
       <div class="mono dim ititle"><span class="dot"></span>Rather talk it through?</div>
-      <h3>Book 15 minutes.</h3>
+      <h3>Fifteen minutes.</h3>
       <p>Walk us through the bid, your trades and how you price. We'll tell you what we'd flag.</p>
       <!-- TODO(owner): set CAL_URL in assets/site.js to swap this placeholder for the Cal.com embed -->
-      <div class="calbox" data-cal><div><div class="mono dim" style="font-size:11px">Pick a time</div><div class="slots mono" aria-hidden="true"><span>Mon 9:00</span><span>Mon 1:30</span><span>Tue 10:00</span><span>Wed 8:30</span><span>Wed 2:00</span><span>Thu 11:00</span></div><a class="btn" href="mailto:noah@ceradonsystems.com" data-book>Book a call →</a></div></div>
+      <div class="calbox" data-cal><div><div class="mono dim" style="font-size:11px">Pick a time</div><div class="slots mono" aria-hidden="true"><span>Mon 9:00</span><span>Mon 1:30</span><span>Tue 10:00</span><span>Wed 8:30</span><span>Wed 2:00</span><span>Thu 11:00</span></div><a class="btn ghost" href="mailto:noah@ceradonsystems.com" data-book>Book a call</a></div></div>
     </aside>
   </div>
 </section>
 
 <footer class="mono dim">
   <div class="wordmark" style="color:var(--ink)">FORMWORK</div>
-  <div class="brandline">Before the concrete, there's formwork.</div>
+  <div class="brandline">Before the concrete, there's Formwork.</div>
   <a href="send.html" class="orange">Send us your next bid →</a>
   <div class="fl" role="navigation" aria-label="Footer"><a href="platform.html">Platform</a><a href="onboarding.html">Onboarding</a><a href="send.html">Send a bid</a><a href="#call">Book a call</a></div>
-  <!-- TODO(owner): real social URLs -->
-  <div class="socials"><a href="#" aria-label="Formwork on LinkedIn">LinkedIn</a><a href="#" aria-label="Formwork on Instagram">Instagram</a><a href="#" aria-label="Formwork on Facebook">Facebook</a></div>
-  <div>CO · UT · CA · tryformwork.com · © <span data-year></span> Formwork</div>
+  <div class="socials"><a href="https://www.linkedin.com/company/tryformwork" target="_blank" rel="noopener" aria-label="Formwork on LinkedIn">LinkedIn</a><a href="https://www.instagram.com/tryformwork" target="_blank" rel="noopener" aria-label="Formwork on Instagram">Instagram</a><a href="https://www.facebook.com/profile.php?id=100092640950179" target="_blank" rel="noopener" aria-label="Formwork on Facebook">Facebook</a></div>
+  <div>Watching · CO · UT · CA · tryformwork.com · © <span data-year></span> Formwork</div>
 </footer>
-<div class="mbar" id="mbar"><a class="solid" href="#send">Send a bid →</a><a href="#call" data-book>Book a call</a></div>
+<div class="mbar" id="mbar"><a class="solid" href="#send">Send a bid</a><a href="#call" data-book>Book a call</a></div>
 
-<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Video player"><button class="x mono dim" id="close" type="button">Close ✕</button><video id="film" controls playsinline preload="none" poster="assets/films/v4.jpg" src="assets/films/v4.mp4"></video></div>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Video player"><button class="x mono dim" id="close" type="button">Close ✕</button><video id="film" controls playsinline preload="none"></video></div>
 
 <script src="assets/site.js" defer></script>
 </body>
