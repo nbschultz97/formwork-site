@@ -130,7 +130,7 @@ function loopWhileVisible(el, frame, still) {
   frame(still);
 }
 
-// ---- hero backdrops: looping live takeoff (canvas[data-plan]) --------------------------------
+// ---- hero backdrops: looping black-plan markup (canvas[data-plan]) --------------------------------
 $$('canvas[data-plan]').forEach(cv => getPlan().then(({ draw, imgA, imgM }) => {
   const ctx = cv.getContext('2d'), host = cv.parentElement, tEl = $('[data-hud-t]', host), lEl = $('[data-hud-layer]', host);
   const LOOP = 18000, P = { walls: [.02, .36], doors: [.20, .42], ducts: [.40, .72], devs: [.55, .78], out: [.90, 1] };
