@@ -1,5 +1,5 @@
 // Formwork site — shared script for every page. All motion is driven by real material from one
-// 133-sheet university lab TI bid set (walls, ducts, sheet thumbnails, RFI crops).
+// 133-sheet public bid set, CO (walls, ducts, sheet thumbnails, RFI crops).
 // No libraries: requestAnimationFrame + IntersectionObserver + scroll progress. Every block is guarded,
 // so a page only runs what it contains.
 (() => {
@@ -15,7 +15,7 @@ const CHUNK = 10 * 1024 * 1024;                            // 10 MB parts: R2 mu
 // ===== OWNER SETTINGS: change these here; nothing else in the site needs editing ==============
 // TODO(owner): CONTACT_EMAIL is used for every mailto (intake fallback, book-a-call, upload errors).
 //              Swap it for a formwork address once one exists (also update the one <noscript> line in index.html).
-const CONTACT_EMAIL = 'noah@ceradonsystems.com';
+const CONTACT_EMAIL = 'hello@tryformwork.com';
 // TODO(owner): Cal.com (or similar) booking URL, e.g. 'https://cal.com/formwork/15min'. null = static placeholder + mailto.
 const CAL_URL = null;
 // Social links live in each page's footer (<div class="socials">).
@@ -56,7 +56,7 @@ $$('.reveal').forEach(el => io.observe(el));
 // ticker
 const track = $('#track');
 if (track) {
-  const items = ['<b>133</b> sheets read', '<b>2,678</b> LF partitions', '<b>19,600</b> lbs duct', '<b>370</b> light fixtures', '<b>381</b> data jacks', '<b>4</b> scope gaps', '12" RCP · <b>1922</b> · "planned removal"', '15" clay sewer · <b>1914</b>', '<b>81</b> segments over 100 yrs', '<b>~242,300</b> CY cut', 'LDs <b>$1,000</b> / day', 'sewer impact fee <b>$19,356</b> / DU', 'diesel <b>+84%</b> since Jan 2026 · EIA weekly', 'watching <b>CO · UT · CA</b>'];
+  const items = ['<b>133</b> sheets read', 'Level 1 · <b>2,678</b> LF partitions', '<b>19,600</b> lbs duct', '<b>370</b> light fixtures', '<b>381</b> data jacks', '<b>4</b> scope gaps', '12" RCP · <b>1922</b> · "planned removal"', '15" clay sewer · <b>1914</b>', '<b>81</b> segments over 100 yrs', '<b>~242,300</b> CY cut', 'LDs <b>$1,000</b> / day', 'residential sewer impact fee <b>$19,356</b> / unit', 'diesel <b>+84%</b> since Jan 2026 · EIA weekly', 'watching <b>CO · UT · CA</b>'];
   track.innerHTML = [...items, ...items].map((i, n) => `<span><em>${String(n % items.length + 1).padStart(3, '0')}</em> ${i}</span>`).join('');
 }
 
@@ -72,16 +72,16 @@ if (factsEl && !RM) {
 }
 
 // ---- data ------------------------------------------------------------------------------------
-const DIVS = [['01', 'General conditions', 440895], ['02', 'Demolition', 168008], ['08', 'Openings', 779650], ['09', 'Finishes', 1049418], ['21', 'Fire suppression', 189050], ['22', 'Plumbing', 179875], ['23', 'HVAC', 1726850], ['26', 'Electrical', 894750], ['27', 'Communications', 421830]];
+const DIVS = [['01', 'General requirements'], ['02', 'Existing conditions / demo'], ['05', 'Metals · supports'], ['06', 'Wood · blocking'], ['07', 'Firestopping · sealants'], ['08', 'Openings'], ['09', 'Finishes'], ['10', 'Specialties'], ['12', 'Casework · fume hoods'], ['21', 'Fire suppression'], ['22', 'Plumbing · lab gases'], ['23', 'HVAC · controls'], ['26', 'Electrical'], ['27', 'Communications'], ['28', 'Security · fire alarm'], ['+', 'GC fee · bond · insurance · contingency']];
 const RFIS = [['RFI-01', 'Alternate sheets G2.4.x — referenced, not issued'], ['RFI-02', 'Server room S103 — no suppression shown'], ['RFI-03', 'DWH-1 water heater — not on E7.0'], ['RFI-04', 'S103 room use — M0.2 vs FP2.1 conflict']];
-const FEED = [['06:02', 'University lab TI', '133'], ['06:41', 'K-12 elementary', '212'], ['07:15', 'Interchange rebuild', '88'], ['08:03', 'Medical office bldg', '164'], ['08:30', 'Middle school mod', '97'], ['09:12', 'Data hall fit-out', '241'], ['09:47', 'K-12 modernization', '156'], ['10:20', 'Fire station', '71']];
+const FEED = [['06:02', 'Lab TI · CO', '133'], ['06:41', 'K-12 elementary', '212'], ['07:15', 'Interchange rebuild', '88'], ['08:03', 'Medical office bldg', '164'], ['08:30', 'Middle school mod', '97'], ['09:12', 'Data hall fit-out', '241'], ['09:47', 'K-12 modernization', '156'], ['10:20', 'Fire station', '71']];
 const LEVEL = [['Plumbing fixtures', '+++++++'], ['Demolition', '++x++++'], ['Firestopping', '+x+++x+'], ['Sealants', '+++x+++'], ['Cleanup', '++++x++']];
 const BIDTAB = [['6.92', 41], ['7.08', 18], ['7.21', 27], ['7.40', 12], ['7.66', 9]];
 const SCORE = [['Scope fit', 86], ['Competition', 72], ['Margin history', 64], ['Schedule risk', 58], ['Capacity', 90]];
 const DISC = [['GEN', 4], ['STRUCT', 1], ['ARCH', 44], ['FIRE', 2], ['PLUMB', 8], ['MECH', 22], ['ELEC', 27], ['TECH', 20], ['SEC', 5]];
 const SHORT = { GEN: 'Gen', STRUCT: 'Str', ARCH: 'Arch', FIRE: 'Fire', PLUMB: 'Plmb', MECH: 'Mech', ELEC: 'Elec', TECH: 'Tech', SEC: 'Sec' };
 const TRADES = ['General contractor', 'Sitework / civil', 'Concrete', 'Steel', 'Framing / drywall', 'Doors / hardware', 'Finishes', 'Fire protection', 'Plumbing', 'Mechanical', 'Electrical', 'Low voltage'];
-const WANTS = [['gap', 'Gap Check', '$0 · scope gaps + RFIs'], ['package', 'Bid Package', 'Quantities · estimate · RFIs'], ['desk', 'Bid Desk', 'Every bid, monthly'], ['owner', 'Owner-side', 'Budget · GMP · draws']];
+const WANTS = [['gap', 'Gap Check', '$0 · scope gaps + RFIs'], ['scope', 'Trade Scope', 'From $750 · one trade'], ['package', 'Full Bid Package', 'Whole set · quoted on receipt'], ['desk', 'Bid Desk', 'Every bid, monthly'], ['owner', 'Owner-side', 'Budget · GMP · draws']];
 
 // ---- plan renderer (shared by hero loops, the sequence, and mini panels) ---------------------
 // A = A2.1.2 walls/doors (1600w); M = M2.1A ducts/devices, pre-registered to the same grid.
@@ -174,8 +174,8 @@ addEventListener('resize', () => { scrollies.forEach(s => s.layout && s.layout()
 // ---- the sequence (film beats, scrubbed by scroll) -------------------------------------------
 if ($('#seq')) {
   const sec = $('#seq'), beats = $$('#seq .beat'), label = $('#seqLabel'), tEl = $('#seqT'), bar = $('#seqBar');
-  const B = [[0, .13, 'Bid set received'], [.13, .26, 'How it usually goes'], [.26, .50, 'Quantities / arch'], [.50, .63, 'Formwork estimate / CSI'], [.63, .79, 'Scope gaps / 4 flagged'], [.79, .86, 'Assessment'], [.86, .92, 'Assessment'], [.92, 1.001, 'Assessment']];
-  const LINES = [['Project     ', 'University lab TI'], ['Location    ', 'Colorado Springs, CO'], ['Scope       ', '26,877 GSF / interior / all trades'], ['Package     ', '133 sheets'], ['Status      ', 'Reading']];
+  const B = [[0, .13, 'Bid set received'], [.13, .26, 'How it usually goes'], [.26, .50, 'Quantities / arch'], [.50, .63, 'Estimate structure / CSI'], [.63, .79, 'Scope gaps / 4 flagged'], [.79, .86, 'Assessment'], [.86, .92, 'Assessment'], [.92, 1.001, 'Assessment']];
+  const LINES = [['Project     ', 'Public bid set'], ['Location    ', 'CO'], ['Scope       ', 'Lab TI / 26,877 GSF / all trades'], ['Package     ', '133 sheets'], ['Status      ', 'Reading']];
   const total = LINES.reduce((n, l) => n + l[0].length + l[1].length, 0);
   const typed = $('#typed'), tile = $('#flipTile'), flipNo = $('#flipNo');
   let lastN = -1, cur = -1, lastLp = 0, plan = null;
@@ -206,9 +206,9 @@ if ($('#seq')) {
     plan.draw(ctx, W, H, { dpr: d, z, cx: 600 + 160 * eio(lp), cy: 690 - 40 * lp, imgA: plan.imgA, imgM: plan.imgM, a: .45 * (1 - .7 * mx), m: .4 * mx, walls: eo(sub(lp, 0, .42)), doors: eo(sub(lp, .25, .48)), ducts: eo(sub(lp, .5, .9)), devs: eo(sub(lp, .6, .95)), wl: 2, dw: .55 });
   };
   getPlan().then(p => { plan = p; if (cur === 2) b3(lastLp); });
-  const rows = $('#rows'); rows.innerHTML = DIVS.map(([d, n]) => `<div class="r"><i>${d}</i><span>${n}</span><b>$0</b></div>`).join('');
+  const rows = $('#rows'); rows.innerHTML = DIVS.map(([d, n]) => `<div class="r"><i>${d}</i><span>${n}</span><b>${d === '+' ? 'Markups' : 'Included'}</b></div>`).join('');
   const rowEls = $$('#rows .r');
-  const b4 = lp => rowEls.forEach((r, i) => { const q = sub(lp, i * .07, i * .07 + .22); r.classList.toggle('in', q > 0); r.lastChild.textContent = '$' + fmt(DIVS[i][2] * eo(q)); });
+  const b4 = lp => rowEls.forEach((r, i) => { r.classList.toggle('in', lp > i * .045); });
   const rf = $('#seqRfis'); rf.innerHTML = RFIS.map(([id, t]) => `<div class="rfi"><i>${id}</i><span>${t}</span></div>`).join('');
   const rfEls = $$('#seqRfis .rfi'), rfOn = rfEls.map(() => false);
   const b5 = lp => rfEls.forEach((r, i) => { const on = lp > .04 + i * .16; if (on !== rfOn[i]) { rfOn[i] = on; r.classList.toggle('in', on); if (on) flash(); } });
@@ -452,7 +452,7 @@ const intakeHTML = u => `
       <li><i></i><b>Received</b><span class="mono dim">Now</span><p>Your set is in. Nobody outside the team on your bid sees it.</p></li>
       <li><i></i><b>Gap check</b><span class="mono dim">Within 24 hours</span><p>Missing sheets, conflicts and scope holes, written up as RFIs.</p></li>
       <li><i></i><b>Call</b><span class="mono dim">Day 1</span><p>15 minutes. We walk you through what we found and what you want priced.</p></li>
-      <li><i></i><b>The number</b><span class="mono dim">Before your pre-bid</span><p>Quantities and a priced estimate in your format.</p></li>
+      <li><i></i><b>The number</b><span class="mono dim">Before bid day</span><p>Quantities and RFIs before the pre-bid. The priced estimate in your format, re-run on the last addendum.</p></li>
     </ol>
   </div>`;
 let intakeN = 0;
