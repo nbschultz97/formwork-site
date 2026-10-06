@@ -9,15 +9,19 @@
 <meta property="og:description" content="We don't sell software. We don't bill hours. We deliver the number. Before the concrete, there's formwork.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Formwork">
-<!-- TODO(owner): confirm the production domain; og:url / og:image / twitter:image must be absolute URLs on it -->
 <meta property="og:url" content="https://tryformwork.com/">
-<meta property="og:image" content="https://tryformwork.com/assets/poster.jpg">
+<meta property="og:image" content="https://tryformwork.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Formwork — Bid it like you've already built it.">
 <meta name="twitter:description" content="We don't sell software. We don't bill hours. We deliver the number.">
-<meta name="twitter:image" content="https://tryformwork.com/assets/poster.jpg">
+<meta name="twitter:image" content="https://tryformwork.com/og-image.png">
 <meta name="theme-color" content="#030303">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23ff4f12'/%3E%3Cpath d='M20 14h26v9H30v7h13v9H30v11H20z' fill='%23030303'/%3E%3C/svg%3E">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="/favicon.ico" sizes="16x16 32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="theme-color" content="#030303">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;800;900&family=JetBrains+Mono:wght@400;500&display=swap">
@@ -53,7 +57,7 @@
   <p class="sub">Preconstruction intelligence for Colorado, Utah and California. We read the whole job (drawings, specs, site and the public bid record), then price it and pressure-test it before your competition opens the PDF.</p>
   <div class="ctas">
     <a class="btn solid" href="#send">Send a bid →</a>
-    <button class="btn" type="button" data-film="assets/films/v4.mp4" data-poster="assets/films/v4.jpg">▶ Watch the film</button>
+    <button class="btn" type="button" data-film="assets/films/vision.mp4" data-poster="assets/films/vision.jpg">▶ Watch the film</button>
   </div>
   <a class="mono gapline" href="send.html?want=gap">Free gap check on your next bid →</a>
 </header>
@@ -197,15 +201,14 @@
     <button class="spot" data-src="assets/spots/spot-owner.mp4" data-poster="assets/spots/spot-owner.jpg" aria-label="Play field report: Owner"><video muted loop playsinline preload="none" poster="assets/spots/spot-owner.jpg"></video><span class="cap"><span><small class="mono orange">05 · Owner</small><b>OWNER</b></span><span class="play mono" aria-hidden="true">▶</span></span></button>
   </div>
   <div class="films reveal">
+    <button class="mono dim" type="button" data-film="assets/films/vision.mp4" data-poster="assets/films/vision.jpg"><span>Film 00 · Hero · 0:38<b style="color:var(--ink)">Before the concrete</b></span><span class="orange">▶ Play</span></button>
     <button class="mono dim" type="button" data-film="assets/films/v4.mp4" data-poster="assets/films/v4.jpg"><span>Film 01 · Brand film · 0:24<b style="color:var(--ink)">Formwork</b></span><span class="orange">▶ Play</span></button>
     <button class="mono dim" type="button" data-film="assets/films/intel.mp4" data-poster="assets/films/intel.jpg"><span>Film 02 · Data · bid intel · 0:38<b style="color:var(--ink)">The public record</b></span><span class="orange">▶ Play</span></button>
     <button class="mono dim" type="button" data-film="assets/films/orbit.mp4" data-poster="assets/films/orbit.jpg"><span>Film 03 · Site · satellite to 3D · 0:23<b style="color:var(--ink)">Give us an address</b></span><span class="orange">▶ Play</span></button>
     <button class="mono dim" type="button" data-film="assets/films/xray.mp4" data-poster="assets/films/xray.jpg"><span>Film 04 · Plans to 3D · 0:24<b style="color:var(--ink)">X-ray</b></span><span class="orange">▶ Play</span></button>
     <button class="mono dim" type="button" data-film="assets/films/earthwork.mp4" data-poster="assets/films/earthwork.jpg"><span>Film 05 · Terrain · cut/fill · 0:14<b style="color:var(--ink)">Earthwork</b></span><span class="orange">▶ Play</span></button>
     <button class="mono dim" type="button" data-film="assets/films/demo.mp4" data-poster="assets/films/demo.jpg"><span>Film 06 · Ops console · 0:39<b style="color:var(--ink)">The work, live</b></span><span class="orange">▶ Play</span></button>
-    <!-- TODO(films): formwork-fullscope-v2.mp4 and formwork-vision.mp4 were not rendered yet. When they land in ~/formwork/promo/out,
-         transcode (ffmpeg -i IN -vf scale=1280:-2 -c:v libx264 -crf 26 -preset slow -pix_fmt yuv420p -movflags +faststart -c:a aac -b:a 128k assets/films/NAME.mp4;
-         poster: ffmpeg -ss 1 -i IN -frames:v 1 -vf scale=1280:-2 assets/films/NAME.jpg) and add a <button> like the ones above. -->
+    <!-- TODO(films): add Full Scope v3 (EN + ES) when rendered -->
   </div>
 </section>
 
