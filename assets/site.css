@@ -643,3 +643,5 @@ footer .brandline { font-size: clamp(16px, 1.6vw, 22px); }
 .pattern li { display: block; position: relative; padding-left: 54px; }
 .pattern li > .mono { position: absolute; left: 0; top: 22px; }
 @media (max-width: 640px) { .pattern li { padding-left: 34px; } .pattern li > .mono { top: 18px; } }
+.fgrid > .fcard:first-child { grid-column: 1 / -1; }
+@media (min-width: 561px) { .fgrid > .fcard:first-child .ph { aspect-ratio: 21 / 9; } }
