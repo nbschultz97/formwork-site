@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Send a bid — Formwork</title>
+<meta name="description" content="Send a bid in 60 seconds. Paste a plan-room link or drop the set, any size. Free gap check within 24 hours.">
+<meta property="og:title" content="Send a bid — Formwork">
+<meta property="og:description" content="Send a bid in 60 seconds. Paste a plan-room link or drop the set, any size. Free gap check within 24 hours.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Formwork">
+<meta property="og:url" content="https://tryformwork.com/send.html">
+<meta property="og:image" content="https://tryformwork.com/assets/poster.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#030303">
+<link rel="canonical" href="https://tryformwork.com/send.html">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23ff4f12'/%3E%3Cpath d='M20 14h26v9H30v7h13v9H30v11H20z' fill='%23030303'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;800;900&family=JetBrains+Mono:wght@400;500&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="fetch" href="assets/a212.json" crossorigin>
+<link rel="preload" as="fetch" href="assets/m21a.json" crossorigin>
+<script>document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<div id="flash" aria-hidden="true"></div>
+<nav>
+  <a href="index.html" class="wordmark" aria-label="Formwork home">FORMWORK</a>
+  <div class="links">
+    <a class="mono dim" href="platform.html">Platform</a>
+    <a class="mono dim" href="onboarding.html">Onboarding</a>
+    <a class="mono dim" href="index.html#reports">Field reports</a>
+    <a class="mono dim" href="index.html#pricing">Pricing</a>
+    <a class="mono dim" href="send.html#call">Book a call</a>
+    <a class="btn solid" href="send.html">Send a bid →</a>
+  </div>
+</nav>
+<header class="phero">
+  <canvas class="bg" data-plan data-cx="720" aria-hidden="true"></canvas>
+  <i class="hud tl"></i><i class="hud tr"></i><i class="hud bl"></i><i class="hud br"></i>
+  <div class="hudtxt r mono dim" aria-hidden="true"><span data-hud-layer>A2.1.2 · Level 1 · Arch</span><span data-hud-t>T+00.00</span><span class="dot"></span></div>
+  <div class="label mono dim">Send a bid · no account</div>
+  <h1 class="slam now">Send a bid in <em class="orange" style="font-style:normal">60 seconds.</em></h1>
+  <p class="sub">Paste the plan-room link or drop the set. Tell us the due date and your trades. We send back the gaps within 24 hours, then the number before your pre-bid.</p>
+</header>
+
+<section style="padding-top:60px">
+  <div class="intake-wrap" style="margin-top:0">
+    <div class="intake" data-intake><noscript><p>Email the plan-room link and bid date to <a class="orange" href="mailto:noah@ceradonsystems.com">noah@ceradonsystems.com</a>.</p></noscript></div>
+    <aside class="cal" id="call">
+      <div class="mono dim ititle"><span class="dot"></span>Rather talk it through?</div>
+      <h3>Book 15 minutes.</h3>
+      <p>Walk us through the bid, your trades and how you price. We'll tell you what we'd flag first.</p>
+      <!-- TODO(owner): set CAL_URL in assets/site.js to swap this placeholder for the Cal.com embed -->
+      <div class="calbox" data-cal><div><div class="mono dim" style="font-size:11px">Pick a time</div><div class="slots mono" aria-hidden="true"><span>Mon 9:00</span><span>Mon 1:30</span><span>Tue 10:00</span><span>Wed 8:30</span><span>Wed 2:00</span><span>Thu 11:00</span></div><a class="btn" href="mailto:noah@ceradonsystems.com" data-book>Book a call →</a></div></div>
+    </aside>
+  </div>
+</section>
+
+<section style="border-top:1px solid var(--line)">
+  <div class="label mono dim reveal">What happens next</div>
+  <h2 class="slam">Received. Checked. Called. Priced.</h2>
+  <div class="need">
+    <div class="reveal"><div class="k mono orange">Now</div><h3>Received</h3><p>Your files land in a private bucket. Only the team on your bid sees them.</p></div>
+    <div class="reveal"><div class="k mono orange">Within 24 h</div><h3>Gap check</h3><p>Missing sheets, unscheduled equipment, discipline conflicts. Written up as RFIs.</p></div>
+    <div class="reveal"><div class="k mono orange">Day 1</div><h3>Call</h3><p>15 minutes on what we found, what you want priced and how you want it formatted.</p></div>
+    <div class="reveal"><div class="k mono orange">Before pre-bid</div><h3>The number</h3><p>Quantities and a priced estimate in your format.</p></div>
+  </div>
+  <div class="reveal" style="margin-top:40px"><a class="btn" href="onboarding.html">How onboarding works →</a></div>
+</section>
+<footer class="mono dim">
+  <div class="wordmark" style="color:var(--ink)">FORMWORK</div>
+  <div class="brandline">Before the concrete, there's formwork.</div>
+  <a href="send.html" class="orange">Send us your next bid →</a>
+  <div class="fl" role="navigation" aria-label="Footer"><a href="index.html">Home</a><a href="platform.html">Platform</a><a href="onboarding.html">Onboarding</a><a href="send.html">Send a bid</a><a href="send.html#call">Book a call</a></div>
+  <!-- TODO(owner): real social URLs -->
+  <div class="socials"><a href="#" aria-label="Formwork on LinkedIn">LinkedIn</a><a href="#" aria-label="Formwork on Instagram">Instagram</a><a href="#" aria-label="Formwork on Facebook">Facebook</a></div>
+  <div>CO · UT · CA · tryformwork.com · © <span data-year></span> Formwork</div>
+</footer>
+<div class="mbar" id="mbar"><a class="solid" href="send.html">Send a bid →</a><a href="send.html#call" data-book>Book a call</a></div>
+<script src="assets/site.js" defer></script>
+</body>
+</html>

@@ -1,453 +1,270 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formwork — Construction Operations, Rebuilt</title>
-    <meta name="description" content="Formwork speeds up how your construction business already runs — finding where the hours leak and building automation that fits the tools your team already uses. No rip-and-replace.">
-    <link rel="canonical" href="https://tryformwork.com">
-
-    <!-- Open Graph -->
-    <meta property="og:title" content="Formwork — Construction Operations, Rebuilt">
-    <meta property="og:description" content="We speed up how you already work — without ripping out your system. Work-studies and custom automation for construction businesses.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://tryformwork.com">
-    <meta property="og:image" content="https://tryformwork.com/og-image.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:site_name" content="Formwork">
-
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Formwork — Construction Operations, Rebuilt">
-    <meta name="twitter:description" content="We speed up how you already work — without ripping out your system.">
-    <meta name="twitter:image" content="https://tryformwork.com/og-image.png">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-
-    <!-- Fonts (self-hosted) -->
-    <link rel="preload" href="/assets/fonts/big-shoulders-display-800.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="/assets/fonts/geist-mono-400.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="fonts.css">
-
-    <link rel="stylesheet" href="styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Formwork — Preconstruction Intelligence</title>
+<meta name="description" content="Preconstruction intelligence for Colorado, Utah and California. We read the whole job: drawings, specs, site and the public bid record. Estimate, scope gaps, bid leveling, bid intel and owner-side review. Send us your next bid. Free gap check on your next bid.">
+<meta property="og:title" content="Formwork — Bid it like you've already built it.">
+<meta property="og:description" content="We don't sell software. We don't bill hours. We deliver the number. Before the concrete, there's formwork.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Formwork">
+<!-- TODO(owner): confirm the production domain; og:url / og:image / twitter:image must be absolute URLs on it -->
+<meta property="og:url" content="https://tryformwork.com/">
+<meta property="og:image" content="https://tryformwork.com/assets/poster.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Formwork — Bid it like you've already built it.">
+<meta name="twitter:description" content="We don't sell software. We don't bill hours. We deliver the number.">
+<meta name="twitter:image" content="https://tryformwork.com/assets/poster.jpg">
+<meta name="theme-color" content="#030303">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23ff4f12'/%3E%3Cpath d='M20 14h26v9H30v7h13v9H30v11H20z' fill='%23030303'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;800;900&family=JetBrains+Mono:wght@400;500&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="fetch" href="assets/a212.json" crossorigin>
+<link rel="preload" as="fetch" href="assets/m21a.json" crossorigin>
+<link rel="preload" as="image" href="assets/a212.webp" type="image/webp">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
+<div id="flash" aria-hidden="true"></div>
 
-<!-- Drawing-sheet frame: fixed border + corner registration ticks -->
-<div class="sheet-frame" aria-hidden="true">
-    <span class="reg reg-tl"></span><span class="reg reg-tr"></span>
-    <span class="reg reg-bl"></span><span class="reg reg-br"></span>
-</div>
+<nav>
+  <a href="#" class="wordmark" aria-label="Formwork home">FORMWORK</a>
+  <div class="links">
+    <a class="mono dim" href="platform.html">Platform</a>
+    <a class="mono dim" href="onboarding.html">Onboarding</a>
+    <a class="mono dim" href="#films">Films</a>
+    <a class="mono dim" href="#pricing">Pricing</a>
+    <a class="mono dim" href="#call">Book a call</a>
+    <a class="btn solid" href="#send">Send a bid →</a>
+  </div>
+</nav>
 
-<!-- TOP BAR -->
-<header class="topbar">
-    <div class="topbar-inner">
-        <a href="#top" class="wordmark">FORMWORK<span class="sq" aria-hidden="true"></span></a>
-        <span class="topbar-meta">CONSTRUCTION INTELLIGENCE&ensp;/&ensp;DENVER, CO</span>
-        <nav class="topbar-nav" aria-label="Primary">
-            <a href="#conditions">Conditions</a>
-            <a href="#scope">Scope</a>
-            <a href="#sequence">Sequence</a>
-            <a href="#team">Team</a>
-            <a href="mailto:hello@tryformwork.com?subject=Work-study%20inquiry" class="btn btn-solid">Book a Work-Study</a>
-        </nav>
-        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="nav-mobile">
-            <span></span><span></span>
-        </button>
-    </div>
-    <div class="nav-mobile" id="nav-mobile">
-        <a href="#conditions">01 — Site Conditions</a>
-        <a href="#scope">03 — Scope of Work</a>
-        <a href="#sequence">04 — Sequence</a>
-        <a href="#team">06 — Project Team</a>
-        <a href="mailto:hello@tryformwork.com?subject=Work-study%20inquiry" class="btn btn-solid">Book a Work-Study</a>
-    </div>
+<header class="hero">
+  <!-- live takeoff loop: real A2.1.2 walls (orange) then M2.1A ducts (cyan), drawn on canvas; static frame under prefers-reduced-motion -->
+  <canvas class="bg" id="heroCanvas" data-plan aria-hidden="true"></canvas>
+  <i class="hud tl"></i><i class="hud tr"></i><i class="hud bl"></i><i class="hud br"></i>
+  <div class="hudtxt r mono dim" aria-hidden="true"><span data-hud-layer>A2.1.2 · Level 1 · Arch</span><span data-hud-t>T+00.00</span><span class="dot"></span></div>
+  <div class="tag mono dim"><span class="blink"></span>Before the concrete, there's formwork.</div>
+  <h1 class="slam now">Bid it like you've <em>already built it.</em></h1>
+  <p class="sub">Preconstruction intelligence for Colorado, Utah and California. We read the whole job (drawings, specs, site and the public bid record), then price it and pressure-test it before your competition opens the PDF.</p>
+  <div class="ctas">
+    <a class="btn solid" href="#send">Send a bid →</a>
+    <button class="btn" type="button" data-film="assets/films/v4.mp4" data-poster="assets/films/v4.jpg">▶ Watch the film</button>
+  </div>
+  <a class="mono gapline" href="send.html?want=gap">Free gap check on your next bid →</a>
 </header>
 
-<main id="top">
+<div class="ticker mono dim" aria-hidden="true"><div class="track" id="track"></div></div>
 
-<!-- ══ SHEET A-000 · COVER ══════════════════════════ -->
-<section class="hero">
-    <div class="wrap hero-grid">
-        <div class="hero-main">
-            <p class="kicker rv">Sheet A-000&ensp;·&ensp;Cover&ensp;·&ensp;Issued for construction</p>
-            <h1 class="rv d1">
-                We speed up how you
-                <span class="redline">already work<svg class="redline-stroke" viewBox="0 0 300 14" preserveAspectRatio="none" aria-hidden="true"><path d="M3 9 C 70 4, 150 12, 297 6" fill="none"/></svg></span>
-            </h1>
-            <p class="hero-sub rv d2">Most &ldquo;process improvement&rdquo; walks in and forces your crew onto new software. Formwork does the opposite: we study the way your team actually works, find where the hours leak, and build automation into the tools you already run.</p>
-            <div class="hero-actions rv d3">
-                <a href="mailto:hello@tryformwork.com?subject=Work-study%20inquiry" class="btn btn-solid btn-lg">Book a Work-Study <span class="btn-arrow" aria-hidden="true">&#8594;</span></a>
-                <a href="#difference" class="btn btn-line btn-lg">See the Difference</a>
-            </div>
-        </div>
-        <aside class="hero-side">
-            <div class="stamp rv-stamp" aria-hidden="true">
-                <span class="stamp-big">No rip-<br>and-replace</span>
-                <span class="stamp-small">Typ. all projects</span>
-            </div>
-            <dl class="titleblock-mini rv d3">
-                <div><dt>Project</dt><dd>Your operation</dd></div>
-                <div><dt>Scale</dt><dd>None</dd></div>
-                <div><dt>Drawn by</dt><dd>Field + engineering</dd></div>
-                <div><dt>Rev</dt><dd>A &mdash; 07.2026</dd></div>
-                <div><dt>Status</dt><dd class="amber">For construction</dd></div>
-            </dl>
-        </aside>
+<!-- ===== THE SEQUENCE: scroll-scrubbed version of the brand film's beats ===== -->
+<section id="seq" class="scrolly" aria-label="How a bid gets built">
+  <div class="stage">
+    <i class="hud tl"></i><i class="hud tr"></i><i class="hud bl"></i><i class="hud br"></i>
+    <div class="hudtxt tl mono dim" id="seqLabel">Formwork // New solicitation</div>
+    <div class="hudtxt tr mono dim" id="seqT">T+00.00</div>
+    <div class="hudtxt br"><span class="dot"></span></div>
+
+    <div class="beat b1">
+      <div class="term" aria-label="New bid posted: university lab TI, Colorado Springs, 133 sheets">
+        <div class="hd"><span class="dot"></span>New bid posted</div>
+        <div id="typed"></div>
+      </div>
+      <div class="flip"><div class="tile" id="flipTile"></div><div class="mono dim" id="flipNo">Sheet 001 / 133</div></div>
     </div>
+
+    <div class="beat b2">
+      <h2 class="slam big">Your competitors are still downloading the plans.</h2>
+      <div class="dl"><div class="mono dim"><span>Bid_set_drawings.pdf — 43.0 MB</span><span id="dlPct">3%</span></div><div class="track"><i id="dlBar"></i></div></div>
+    </div>
+
+    <div class="beat b3">
+      <canvas id="seqCanvas" aria-hidden="true"></canvas>
+      <div class="counts mono dim">
+        <div><b data-c="2678">0</b><span class="orange">LF partitions</span></div>
+        <div><b data-c="60">0</b><span>Openings</span></div>
+        <div><b data-c="19600">0</b><span class="cyan">LBS duct</span></div>
+        <div><b data-c="206">0</b><span class="cyan">Air devices</span></div>
+        <div><b data-c="370">0</b><span>Light fixtures</span></div>
+        <div><b data-c="381">0</b><span>Data jacks</span></div>
+      </div>
+      <div class="mono orange" style="font-size:13px;margin-bottom:14px">Meanwhile</div>
+      <h2 class="slam big">It's already measured.</h2>
+    </div>
+
+    <div class="beat b4">
+      <div class="rows" id="rows"></div>
+      <h2 class="slam priced">Priced.</h2>
+    </div>
+
+    <div class="beat b5">
+      <div class="rfis" id="seqRfis"></div>
+      <h2 class="slam mid">Every gap in the drawings. <span class="orange">On your desk.</span></h2>
+    </div>
+
+    <div class="beat b6"><h2 class="slam c big" style="color:var(--mute)">We don't sell software.</h2></div>
+    <div class="beat b6"><h2 class="slam c big" style="color:var(--mute)">We don't bill hours.</h2></div>
+    <div class="beat b6"><h2 class="slam c big">We deliver <span class="orange">the number.</span></h2></div>
+
+    <div class="bar"><i id="seqBar"></i></div>
+  </div>
 </section>
 
-<section class="plan-visual rv" aria-labelledby="plan-visual-caption">
-    <div class="wrap">
-        <figure data-plan-parallax>
-            <img src="assets/operations-plan.svg" alt="Blueprint diagram showing information moving from field operations through Formwork automation into existing construction software">
-            <figcaption id="plan-visual-caption">Fig. A-001 &mdash; Automation is installed between the handoffs, not between your people.</figcaption>
-        </figure>
+<div class="ctawrap"><div class="ctastrip reveal"><div class="t">Bid it like you've already built it. <span class="orange">Send us your next bid.</span></div><div class="row"><a class="btn solid" href="#send">Send a bid →</a><a class="btn" href="#call" data-book>Book a call</a></div></div></div>
+
+<!-- ===== 133 SHEETS: thumbnail wall sorts itself into disciplines ===== -->
+<section id="sheets" class="scrolly" aria-label="133 sheets sorted by discipline">
+  <div class="stage">
+    <i class="hud tl"></i><i class="hud tr"></i><i class="hud bl"></i><i class="hud br"></i>
+    <div class="hudtxt tr"><span class="mono dim" id="wallState">Ingest</span><span class="dot"></span></div>
+    <div class="head">
+      <div><div class="label mono dim">One bid set · real sheets</div><h2 class="slam">133 sheets. <span class="orange">Every one read.</span></h2></div>
+      <div class="count"><b id="wallCount">0</b><span class="mono dim">Sheets read · by discipline</span></div>
     </div>
+    <div class="wall" id="wall" role="img" aria-label="Thumbnails of all 133 sheets: General 4, Structural 1, Architectural 44, Fire 2, Plumbing 8, Mechanical 22, Electrical 27, Technology 20, Security 5"></div>
+    <div class="bar"><i id="wallBar"></i></div>
+  </div>
 </section>
 
-<!-- ══ 01 · SITE CONDITIONS ══════════════════════════ -->
-<section id="conditions" class="sec">
-    <div class="wrap">
-        <div class="dim rv"><span class="tick"></span><span class="rule"></span><span class="dim-label">01&ensp;/&ensp;Site conditions</span><span class="rule"></span><span class="tick"></span></div>
-        <h2 class="sec-title rv">A field report you&rsquo;ll recognize.</h2>
-
-        <ol class="keynotes">
-            <li class="rv"><span class="keynote-ref">N1</span><p>Your PM is re-entering the same data into Procore and QuickBooks &mdash; every job, both directions.</p></li>
-            <li class="rv d1"><span class="keynote-ref">N2</span><p>Your estimator is working until midnight because the bid package landed Thursday and it&rsquo;s due Monday.</p></li>
-            <li class="rv d2"><span class="keynote-ref">N3</span><p>Your office manager is chasing submittals by email because nobody trusts the tracking spreadsheet anymore.</p></li>
-        </ol>
-
-        <p class="conditions-verdict rv">These aren&rsquo;t technology problems. They&rsquo;re <em>workflow</em> problems &mdash; and new software won&rsquo;t fix them if it doesn&rsquo;t fit how your team actually operates.</p>
+<!-- ===== SCOPE GAPS: zoom into the real sheets ===== -->
+<section id="gaps" class="scrolly" aria-label="Scope gaps found in the drawings">
+  <div class="stage">
+    <i class="hud tl"></i><i class="hud tr"></i><i class="hud bl"></i><i class="hud br"></i>
+    <div class="gapgrid">
+      <div class="viewer" id="viewer">
+        <div class="vt mono"><span class="orange" id="vSheet">A2.1.2 / General notes</span><span class="dim" id="vStep">1 / 4</span></div>
+        <div class="vin" id="vIn"><img id="vImg" src="assets/sheets/g1.webp" alt="Crop of the drawing sheet behind the active RFI" width="800" height="1422" decoding="async"><svg viewBox="0 0 800 1422" id="vSvg" aria-hidden="true"></svg></div>
+        <div class="flag mono" id="vFlag"></div>
+      </div>
+      <div class="gapside">
+        <div class="label mono dim">Scope gap review · 4 flagged</div>
+        <h2 class="slam">Most contractors find these <span class="orange">after award.</span></h2>
+        <div id="gapCards"></div>
+      </div>
     </div>
+    <div class="bar"><i id="gapBar"></i></div>
+  </div>
 </section>
 
-<!-- ══ 02 · THE DIFFERENCE ══════════════════════════ -->
-<section id="difference" class="sec">
-    <div class="wrap">
-        <div class="dim rv"><span class="tick"></span><span class="rule"></span><span class="dim-label">02&ensp;/&ensp;The difference</span><span class="rule"></span><span class="tick"></span></div>
-        <h2 class="sec-title rv">We build around what works.<br>We fix what doesn&rsquo;t.</h2>
+<div class="ctawrap"><div class="ctastrip reveal"><div class="t">Find the gaps before the pre-bid. <span class="orange">Free gap check on your next bid.</span></div><div class="row"><a class="btn solid" href="#send">Send a bid →</a><a class="btn" href="#call" data-book>Book a call</a></div></div></div>
 
-        <figure class="blueprint rv">
-            <svg viewBox="0 0 1200 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Architectural blueprint: an existing building with Formwork scaffolding built around it, not over it" style="display:block; width:100%; height:auto; background:#26262A">
-                <defs>
-                    <pattern id="bpgrid" width="40" height="40" patternUnits="userSpaceOnUse">
-                        <path d="M40 0H0V40" fill="none" stroke="#BCB8B1" stroke-opacity="0.06" stroke-width="1"/>
-                    </pattern>
-                </defs>
-                <rect width="1200" height="540" fill="#26262A"/>
-                <rect width="1200" height="540" fill="url(#bpgrid)"/>
-                <line x1="340" y1="440" x2="860" y2="440" stroke="#CC9933" stroke-width="3"/>
-                <g stroke="#BCB8B1" stroke-width="2" fill="none">
-                    <rect x="420" y="130" width="360" height="310"/>
-                    <line x1="420" y1="207" x2="780" y2="207"/>
-                    <line x1="420" y1="284" x2="780" y2="284"/>
-                    <line x1="420" y1="361" x2="780" y2="361"/>
-                    <rect x="448" y="150" width="58" height="38"/><rect x="571" y="150" width="58" height="38"/><rect x="694" y="150" width="58" height="38"/>
-                    <rect x="448" y="227" width="58" height="38"/><rect x="571" y="227" width="58" height="38"/><rect x="694" y="227" width="58" height="38"/>
-                    <rect x="448" y="304" width="58" height="38"/><rect x="571" y="304" width="58" height="38"/><rect x="694" y="304" width="58" height="38"/>
-                    <rect x="448" y="381" width="58" height="38"/><rect x="566" y="381" width="68" height="59"/><rect x="694" y="381" width="58" height="38"/>
-                </g>
-                <g stroke="#CC9933" stroke-width="2" fill="none">
-                    <line x1="398" y1="120" x2="398" y2="440"/>
-                    <line x1="802" y1="120" x2="802" y2="440"/>
-                    <line x1="398" y1="170" x2="802" y2="170"/>
-                    <line x1="398" y1="247" x2="802" y2="247"/>
-                    <line x1="398" y1="324" x2="802" y2="324"/>
-                    <line x1="398" y1="401" x2="802" y2="401"/>
-                    <line x1="398" y1="170" x2="420" y2="247"/><line x1="420" y1="170" x2="398" y2="247"/>
-                    <line x1="398" y1="247" x2="420" y2="324"/><line x1="420" y1="247" x2="398" y2="324"/>
-                    <line x1="398" y1="324" x2="420" y2="401"/><line x1="420" y1="324" x2="398" y2="401"/>
-                    <line x1="780" y1="170" x2="802" y2="247"/><line x1="802" y1="170" x2="780" y2="247"/>
-                    <line x1="780" y1="247" x2="802" y2="324"/><line x1="802" y1="247" x2="780" y2="324"/>
-                    <line x1="780" y1="324" x2="802" y2="401"/><line x1="802" y1="324" x2="780" y2="401"/>
-                </g>
-                <g fill="#CC9933">
-                    <circle cx="398" cy="170" r="4"/><circle cx="398" cy="247" r="4"/><circle cx="398" cy="324" r="4"/><circle cx="398" cy="401" r="4"/>
-                    <circle cx="802" cy="170" r="4"/><circle cx="802" cy="247" r="4"/><circle cx="802" cy="324" r="4"/><circle cx="802" cy="401" r="4"/>
-                </g>
-                <g font-family="'Geist Mono', ui-monospace, monospace" letter-spacing="0.08em">
-                    <text x="600" y="110" fill="#BCB8B1" text-anchor="middle" font-size="14">YOUR OPERATION</text>
-                    <text x="600" y="504" fill="#CC9933" text-anchor="middle" font-size="14">FORMWORK &mdash; BUILT AROUND IT, NOT OVER IT</text>
-                </g>
-            </svg>
-            <figcaption>Fig. 02.A &mdash; Scaffolding goes around the building. Nobody tears down a working structure to improve it.</figcaption>
-        </figure>
-
-        <div class="details-grid">
-            <article class="detail rv">
-                <header class="detail-head">
-                    <span class="detail-bubble">D1</span>
-                    <h3>Typ. consultant detail</h3>
-                </header>
-                <ul class="detail-list is-problem">
-                    <li>Rips out the system your crew already knows</li>
-                    <li>Forces new software nobody asked for</li>
-                    <li>Weeks of downtime and retraining</li>
-                    <li>The team quietly goes back to the old way</li>
-                    <li>You paid for disruption, not results</li>
-                </ul>
-            </article>
-            <article class="detail detail-dark rv d1">
-                <header class="detail-head">
-                    <span class="detail-bubble">D2</span>
-                    <h3>Formwork detail</h3>
-                </header>
-                <ul class="detail-list is-solution">
-                    <li>We study how your team actually works first</li>
-                    <li>Automation built inside the tools you already use</li>
-                    <li>No new logins for the crew to learn</li>
-                    <li>Rolled out quietly, with no downtime</li>
-                    <li>You pay for hours back, not for change</li>
-                </ul>
-            </article>
-        </div>
+<section id="services" style="border-top:1px solid var(--line)">
+  <div class="label mono dim reveal">Services · CO · UT · CA</div>
+  <h2 class="slam">Preconstruction intelligence. Every gap in precon, filled.</h2>
+  <div class="svc">
+    <div class="reveal">
+      <div class="mini" data-mini="feed" data-label="Public bids / live"></div>
+      <div class="k mono"><span class="orange">01 / Bid Watch</span><span class="dim">Always on</span></div><h3>Read as it posts.</h3><p>Every public bid in Colorado, Utah and California. Pulled, read and quantified before the sub calls you about it.</p><div class="meta mono dim">Agency portals · plan rooms · daily</div>
     </div>
+    <div class="reveal">
+      <div class="mini" data-mini="duct" data-label="M2.1A / ductwork"></div>
+      <div class="k mono"><span class="orange">02 / Takeoff &amp; Estimate</span><span class="dim">Per bid</span></div><h3>In your format.</h3><p>Every wall, opening, duct, fixture and device. Measured, priced by CSI division, traceable to the sheet.</p><div class="meta mono dim">Markups · CSI estimate · your template</div>
+    </div>
+    <div class="reveal">
+      <div class="mini" data-mini="zoom:g3" data-label="P7.1 / schedules" data-chip="DWH-1 — no circuit on E7.0"></div>
+      <div class="k mono"><span class="orange">03 / Scope Gap Review</span><span class="dim">Day one</span></div><h3>RFIs before the pre-bid.</h3><p>Missing sheets. Unscheduled equipment. Disciplines that disagree. Found on day one, not after award.</p><div class="meta mono dim">4 gaps found in one 133-sheet set</div>
+    </div>
+    <div class="reveal">
+      <div class="mini" data-mini="lvl" data-label="Bid day / 7 subs"></div>
+      <div class="k mono"><span class="orange">04 / Bid Leveling</span><span class="dim">Bid day</span></div><h3>The low bid isn't always the low bid.</h3><p>Sub numbers leveled against our quantities. Exclusions exposed, plugs where coverage is thin.</p><div class="meta mono dim">Scope sheets · plugs · alternates</div>
+    </div>
+    <div class="reveal">
+      <div class="mini" data-mini="bars" data-label="Bid results / public record"></div>
+      <div class="k mono"><span class="orange">05 / Bid Intel</span><span class="dim">Public record</span></div><h3>Know the room.</h3><p>Public bid results, tracked. Who bid, how low, how often they win.</p><div class="meta mono dim">Bidders · spreads · hit rates</div>
+    </div>
+    <div class="reveal">
+      <div class="mini" data-mini="gmp" data-label="E5.1 / one-line"></div>
+      <div class="k mono"><span class="orange">06 / Owner-Side</span><span class="dim">Owners · developers</span></div><h3>The number, from your side.</h3><p>Independent estimates, GMP review and draw reviews. Check the contractor's math before you sign it.</p><div class="meta mono dim">Budget · GMP · lender draws</div>
+    </div>
+  </div>
+  <div class="reveal" style="margin-top:34px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center"><span class="mono dim" style="font-size:12px">Plus bid/no-bid scoring, spec &amp; Div 00/01 review, municipal fees, long-lead procurement, buyout.</span><a class="btn" href="platform.html">All 11 services →</a></div>
+</section>
+<div class="ctawrap"><div class="ctastrip reveal"><div class="t">We deliver the number. <span class="orange">Send us your next bid.</span></div><div class="row"><a class="btn solid" href="#send">Send a bid →</a><a class="btn" href="#call" data-book>Book a call</a></div></div></div>
+
+<section id="films" style="border-top:1px solid var(--line)">
+  <div class="label mono dim reveal" id="reports">Films · field reports</div>
+  <h2 class="slam">Four bids. Four problems. One number.</h2>
+  <div class="reel reveal" id="reel">
+    <!-- Spots transcoded from ~/formwork/promo/out/spot-*.mp4 (720x1280, H.264 CRF 26, faststart, AAC 128k). Posters = frame @1.0s.
+         TODO: if a render is ever missing, swap its <button> for a placeholder:
+         <div class="spot todo"><img src="assets/poster.jpg" alt="" loading="lazy"><div class="cap"><span><small class="mono dim">0X · In production</small><b>TITLE</b></span></div></div> -->
+    <button class="spot" data-src="assets/spots/spot-watch.mp4" data-poster="assets/spots/spot-watch.jpg" aria-label="Play field report: Watch"><video muted loop playsinline preload="none" poster="assets/spots/spot-watch.jpg"></video><span class="cap"><span><small class="mono orange">01 · Bid watch</small><b>WATCH</b></span><span class="play mono" aria-hidden="true">▶</span></span></button>
+    <button class="spot" data-src="assets/spots/spot-gaps.mp4" data-poster="assets/spots/spot-gaps.jpg" aria-label="Play field report: Gaps"><video muted loop playsinline preload="none" poster="assets/spots/spot-gaps.jpg"></video><span class="cap"><span><small class="mono orange">02 · Scope gaps</small><b>GAPS</b></span><span class="play mono" aria-hidden="true">▶</span></span></button>
+    <button class="spot" data-src="assets/spots/spot-level.mp4" data-poster="assets/spots/spot-level.jpg" aria-label="Play field report: Level"><video muted loop playsinline preload="none" poster="assets/spots/spot-level.jpg"></video><span class="cap"><span><small class="mono orange">03 · Leveling</small><b>LEVEL</b></span><span class="play mono" aria-hidden="true">▶</span></span></button>
+    <button class="spot" data-src="assets/spots/spot-owner.mp4" data-poster="assets/spots/spot-owner.jpg" aria-label="Play field report: Owner"><video muted loop playsinline preload="none" poster="assets/spots/spot-owner.jpg"></video><span class="cap"><span><small class="mono orange">05 · Owner</small><b>OWNER</b></span><span class="play mono" aria-hidden="true">▶</span></span></button>
+  </div>
+  <div class="films reveal">
+    <button class="mono dim" type="button" data-film="assets/films/v4.mp4" data-poster="assets/films/v4.jpg"><span>Film 01 · Brand film · 0:24<b style="color:var(--ink)">Formwork</b></span><span class="orange">▶ Play</span></button>
+    <button class="mono dim" type="button" data-film="assets/films/intel.mp4" data-poster="assets/films/intel.jpg"><span>Film 02 · Data · bid intel · 0:38<b style="color:var(--ink)">The public record</b></span><span class="orange">▶ Play</span></button>
+    <button class="mono dim" type="button" data-film="assets/films/orbit.mp4" data-poster="assets/films/orbit.jpg"><span>Film 03 · Site · satellite to 3D · 0:23<b style="color:var(--ink)">Give us an address</b></span><span class="orange">▶ Play</span></button>
+    <button class="mono dim" type="button" data-film="assets/films/xray.mp4" data-poster="assets/films/xray.jpg"><span>Film 04 · Plans to 3D · 0:24<b style="color:var(--ink)">X-ray</b></span><span class="orange">▶ Play</span></button>
+    <button class="mono dim" type="button" data-film="assets/films/earthwork.mp4" data-poster="assets/films/earthwork.jpg"><span>Film 05 · Terrain · cut/fill · 0:14<b style="color:var(--ink)">Earthwork</b></span><span class="orange">▶ Play</span></button>
+    <button class="mono dim" type="button" data-film="assets/films/demo.mp4" data-poster="assets/films/demo.jpg"><span>Film 06 · Ops console · 0:39<b style="color:var(--ink)">The work, live</b></span><span class="orange">▶ Play</span></button>
+    <!-- TODO(films): formwork-fullscope-v2.mp4 and formwork-vision.mp4 were not rendered yet. When they land in ~/formwork/promo/out,
+         transcode (ffmpeg -i IN -vf scale=1280:-2 -c:v libx264 -crf 26 -preset slow -pix_fmt yuv420p -movflags +faststart -c:a aac -b:a 128k assets/films/NAME.mp4;
+         poster: ffmpeg -ss 1 -i IN -frames:v 1 -vf scale=1280:-2 assets/films/NAME.jpg) and add a <button> like the ones above. -->
+  </div>
 </section>
 
-<!-- ══ 03 · SCOPE OF WORK ══════════════════════════ -->
-<section id="scope" class="sec">
-    <div class="wrap">
-        <div class="dim rv"><span class="tick"></span><span class="rule"></span><span class="dim-label">03&ensp;/&ensp;Scope of work</span><span class="rule"></span><span class="tick"></span></div>
-        <h2 class="sec-title rv">Find the slow parts.<br>Build around them.</h2>
-        <p class="sec-lede rv">Formwork is a small shop that fixes the back-office grind in construction businesses &mdash; the bidding, the follow-ups, the paperwork that eats your week.</p>
-
-        <div class="scope-index">
-            <a class="scope-row rv" href="mailto:hello@tryformwork.com?subject=Work-study%20inquiry">
-                <span class="scope-num">03.10</span>
-                <h3 class="scope-title">The Work-Study</h3>
-                <p class="scope-desc">We spend a couple of days mapping how your operation really runs &mdash; where the hours go, where things stall, and what&rsquo;s worth fixing first. You get a plain-English plan, whether you hire us to build it or not.</p>
-                <span class="scope-arrow" aria-hidden="true">&#8594;</span>
-            </a>
-            <a class="scope-row rv d1" href="mailto:hello@tryformwork.com?subject=Automation%20inquiry">
-                <span class="scope-num">03.20</span>
-                <h3 class="scope-title">Custom Automation</h3>
-                <p class="scope-desc">We build the fixes &mdash; automated follow-ups, bid prep, scheduling, paperwork, reporting &mdash; tailored to your exact workflow, not a one-size template.</p>
-                <span class="scope-arrow" aria-hidden="true">&#8594;</span>
-            </a>
-            <a class="scope-row rv d2" href="mailto:hello@tryformwork.com?subject=Integration%20inquiry">
-                <span class="scope-num">03.30</span>
-                <h3 class="scope-title">Built In Your Tools</h3>
-                <p class="scope-desc">Everything plugs into what you already pay for &mdash; Procore, Buildertrend, QuickBooks, spreadsheets, email. No new platform, no migration, no relearning.</p>
-                <span class="scope-arrow" aria-hidden="true">&#8594;</span>
-            </a>
-        </div>
-    </div>
+<section id="operate" style="border-top:1px solid var(--line)">
+  <div class="label mono dim reveal">How we operate</div>
+  <h2 class="slam">Machines count. Estimators sign.</h2>
+  <div class="principles">
+    <div class="reveal"><h4 class="orange">Watching the market</h4><p>We watch public bids across Colorado, Utah and California and start reading a set when it posts, so the work is already moving when you call.</p></div>
+    <div class="reveal"><h4 class="orange">Human-signed</h4><p>Machines do the counting. A construction professional reviews and signs every number that leaves the building. No black boxes.</p></div>
+    <div class="reveal"><h4 class="orange">Built from the field</h4><p>Healthcare, education, civil and development work. We've run jobs and bought them. Our output reads like an estimator made it, because one did.</p></div>
+  </div>
 </section>
 
-<!-- ══ 04 · SEQUENCE ══════════════════════════ -->
-<section id="sequence" class="sec sec-dark">
-    <div class="wrap">
-        <div class="dim rv"><span class="tick"></span><span class="rule"></span><span class="dim-label">04&ensp;/&ensp;Sequence of operations</span><span class="rule"></span><span class="tick"></span></div>
-        <h2 class="sec-title rv">Three phases. No disruption.</h2>
-
-        <div class="phases">
-            <div class="phase rv">
-                <span class="phase-num">PH-01</span>
-                <h3>Work-Study</h3>
-                <p>We watch how your team actually works &mdash; the bids, the hand-offs, the paperwork. You get a clear map of where the hours go and the fixes worth doing first.</p>
-            </div>
-            <span class="phase-link" aria-hidden="true"></span>
-            <div class="phase rv d1">
-                <span class="phase-num">PH-02</span>
-                <h3>Build</h3>
-                <p>We build the automation inside the tools you already run. Rolled out quietly alongside your current process, so nothing stops while it proves out.</p>
-            </div>
-            <span class="phase-link" aria-hidden="true"></span>
-            <div class="phase rv d2">
-                <span class="phase-num">PH-03</span>
-                <h3>Measure &amp; Tune</h3>
-                <p>We track the hours saved against where you started and keep it tuned as your jobs, crew, and season change. The value is something you can see &mdash; not a slide.</p>
-            </div>
-        </div>
-
-        <div class="mid-cta rv">
-            <p>A work-study is fixed-fee, and you keep the plan either way. Hire us to build, and the fee is credited toward the work.</p>
-            <a href="mailto:hello@tryformwork.com?subject=Work-study%20inquiry" class="btn btn-amber btn-lg">Book a Work-Study <span class="btn-arrow" aria-hidden="true">&#8594;</span></a>
-        </div>
-    </div>
+<section class="tagline">
+  <div class="row">
+    <h2 class="slam">Before the concrete,<br><span class="orange">there's formwork.</span></h2>
+    <p class="reveal">We don't sell software. We don't bill hours. We deliver the number.</p>
+  </div>
 </section>
 
-<!-- ══ 05 · OBSERVED TIME LEAKS ══════════════════════════ -->
-<section id="leaks" class="sec">
-    <div class="wrap">
-        <div class="dim rv"><span class="tick"></span><span class="rule"></span><span class="dim-label">05&ensp;/&ensp;Observed time leaks</span><span class="rule"></span><span class="tick"></span></div>
-        <h2 class="sec-title rv">The same leaks show up on every takeoff.</h2>
-        <p class="sec-lede rv">Every construction business is different, but where the hours go is surprisingly similar.</p>
-
-        <div class="takeoff rv" role="table" aria-label="Observed time leaks">
-            <div class="takeoff-head" role="row">
-                <span role="columnheader">Ref</span>
-                <span role="columnheader">Observed condition</span>
-                <span role="columnheader" class="ta-right">Measured</span>
-            </div>
-            <div class="takeoff-row" role="row">
-                <span class="takeoff-ref" role="cell">TL-01</span>
-                <span role="cell">Re-entering data between project management and accounting software that don&rsquo;t talk to each other</span>
-                <span class="takeoff-qty" role="cell">8&ndash;12 <em>hrs/wk</em></span>
-            </div>
-            <div class="takeoff-row" role="row">
-                <span class="takeoff-ref" role="cell">TL-02</span>
-                <span role="cell">Chasing subcontractor bids, submittals, and RFIs through email threads nobody can find</span>
-                <span class="takeoff-qty" role="cell">5&ndash;8 <em>hrs/wk</em></span>
-            </div>
-            <div class="takeoff-row" role="row">
-                <span class="takeoff-ref" role="cell">TL-03</span>
-                <span role="cell">The night-before scramble on bid packages &mdash; manually cross-referencing specs, drawings, and scope</span>
-                <span class="takeoff-qty" role="cell">10&ndash;15 <em>hrs/bid</em></span>
-            </div>
-            <div class="takeoff-total" role="row">
-                <span role="cell">Running total</span>
-                <span class="takeoff-qty" role="cell">13&ndash;20 <em>hrs/wk</em> + 10&ndash;15 <em>hrs/bid</em></span>
-            </div>
-        </div>
-    </div>
+<section id="pricing" style="border-top:1px solid var(--line)">
+  <div class="label mono dim reveal">Pricing</div>
+  <h2 class="slam">Pay for the number. Not the seat.</h2>
+  <div class="tiers reveal">
+    <div class="tier"><div class="mono dim" style="font-size:12px">Start here</div><h3>Gap Check</h3><div class="price">$0</div><p>Free gap check on your next bid. We send back the scope gaps and RFIs we find. No strings.</p><a class="btn solid" href="send.html?want=gap" style="margin-top:auto;justify-content:center">Start free →</a></div>
+    <div class="tier hot"><div class="mono orange" style="font-size:12px">Most bids</div><h3>Bid Package</h3><div class="price">$750<small> + / bid</small></div><ul><li>Quantities + markups</li><li>Priced CSI estimate</li><li>Scope-gap RFI memo</li><li>Turnaround before pre-bid</li></ul><a class="btn" href="send.html?want=package" style="margin-top:auto;justify-content:center">Send a bid →</a></div>
+    <div class="tier"><div class="mono dim" style="font-size:12px">Volume</div><h3>Bid Desk</h3><div class="price">$3K<small> + / mo</small></div><ul><li>Monthly bid allotment</li><li>Bid-day sub leveling</li><li>Hit-rate & cost analytics</li><li>Priority turnaround</li></ul><a class="btn" href="#call" data-book style="margin-top:auto;justify-content:center">Book a call →</a></div>
+    <div class="tier"><div class="mono dim" style="font-size:12px">Owners & developers</div><h3>Owner-Side</h3><div class="price">Custom</div><ul><li>Budget & design-phase estimates</li><li>GMP and bid leveling review</li><li>Lender cost & draw reviews</li></ul><a class="btn" href="send.html?want=owner" style="margin-top:auto;justify-content:center">Send the GMP →</a></div>
+  </div>
 </section>
 
-<!-- ══ 05B · HOURS-BACK TAKEOFF ══════════════════════════ -->
-<section id="calculator" class="sec hours-back">
-    <div class="wrap">
-        <div class="dim rv"><span class="tick"></span><span class="rule"></span><span class="dim-label">05B&ensp;/&ensp;Hours-back takeoff</span><span class="rule"></span><span class="tick"></span></div>
-        <div class="hours-back__heading">
-            <div>
-                <h2 class="sec-title rv">Price the leak before you price the fix.</h2>
-                <p class="sec-lede rv">Use your own numbers. This planning estimate shows what repetitive office work may be costing before any automation is proposed.</p>
-            </div>
-            <span class="estimate-stamp rv-stamp">Planning<br>estimate<small>Not a guarantee</small></span>
-        </div>
-
-        <div class="workstudy-visual rv">
-            <img src="assets/workstudy-report.svg" alt="Example Formwork work-study report showing workflow map, ranked time leaks, and recommended automation scope" loading="lazy">
-            <p><span>Deliverable preview</span> A field-ready plan your team can keep, whether or not Formwork builds the fixes.</p>
-        </div>
-
-        <div class="estimate-sheet rv" data-hours-calculator>
-            <div class="estimate-sheet__inputs">
-                <label>
-                    <span><b>A1</b> Repetitive admin time <output data-hours-output>18 hrs/wk</output></span>
-                    <input type="range" min="5" max="50" step="1" value="18" data-hours aria-label="Repetitive administrative hours per week">
-                    <i style="--fill:28.9%"></i>
-                </label>
-                <label>
-                    <span><b>A2</b> Loaded hourly cost <output data-rate-output>$55/hr</output></span>
-                    <input type="range" min="25" max="150" step="5" value="55" data-rate aria-label="Loaded hourly labor cost">
-                    <i style="--fill:24%"></i>
-                </label>
-                <label>
-                    <span><b>A3</b> Realistically recoverable <output data-recovery-output>60%</output></span>
-                    <input type="range" min="20" max="90" step="5" value="60" data-recovery aria-label="Percentage of repetitive time that may be recoverable">
-                    <i style="--fill:57.1%"></i>
-                </label>
-            </div>
-
-            <div class="estimate-sheet__results" aria-live="polite">
-                <p class="estimate-sheet__eyebrow">Annual opportunity</p>
-                <div class="estimate-result">
-                    <span>Hours returned</span>
-                    <strong data-annual-hours>562</strong>
-                    <small>hours / year</small>
-                </div>
-                <div class="estimate-result estimate-result--amber">
-                    <span>Capacity value</span>
-                    <strong data-annual-value>$30,888</strong>
-                    <small>per year</small>
-                </div>
-                <p class="estimate-sheet__note">Based on 52 operating weeks. Illustrative planning estimate only; actual savings depend on workflow and implementation.</p>
-            </div>
-        </div>
-
-        <div class="deliverable-strip rv">
-            <span>Work-study deliverable</span>
-            <ol>
-                <li><b>01</b> Workflow map</li>
-                <li><b>02</b> Ranked time leaks</li>
-                <li><b>03</b> Automation scope</li>
-                <li><b>04</b> Hours-back baseline</li>
-            </ol>
-            <a href="mailto:hello@tryformwork.com?subject=Work-study%20inquiry">Get the field report &rarr;</a>
-        </div>
-    </div>
+<section id="send" style="border-top:1px solid var(--line)">
+  <div class="label mono dim reveal">Send a bid set</div>
+  <h2 class="slam">Send us your next bid. <span class="orange">Free gap check on it.</span></h2>
+  <div class="intake-wrap">
+    <div class="intake" data-intake><noscript><p>Email the plan-room link and bid date to <a class="orange" href="mailto:noah@ceradonsystems.com">noah@ceradonsystems.com</a>.</p></noscript></div>
+    <aside class="cal" id="call">
+      <div class="mono dim ititle"><span class="dot"></span>Rather talk it through?</div>
+      <h3>Book 15 minutes.</h3>
+      <p>Walk us through the bid, your trades and how you price. We'll tell you what we'd flag.</p>
+      <!-- TODO(owner): set CAL_URL in assets/site.js to swap this placeholder for the Cal.com embed -->
+      <div class="calbox" data-cal><div><div class="mono dim" style="font-size:11px">Pick a time</div><div class="slots mono" aria-hidden="true"><span>Mon 9:00</span><span>Mon 1:30</span><span>Tue 10:00</span><span>Wed 8:30</span><span>Wed 2:00</span><span>Thu 11:00</span></div><a class="btn" href="mailto:noah@ceradonsystems.com" data-book>Book a call →</a></div></div>
+    </aside>
+  </div>
 </section>
 
-<!-- ══ 06 · PROJECT TEAM ══════════════════════════ -->
-<section id="team" class="sec">
-    <div class="wrap">
-        <div class="dim rv"><span class="tick"></span><span class="rule"></span><span class="dim-label">06&ensp;/&ensp;Project team</span><span class="rule"></span><span class="tick"></span></div>
-        <h2 class="sec-title rv">Built by people who know the jobsite.</h2>
-        <p class="sec-lede rv">Dominic spent years watching the same problems eat hours across every GC and sub he worked with &mdash; the double-entry, the bid scrambles, the submittals lost in email. Noah spent years building systems that automate messy operations without forcing people onto new tools. They met in Denver and realized they were solving the same problem from opposite ends. Formwork is what happened next.</p>
-
-        <div class="signoff">
-            <article class="signoff-card rv">
-                <span class="signoff-label">Drawn by</span>
-                <h3>Noah Schultz</h3>
-                <span class="signoff-role">Product &amp; Engineering</span>
-                <p>Builds the automation behind Formwork &mdash; and has spent years turning messy operations into systems people actually use.</p>
-            </article>
-            <article class="signoff-card rv d1">
-                <span class="signoff-label">Checked by</span>
-                <h3>Dominic Capone</h3>
-                <span class="signoff-role">Construction &amp; Operations</span>
-                <p>Years in the field watching this problem up close. Makes sure everything Formwork builds survives contact with a real jobsite.</p>
-            </article>
-        </div>
-    </div>
-</section>
-
-<!-- ══ 07 · ISSUE FOR CONSTRUCTION ══════════════════════════ -->
-<section id="contact" class="sec sec-dark sec-cta">
-    <div class="wrap">
-        <div class="dim rv"><span class="tick"></span><span class="rule"></span><span class="dim-label">07&ensp;/&ensp;Issue for construction</span><span class="rule"></span><span class="tick"></span></div>
-        <h2 class="cta-title rv">Get your<br>hours back.</h2>
-        <p class="sec-lede rv">Tell us what&rsquo;s eating your week. We&rsquo;ll start with a work-study and show you exactly where the time is going &mdash; before we change a thing.</p>
-        <div class="cta-commitment rv d1">
-            <div class="cta-commitment__scope">
-                <span>Start here</span>
-                <h3>Book a 20-minute operations call</h3>
-                <p>Show us the handoff that keeps breaking. We&rsquo;ll tell you whether it&rsquo;s worth a work-study&mdash;and if it isn&rsquo;t, we&rsquo;ll say so.</p>
-            </div>
-            <ol>
-                <li><b>01</b><span>20-minute fit call<small>No pitch deck</small></span></li>
-                <li><b>02</b><span>Fixed-fee work-study<small>You keep the plan</small></span></li>
-                <li><b>03</b><span>Build only what pays back<small>No rip-and-replace</small></span></li>
-            </ol>
-            <a href="mailto:hello@tryformwork.com?subject=Book%20a%2020-minute%20operations%20call&body=Company%3A%0AWhat%20is%20eating%20the%20most%20time%3A%0ABest%20time%20to%20talk%3A" class="btn btn-amber btn-lg">Book the operations call <span class="btn-arrow" aria-hidden="true">&#8594;</span></a>
-            <a href="mailto:hello@tryformwork.com" class="cta-mail">Or email hello@tryformwork.com</a>
-        </div>
-    </div>
-</section>
-
-</main>
-
-<aside class="conversion-rail" data-conversion-rail aria-label="Book a Formwork operations call">
-    <div>
-        <span>Ready to price the leak?</span>
-        <p>20-minute operations call. Bring one broken handoff.</p>
-    </div>
-    <a href="mailto:hello@tryformwork.com?subject=Book%20a%2020-minute%20operations%20call&body=Company%3A%0AWhat%20is%20eating%20the%20most%20time%3A%0ABest%20time%20to%20talk%3A" class="btn btn-amber">Book the call <span class="btn-arrow" aria-hidden="true">&#8594;</span></a>
-    <button type="button" data-dismiss-rail aria-label="Dismiss call to action">&times;</button>
-</aside>
-
-<!-- TITLE BLOCK / FOOTER -->
-<footer class="titleblock" aria-label="Site footer">
-    <div class="titleblock-inner">
-        <div class="tb-cell tb-brand">
-            <span class="tb-value wordmark-sm">FORMWORK<span class="sq" aria-hidden="true"></span></span>
-            <span class="tb-label">Construction intelligence</span>
-        </div>
-        <div class="tb-cell"><span class="tb-label">Project</span><span class="tb-value">Your operation</span></div>
-        <div class="tb-cell"><span class="tb-label">Location</span><span class="tb-value">Denver, CO</span></div>
-        <div class="tb-cell"><span class="tb-label">Sheet</span><span class="tb-value">A-000 &mdash; Cover</span></div>
-        <div class="tb-cell"><span class="tb-label">Contact</span><a class="tb-value tb-link" href="mailto:hello@tryformwork.com">hello@tryformwork.com</a></div>
-        <div class="tb-cell"><span class="tb-label">Rev</span><span class="tb-value">A &mdash; &copy; 2026 Formwork</span></div>
-    </div>
+<footer class="mono dim">
+  <div class="wordmark" style="color:var(--ink)">FORMWORK</div>
+  <div class="brandline">Before the concrete, there's formwork.</div>
+  <a href="send.html" class="orange">Send us your next bid →</a>
+  <div class="fl" role="navigation" aria-label="Footer"><a href="platform.html">Platform</a><a href="onboarding.html">Onboarding</a><a href="send.html">Send a bid</a><a href="#call">Book a call</a></div>
+  <!-- TODO(owner): real social URLs -->
+  <div class="socials"><a href="#" aria-label="Formwork on LinkedIn">LinkedIn</a><a href="#" aria-label="Formwork on Instagram">Instagram</a><a href="#" aria-label="Formwork on Facebook">Facebook</a></div>
+  <div>CO · UT · CA · tryformwork.com · © <span data-year></span> Formwork</div>
 </footer>
+<div class="mbar" id="mbar"><a class="solid" href="#send">Send a bid →</a><a href="#call" data-book>Book a call</a></div>
 
-<script src="main.js"></script>
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Video player"><button class="x mono dim" id="close" type="button">Close ✕</button><video id="film" controls playsinline preload="none" poster="assets/films/v4.jpg" src="assets/films/v4.mp4"></video></div>
 
-<!-- Analytics: GoatCounter (privacy-friendly, no cookies) -->
-<script data-goatcounter="https://formwork.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-
+<script src="assets/site.js" defer></script>
 </body>
 </html>
