@@ -657,3 +657,5 @@ footer .brandline { font-size: clamp(16px, 1.6vw, 22px); }
   .b4 .priced { flex: 1 1 36%; font-size: clamp(40px, 5.4vw, 92px); }
   .rows .r { font-size: clamp(10px, 1vw, 14px); padding: clamp(3px, .6vh, 7px) 0; }
 }
+@media (min-width: 561px) { .fgrid { grid-template-columns: repeat(2, 1fr); } }
+.fgrid > .fcard:first-child img { object-position: 50% 100%; }
