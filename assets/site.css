@@ -684,7 +684,7 @@ html.ann-x .ann { display: none; }
 .merch .mhead { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 26px; }
 .merch .mhead .label { margin-bottom: 0; }
 .merch .mhead .btn { padding: 11px 18px; font-size: 10.5px; }
-.mgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.mgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 .mcard { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
 .mcard .mimg { display: block; aspect-ratio: 4 / 5; overflow: hidden; border: 1px solid var(--line); background: #0a0a09; }
 .mcard img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(.8); transition: filter .4s, transform .8s cubic-bezier(.2,.7,.2,1); }
@@ -701,3 +701,4 @@ html:not(.ann-x) body:has(.ann) :is(.hero, .phero) .hudtxt.l { top: calc(96px + 
 html:not(.ann-x) body:has(.ann) .hero .tag { top: calc(118px + var(--annh)); }
 html:not(.ann-x) body:has(.ann) :is(.hero, .phero) .hud.tl, html:not(.ann-x) body:has(.ann) :is(.hero, .phero) .hud.tr { top: calc(90px + var(--annh)); }
 @media (max-width: 700px) { html:not(.ann-x) body:has(.ann) .hero .tag { top: calc(86px + var(--annh)); } }
+@media (max-width: 700px) { .mgrid { scroll-padding-inline: var(--pad); } }

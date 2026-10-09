@@ -10,7 +10,6 @@
 //   shipWeeks: e.g. '4–6' (null hides the pre-order line)
 const PRODUCTS = {
   tower1934:      { links: { S: null, M: null, L: null, XL: null, XXL: null }, any: null, price: null, shipWeeks: null },
-  tower1928:      { links: { S: null, M: null, L: null, XL: null, XXL: null }, any: null, price: null, shipWeeks: null },
   ironworker1930: { links: { S: null, M: null, L: null, XL: null, XXL: null }, any: null, price: null, shipWeeks: null },
   icarus1930:     { links: { S: null, M: null, L: null, XL: null, XXL: null }, any: null, price: null, shipWeeks: null },
 };
