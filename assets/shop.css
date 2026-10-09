@@ -65,3 +65,19 @@
 .fine { margin-top: 12px; font-size: 11px; line-height: 1.6; color: var(--dim); font-weight: 400; letter-spacing: .01em; }
 .fine a { color: var(--dim); border-bottom: 1px solid var(--mute); }
 .fine a:hover { color: var(--ink2); }
+
+/* ---- multi-product drop ---- */
+.shop-h { font-size: clamp(40px, 6vw, 104px); line-height: .9; letter-spacing: -.03em; margin-bottom: 40px; }
+.pgrid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: clamp(60px, 8vw, 120px); }
+.pcard { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.pcard .pimg { display: block; aspect-ratio: 4 / 5; overflow: hidden; border: 1px solid var(--line); background: #0a0a09; }
+.pcard img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(.82); transition: filter .4s, transform .8s cubic-bezier(.2,.7,.2,1); }
+.pcard:hover img, .pcard:focus-visible img { filter: none; transform: scale(1.02); }
+.pcard:hover .pimg { border-color: var(--orange); }
+.pcard:focus-visible { outline: 1px solid var(--orange); outline-offset: 4px; }
+.pcard .pmeta { display: flex; flex-direction: column; gap: 6px; font-size: 10px; letter-spacing: .16em; }
+.pcard .pmeta b { font-weight: 900; text-transform: uppercase; font-size: clamp(16px, 1.4vw, 22px); letter-spacing: -.02em; color: var(--ink); line-height: 1; }
+.product { padding: clamp(50px, 6vw, 90px) 0; border-top: 1px solid var(--line); scroll-margin-top: 40px; }
+.buy .pname { font-size: clamp(36px, 4vw, 68px); line-height: .9; letter-spacing: -.03em; max-width: none; }
+@media (max-width: 1000px) { .pgrid { grid-template-columns: 1fr 1fr; gap: 18px 12px; } }
+@media (max-width: 900px) { .product { padding: 44px 0; } .buy .pname { font-size: 40px; } }
