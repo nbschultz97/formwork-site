@@ -12,7 +12,7 @@ const PRODUCTS = {
   tower1934:      { links: { S: null, M: null, L: null, XL: null, XXL: null }, any: null, price: null, shipWeeks: null },
   tower1928:      { links: { S: null, M: null, L: null, XL: null, XXL: null }, any: null, price: null, shipWeeks: null },
   ironworker1930: { links: { S: null, M: null, L: null, XL: null, XXL: null }, any: null, price: null, shipWeeks: null },
-  silhouette:     { links: { S: null, M: null, L: null, XL: null, XXL: null }, any: null, price: null, shipWeeks: null },
+  icarus1930:     { links: { S: null, M: null, L: null, XL: null, XXL: null }, any: null, price: null, shipWeeks: null },
 };
 const CONTACT_EMAIL = 'hello@tryformwork.com';
 // ===============================================================================================
