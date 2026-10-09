@@ -25,10 +25,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="preload" as="fetch" href="assets/a212.json" crossorigin>
 <link rel="preload" as="fetch" href="assets/m21a.json" crossorigin>
-<script>document.documentElement.classList.add('js');</script>
+<script>document.documentElement.classList.add('js');try{if(localStorage.getItem('fw-ann-x')==='1')document.documentElement.classList.add('ann-x')}catch(e){}</script>
 <link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
+<div class="ann" id="ann"><a href="shop.html" class="mono"><i class="tab" aria-hidden="true"></i><span>Field Series · 03 11 00</span><span class="go">Shop the drop →</span></a><button type="button" class="annx mono" id="annx" aria-label="Dismiss">✕</button></div>
 <div id="flash" aria-hidden="true"></div>
 <nav>
   <a href="index.html" class="wordmark" aria-label="Formwork home">FORMWORK</a>
@@ -38,7 +39,7 @@
     <a class="mono dim" href="index.html#record">The record</a>
     <a class="mono dim" href="index.html#pricing">Pricing</a>
     <a class="mono dim" href="index.html#films">Films</a>
-    <a class="mono dim" href="shop.html">Shop</a>
+    <a class="btn navshop" href="shop.html">Shop</a>
     <a class="btn solid" href="send.html">Send a bid</a>
   </div>
 </nav>

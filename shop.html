@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="assets/shop/tower1934-card.webp" type="image/webp">
-<script>document.documentElement.classList.add('js');</script>
+<script>document.documentElement.classList.add('js');try{if(localStorage.getItem('fw-ann-x')==='1')document.documentElement.classList.add('ann-x')}catch(e){}</script>
 <link rel="stylesheet" href="assets/site.css">
 <link rel="stylesheet" href="assets/shop.css">
 </head>
@@ -35,7 +35,7 @@
     <a class="mono dim" href="onboarding.html">Onboarding</a>
     <a class="mono dim" href="index.html#record">The record</a>
     <a class="mono dim" href="index.html#films">Films</a>
-    <a class="mono dim cur" href="shop.html" aria-current="page">Shop</a>
+    <a class="btn navshop cur" href="shop.html" aria-current="page">Shop</a>
     <a class="btn solid" href="send.html">Send a bid</a>
   </div>
 </nav>

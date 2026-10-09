@@ -37,6 +37,10 @@ const once = fn => { let v; return () => v || (v = fn()); };
 
 $$('[data-year]').forEach(el => { el.textContent = new Date().getFullYear(); });
 
+// shop announcement bar: dismissible, remembered per browser
+const annx = $('#annx');
+if (annx) annx.addEventListener('click', () => { document.documentElement.classList.add('ann-x'); try { localStorage.setItem('fw-ann-x', '1'); } catch (e) {} });
+
 // ---- FX: flash + slam ------------------------------------------------------------------------
 const flashEl = $('#flash'); let lastFlash = 0;
 const flash = () => {

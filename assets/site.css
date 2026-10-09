@@ -659,3 +659,45 @@ footer .brandline { font-size: clamp(16px, 1.6vw, 22px); }
 }
 @media (min-width: 561px) { .fgrid { grid-template-columns: repeat(2, 1fr); } }
 .fgrid > .fcard:first-child img { object-position: 50% 100%; }
+
+/* ---- shop entry points: announcement bar, nav Shop button, homepage merch strip ---- */
+:root { --annh: 34px; }
+.ann { position: fixed; top: 0; left: 0; right: 0; z-index: 70; height: var(--annh); display: flex; align-items: center; justify-content: center; background: #0b0b0a; border-bottom: 1px solid var(--line); }
+.ann a { display: flex; align-items: center; gap: 12px; font-size: 10px; letter-spacing: .2em; color: var(--ink2); padding: 0 44px; white-space: nowrap; overflow: hidden; }
+.ann a:hover { color: var(--ink); }
+.ann .tab { width: 14px; height: 6px; background: var(--orange); flex: none; font-style: normal; }
+.ann .go { color: var(--ink); }
+.annx { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: 0; color: var(--dim); font-size: 11px; cursor: pointer; padding: 6px 8px; }
+.annx:hover { color: var(--ink); }
+html:not(.ann-x) body:has(.ann) nav { top: var(--annh); }
+html.ann-x .ann { display: none; }
+.btn.navshop { padding: 9px 14px; font-size: 10.5px; letter-spacing: .2em; border: 1px solid #3a3a37; color: var(--ink); background: transparent; gap: 0; }
+.btn.navshop:hover, .btn.navshop.cur { border-color: var(--orange); background: transparent; color: var(--ink); }
+@media (max-width: 520px) {
+  nav .links { gap: 8px; }
+  .btn.navshop { padding: 10px 11px; font-size: 10.5px; }
+  .ann a { font-size: 9px; letter-spacing: .14em; gap: 9px; padding: 0 34px 0 14px; }
+}
+@media (max-width: 360px) { .ann .go { display: none; } }
+
+.merch { padding: clamp(50px, 7vw, 100px) var(--pad); border-bottom: 1px solid var(--line); }
+.merch .mhead { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 26px; }
+.merch .mhead .label { margin-bottom: 0; }
+.merch .mhead .btn { padding: 11px 18px; font-size: 10.5px; }
+.mgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.mcard { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.mcard .mimg { display: block; aspect-ratio: 4 / 5; overflow: hidden; border: 1px solid var(--line); background: #0a0a09; }
+.mcard img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(.8); transition: filter .4s, transform .8s cubic-bezier(.2,.7,.2,1); }
+.mcard:hover img { filter: none; transform: scale(1.02); }
+.mcard:hover .mimg { border-color: var(--orange); }
+.mcard .mm { display: flex; flex-direction: column; gap: 5px; font-size: 10px; letter-spacing: .16em; }
+.mcard .mm b { font-weight: 900; text-transform: uppercase; font-size: clamp(15px, 1.4vw, 22px); letter-spacing: -.02em; color: var(--ink); line-height: 1; }
+@media (max-width: 700px) {
+  .mgrid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; margin: 0 calc(-1 * var(--pad)); padding: 0 var(--pad) 6px; scrollbar-width: none; }
+  .mgrid::-webkit-scrollbar { display: none; }
+  .mcard { flex: 0 0 64%; scroll-snap-align: start; }
+}
+html:not(.ann-x) body:has(.ann) :is(.hero, .phero) .hudtxt.l { top: calc(96px + var(--annh) + 18px); }
+html:not(.ann-x) body:has(.ann) .hero .tag { top: calc(118px + var(--annh)); }
+html:not(.ann-x) body:has(.ann) :is(.hero, .phero) .hud.tl, html:not(.ann-x) body:has(.ann) :is(.hero, .phero) .hud.tr { top: calc(90px + var(--annh)); }
+@media (max-width: 700px) { html:not(.ann-x) body:has(.ann) .hero .tag { top: calc(86px + var(--annh)); } }
