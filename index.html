@@ -29,6 +29,7 @@
 <link rel="preload" as="image" href="assets/a212.webp" type="image/webp">
 <script>document.documentElement.classList.add('js');try{if(localStorage.getItem('fw-ann-x')==='1')document.documentElement.classList.add('ann-x')}catch(e){}</script>
 <link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/hero-video.css">
 </head>
 <body>
 <div class="ann" id="ann"><a href="shop.html" class="mono"><i class="tab" aria-hidden="true"></i><span>Field Series · 03 11 00</span><span class="go">Shop the drop →</span></a><button type="button" class="annx mono" id="annx" aria-label="Dismiss">✕</button></div>
@@ -47,9 +48,8 @@
   </div>
 </nav>
 
-<header class="hero">
-  <!-- black plan backdrop: real A2.1.2 walls (orange) then M2.1A ducts (cyan), drawn on canvas; static frame under prefers-reduced-motion -->
-  <canvas class="bg" id="heroCanvas" data-plan aria-hidden="true"></canvas>
+<header class="hero hv hv-c">
+  <div class="hv-media" aria-hidden="true"><video class="hv-video" muted loop playsinline preload="none" tabindex="-1"></video></div><i class="hv-scan" aria-hidden="true"></i>
   <i class="hud tl"></i><i class="hud tr"></i><i class="hud bl"></i><i class="hud br"></i>
   <div class="hudtxt l mono dim" aria-hidden="true"><span class="dot"></span><span>Watching · CO · UT · CA</span></div>
   <div class="hudtxt r mono dim" aria-hidden="true"><span data-hud-layer>A2.1.2 · Level 1 · Arch</span><span data-hud-t>T+00.00</span></div>
@@ -70,7 +70,7 @@
   <p class="sub"><strong>Construction intelligence, built around your business.</strong><br>We combine construction expertise, project data and custom software to help contractors and developers understand their projects, make better decisions and improve how they work.</p>
   <div class="ctas">
     <a class="btn solid" href="#send">Send us your next bid</a>
-    <button class="btn ghost" type="button" data-film="assets/films/vision.mp4" data-poster="assets/films/vision.jpg">▶ Watch · 0:39</button>
+    <button class="btn ghost hv-watch" type="button" data-film="assets/hero/howitworks.mp4" data-poster="assets/hero/howitworks.jpg">▶ Watch the film (2:06)</button>
   </div>
 </header>
 
@@ -317,5 +317,6 @@
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Video player"><button class="x mono dim" id="close" type="button">Close ✕</button><video id="film" controls playsinline preload="none"></video></div>
 
 <script src="assets/site.js" defer></script>
+<script src="assets/hero-video.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,12 @@
+/* Homepage hero — Option C: ghosted loop texture (B&W baked into the loop-mono files) + slow orange scan line */
+.hv-c { --hvc-op: .30; }
+.hv-media { position: absolute; inset: 0; z-index: 0; overflow: hidden; background: #030303; }
+.hv-media video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.4s ease; }
+.hv-c .hv-media video.on { opacity: var(--hvc-op); }
+.hero.hv canvas.bg, .hero.hv .hudtxt.r { display: none; }
+.hv-c .hv-scan { position: absolute; left: 0; right: 0; top: 0; height: 1px; z-index: 1; background: var(--orange); opacity: .55; box-shadow: 0 0 24px 6px rgba(255,79,18,.18); animation: hvscan 9s linear infinite; pointer-events: none; will-change: transform; }
+@keyframes hvscan { from { transform: translateY(0); } to { transform: translateY(100svh); } }
+.hv-c.hero::before { z-index: 1; background: linear-gradient(0deg, var(--bg) 3%, rgba(3,3,3,.5) 45%, rgba(3,3,3,.35) 100%); }
+.hv-watch { white-space: nowrap; }
+@media (prefers-reduced-motion: reduce) { .hv-c .hv-scan { animation: none; display: none; } }
+@media (prefers-reduced-motion: reduce) { .hv-c .hv-media::before { content: ''; position: absolute; inset: 0; background: url(hero/loop-mono-poster-960.webp) center / cover no-repeat; opacity: var(--hvc-op); } }
