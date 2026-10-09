@@ -62,3 +62,6 @@
 }
 .gcap { left: 14px; right: 14px; bottom: 14px; padding: 8px 12px; background: rgba(3,3,3,.72); text-shadow: none; }
 .stage-img .hud.bl, .stage-img .hud.br { display: none; }
+.fine { margin-top: 12px; font-size: 11px; line-height: 1.6; color: var(--dim); font-weight: 400; letter-spacing: .01em; }
+.fine a { color: var(--dim); border-bottom: 1px solid var(--mute); }
+.fine a:hover { color: var(--ink2); }
